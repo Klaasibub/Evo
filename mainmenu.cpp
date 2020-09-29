@@ -1,5 +1,9 @@
 #include "mainmenu.h"
 #include "./ui_mainmenu.h"
+#include <Millionaire/millionaire.h>
+#include <Hangman/hangman.h>
+#include <Memory/memory.h>
+#include <Mosaic/mosaic.h>
 
 MainMenu::MainMenu(QWidget *parent)
     : QMainWindow(parent)
@@ -45,4 +49,40 @@ void MainMenu::nextGame()
 void MainMenu::exitGame()
 {
     exit(0);
+}
+
+void MainMenu::startGame(QDialog *game)
+{
+    game->setModal(true);
+    setVisible(false);
+    game->exec();
+    setVisible(true);
+}
+
+void MainMenu::on_playMillionaireBt_clicked()
+{
+    Millionaire *game = new Millionaire;
+    startGame(game);
+    delete game;
+}
+
+void MainMenu::on_playMosaicBt_clicked()
+{
+    Mosaic *game = new Mosaic;
+    startGame(game);
+    delete game;
+}
+
+void MainMenu::on_playMemoryBt_clicked()
+{
+    Memory *game = new Memory;
+    startGame(game);
+    delete game;
+}
+
+void MainMenu::on_playHangmanBt_clicked()
+{
+    Hangman *game = new Hangman;
+    startGame(game);
+    delete game;
 }

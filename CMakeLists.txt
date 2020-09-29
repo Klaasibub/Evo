@@ -32,6 +32,18 @@ if(ANDROID)
     mainmenu.cpp
     mainmenu.h
     mainmenu.ui
+    Millionaire/millionaire.cpp
+    Millionaire/millionaire.h
+    Millionaire/millionaire.ui
+    Mosaic/mosaic.cpp
+    Mosaic/mosaic.h
+    Mosaic/mosaic.ui
+    Hangman/hangman.cpp
+    Hangman/hangman.h
+    Hangman/hangman.ui
+    Memory/memory.cpp
+    Memory/memory.h
+    Memory/memory.ui
   )
 else()
   add_executable(Evo
@@ -39,6 +51,18 @@ else()
     mainmenu.cpp
     mainmenu.h
     mainmenu.ui
+    Millionaire/millionaire.cpp
+    Millionaire/millionaire.h
+    Millionaire/millionaire.ui
+    Mosaic/mosaic.cpp
+    Mosaic/mosaic.h
+    Mosaic/mosaic.ui
+    Hangman/hangman.cpp
+    Hangman/hangman.h
+    Hangman/hangman.ui
+    Memory/memory.cpp
+    Memory/memory.h
+    Memory/memory.ui
   )
 endif()
 

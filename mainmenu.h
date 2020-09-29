@@ -19,6 +19,15 @@ private slots:
     void previousGame();
     void nextGame();
     void exitGame();
+    void startGame(QDialog *game);
+
+    void on_playMillionaireBt_clicked();
+
+    void on_playMosaicBt_clicked();
+
+    void on_playMemoryBt_clicked();
+
+    void on_playHangmanBt_clicked();
 
 private:
     Ui::MainMenu *ui;
