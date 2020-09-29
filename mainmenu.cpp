@@ -1,0 +1,48 @@
+#include "mainmenu.h"
+#include "./ui_mainmenu.h"
+
+MainMenu::MainMenu(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainMenu)
+{
+    ui->setupUi(this);
+
+    currentGame = 0;
+
+    connect(ui->leftMillionaireBt, SIGNAL(clicked()),this,SLOT(previousGame()));
+    connect(ui->leftHangmanBt, SIGNAL(clicked()),this,SLOT(previousGame()));
+    connect(ui->leftMosaicBt, SIGNAL(clicked()),this,SLOT(previousGame()));
+    connect(ui->leftMemoryBt, SIGNAL(clicked()),this,SLOT(previousGame()));
+
+    connect(ui->rightMillionaireBt, SIGNAL(clicked()),this,SLOT(nextGame()));
+    connect(ui->rightHangmanBt, SIGNAL(clicked()),this,SLOT(nextGame()));
+    connect(ui->rightMosaicBt, SIGNAL(clicked()),this,SLOT(nextGame()));
+    connect(ui->rightMemoryBt, SIGNAL(clicked()),this,SLOT(nextGame()));
+
+    connect(ui->exitMillionaireBt, SIGNAL(clicked()),this,SLOT(exitGame()));
+    connect(ui->exitHangmanBt, SIGNAL(clicked()),this,SLOT(exitGame()));
+    connect(ui->exitMosaicBt, SIGNAL(clicked()),this,SLOT(exitGame()));
+    connect(ui->exitMemoryBt, SIGNAL(clicked()),this,SLOT(exitGame()));
+}
+
+MainMenu::~MainMenu()
+{
+    delete ui;
+}
+
+void MainMenu::previousGame()
+{
+    currentGame = (numberGames+currentGame-1)%numberGames;
+    ui->stackedWidget->setCurrentIndex(currentGame);
+}
+
+void MainMenu::nextGame()
+{
+    currentGame = (currentGame+1)%numberGames;
+    ui->stackedWidget->setCurrentIndex(currentGame);
+}
+
+void MainMenu::exitGame()
+{
+    exit(0);
+}
