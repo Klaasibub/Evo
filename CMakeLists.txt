@@ -1,69 +1,15 @@
-cmake_minimum_required(VERSION 3.5)
+project(root_evo_project)
+option(ENABLE_UNIT_TESTS "Enable unit tests." OFF)
 
-project(Evo LANGUAGES CXX)
+SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin CACHE PATH "Single Directory for all")
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin CACHE PATH "Single Directory for all")
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+SET (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib CACHE PATH "Single Directory for all")
 
-set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
-# Check http://doc.qt.io/qt-5/deployment-android.html for more information.
-# They need to be set before the find_package(Qt5 ...) call.
-
-#if(ANDROID)
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
-#        set(ANDROID_EXTRA_LIBS
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
-#    endif()
-#endif()
-
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
-
-if(ANDROID)
-  add_library(Evo SHARED
-    main.cpp
-    mainmenu.cpp
-    mainmenu.h
-    mainmenu.ui
-    Millionaire/millionaire.cpp
-    Millionaire/millionaire.h
-    Millionaire/millionaire.ui
-    Mosaic/mosaic.cpp
-    Mosaic/mosaic.h
-    Mosaic/mosaic.ui
-    Hangman/hangman.cpp
-    Hangman/hangman.h
-    Hangman/hangman.ui
-    Memory/memory.cpp
-    Memory/memory.h
-    Memory/memory.ui
-  )
-else()
-  add_executable(Evo
-    main.cpp
-    mainmenu.cpp
-    mainmenu.h
-    mainmenu.ui
-    Millionaire/millionaire.cpp
-    Millionaire/millionaire.h
-    Millionaire/millionaire.ui
-    Mosaic/mosaic.cpp
-    Mosaic/mosaic.h
-    Mosaic/mosaic.ui
-    Hangman/hangman.cpp
-    Hangman/hangman.h
-    Hangman/hangman.ui
-    Memory/memory.cpp
-    Memory/memory.h
-    Memory/memory.ui
-  )
+if(ENABLE_UNIT_TESTS)
+    add_subdirectory(tests tests)
+    enable_testing()
 endif()
 
-target_link_libraries(Evo PRIVATE Qt5::Widgets)
+add_subdirectory(src src)
