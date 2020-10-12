@@ -8,62 +8,36 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
-# Check http://doc.qt.io/qt-5/deployment-android.html for more information.
-# They need to be set before the find_package(Qt5 ...) call.
-
-#if(ANDROID)
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
-#        set(ANDROID_EXTRA_LIBS
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
-#    endif()
-#endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+set(SOURCES
+    main.cpp
+    mainmenu.cpp
+    Millionaire/millionaire.cpp
+    Mosaic/mosaic.cpp
+    Hangman/hangman.cpp
+    Memory/memory.cpp
+)
+set(HEADERS
+    mainmenu.h
+    Millionaire/millionaire.h
+    Mosaic/mosaic.h
+    Hangman/hangman.h
+    Memory/memory.h
+)
+set(UI
+    mainmenu.ui
+    Millionaire/millionaire.ui
+    Mosaic/mosaic.ui
+    Hangman/hangman.ui
+    Memory/memory.ui
+)
 if(ANDROID)
-  add_library(Evo SHARED
-    main.cpp
-    mainmenu.cpp
-    mainmenu.h
-    mainmenu.ui
-    Millionaire/millionaire.cpp
-    Millionaire/millionaire.h
-    Millionaire/millionaire.ui
-    Mosaic/mosaic.cpp
-    Mosaic/mosaic.h
-    Mosaic/mosaic.ui
-    Hangman/hangman.cpp
-    Hangman/hangman.h
-    Hangman/hangman.ui
-    Memory/memory.cpp
-    Memory/memory.h
-    Memory/memory.ui
-  )
+  add_library(Evo SHARED ${SOURCES} ${HEADERS} ${UI})
 else()
-  add_executable(Evo
-    main.cpp
-    mainmenu.cpp
-    mainmenu.h
-    mainmenu.ui
-    Millionaire/millionaire.cpp
-    Millionaire/millionaire.h
-    Millionaire/millionaire.ui
-    Mosaic/mosaic.cpp
-    Mosaic/mosaic.h
-    Mosaic/mosaic.ui
-    Hangman/hangman.cpp
-    Hangman/hangman.h
-    Hangman/hangman.ui
-    Memory/memory.cpp
-    Memory/memory.h
-    Memory/memory.ui
-  )
+  add_executable(Evo ${SOURCES} ${HEADERS} ${UI})
 endif()
-
 target_link_libraries(Evo PRIVATE Qt5::Widgets)
