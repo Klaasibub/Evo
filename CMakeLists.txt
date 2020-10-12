@@ -20,6 +20,7 @@ set(SOURCES
     Mosaic/mosaic.cpp
     Hangman/hangman.cpp
     Memory/memory.cpp
+    utils.cpp
 )
 set(HEADERS
     mainmenu.h
@@ -27,6 +28,7 @@ set(HEADERS
     Mosaic/mosaic.h
     Hangman/hangman.h
     Memory/memory.h
+    utils.h
 )
 set(UI
     mainmenu.ui
