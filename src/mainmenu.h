@@ -33,5 +33,6 @@ private:
     Ui::MainMenu *ui;
     int currentGame;                    // currently displayed game
     static const int numberGames = 4;   // number of games in the app
+
 };
 #endif // MAINMENU_H

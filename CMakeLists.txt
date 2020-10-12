@@ -1,45 +1,15 @@
-cmake_minimum_required(VERSION 3.5)
+project(root_evo_project)
+option(ENABLE_UNIT_TESTS "Enable unit tests." OFF)
 
-project(Evo LANGUAGES CXX)
+SET (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin CACHE PATH "Single Directory for all")
 
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+SET (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin CACHE PATH "Single Directory for all")
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
+SET (CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib CACHE PATH "Single Directory for all")
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
-
-set(SOURCES
-    main.cpp
-    mainmenu.cpp
-    Millionaire/millionaire.cpp
-    Mosaic/mosaic.cpp
-    Hangman/hangman.cpp
-    Memory/memory.cpp
-    utils.cpp
-)
-set(HEADERS
-    mainmenu.h
-    Millionaire/millionaire.h
-    Mosaic/mosaic.h
-    Hangman/hangman.h
-    Memory/memory.h
-    utils.h
-)
-set(UI
-    mainmenu.ui
-    Millionaire/millionaire.ui
-    Mosaic/mosaic.ui
-    Hangman/hangman.ui
-    Memory/memory.ui
-)
-if(ANDROID)
-  add_library(Evo SHARED ${SOURCES} ${HEADERS} ${UI})
-else()
-  add_executable(Evo ${SOURCES} ${HEADERS} ${UI})
+if(ENABLE_UNIT_TESTS)
+    add_subdirectory(tests tests)
+    enable_testing()
 endif()
-target_link_libraries(Evo PRIVATE Qt5::Widgets)
+
+add_subdirectory(src src)
