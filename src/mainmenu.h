@@ -29,6 +29,12 @@ private slots:
 
     void on_playHangmanBt_clicked();
 
+    void on_aboutBt_clicked();
+
+    void on_backToMenuBt_clicked();
+
+    void on_tableMosaicBt_clicked();
+
 private:
     Ui::MainMenu *ui;
     int currentGame;                    // currently displayed game

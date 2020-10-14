@@ -21,7 +21,6 @@ set(SOURCES
     Hangman/hangman.cpp
     Memory/memory.cpp
     utils.cpp
-    json_schemas.h
 )
 set(HEADERS
     mainmenu.h
@@ -30,6 +29,7 @@ set(HEADERS
     Hangman/hangman.h
     Memory/memory.h
     utils.h
+    json_schemas.h
 )
 set(UI
     mainmenu.ui
