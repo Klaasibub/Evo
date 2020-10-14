@@ -813,6 +813,9 @@ p, li { white-space: pre-wrap; }
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
          <widget class="QStackedWidget" name="tableStackedWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
           <widget class="QWidget" name="tableMillionaire">
            <layout class="QVBoxLayout" name="verticalLayout_13">
             <item>
@@ -860,7 +863,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>760</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
