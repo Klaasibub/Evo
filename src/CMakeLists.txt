@@ -29,6 +29,7 @@ set(HEADERS
     Hangman/hangman.h
     Memory/memory.h
     utils.h
+    json_schemas.h
 )
 set(UI
     mainmenu.ui

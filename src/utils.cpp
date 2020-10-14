@@ -55,3 +55,32 @@ QJsonObject utils::json_loads(QString json_string)
     }
     return json;
 }
+
+bool utils::json_validation(QJsonValue original, QJsonValue schema){
+    if(original.type() != schema.type())
+        return false;
+    else if(original.isObject()){
+        QJsonObject json = original.toObject(),
+                    json_schema = schema.toObject();
+
+        for(auto key: json.keys()){
+            if(json_schema.contains(key)){
+               if(json_validation(json[key], json_schema[key]) == false)
+                   return false;
+            }
+            else
+                return false;
+        }
+        return true;
+    }
+    else if(original.isArray()){
+        QJsonArray arr = original.toArray(),
+                   arr_schema = schema.toArray();
+
+        for(auto val: arr)
+            if(json_validation(val, arr_schema[0]) == false)
+                return false;
+        return true;
+    }
+    return original.type() == schema.type();
+}

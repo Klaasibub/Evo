@@ -1,5 +1,6 @@
 #include "mainmenu.h"
 #include "./ui_mainmenu.h"
+#include "utils.h"
 #include <Millionaire/millionaire.h>
 #include <Hangman/hangman.h>
 #include <Memory/memory.h>
@@ -13,20 +14,21 @@ MainMenu::MainMenu(QWidget *parent)
 
     currentGame = 0;
 
-    connect(ui->leftMillionaireBt, SIGNAL(clicked()),this,SLOT(previousGame()));
-    connect(ui->leftHangmanBt, SIGNAL(clicked()),this,SLOT(previousGame()));
-    connect(ui->leftMosaicBt, SIGNAL(clicked()),this,SLOT(previousGame()));
-    connect(ui->leftMemoryBt, SIGNAL(clicked()),this,SLOT(previousGame()));
+    for(auto item : {ui->leftMillionaireBt, ui->leftHangmanBt, ui->leftMosaicBt, ui->leftMemoryBt})
+        connect(item, SIGNAL(clicked()),this,SLOT(previousGame()));
 
-    connect(ui->rightMillionaireBt, SIGNAL(clicked()),this,SLOT(nextGame()));
-    connect(ui->rightHangmanBt, SIGNAL(clicked()),this,SLOT(nextGame()));
-    connect(ui->rightMosaicBt, SIGNAL(clicked()),this,SLOT(nextGame()));
-    connect(ui->rightMemoryBt, SIGNAL(clicked()),this,SLOT(nextGame()));
+    for(auto item : {ui->rightMillionaireBt, ui->rightHangmanBt, ui->rightMosaicBt, ui->rightMemoryBt})
+        connect(item, SIGNAL(clicked()),this,SLOT(nextGame()));
 
-    connect(ui->exitMillionaireBt, SIGNAL(clicked()),this,SLOT(exitGame()));
-    connect(ui->exitHangmanBt, SIGNAL(clicked()),this,SLOT(exitGame()));
-    connect(ui->exitMosaicBt, SIGNAL(clicked()),this,SLOT(exitGame()));
-    connect(ui->exitMemoryBt, SIGNAL(clicked()),this,SLOT(exitGame()));
+    for(auto item : {ui->aboutMillionaireBt, ui->aboutHangmanBt, ui->aboutMosaicBt, ui->aboutMemoryBt})
+        connect(item, SIGNAL(clicked()),this,SLOT(on_aboutBt_clicked()));
+
+    for(auto item : {ui->backAboutMillionaireBt, ui->backAboutHangmanBt, ui->backAboutMosaicBt, ui->backAboutMemoryBt,
+                     ui->backTableMillionaireBt, })
+        connect(item, SIGNAL(clicked()),this,SLOT(on_backToMenuBt_clicked()));
+
+    for(auto item : {ui->exitMillionaireBt, ui->exitHangmanBt, ui->exitMosaicBt, ui->exitMemoryBt})
+        connect(item, SIGNAL(clicked()),this,SLOT(exitGame()));
 }
 
 MainMenu::~MainMenu()
@@ -37,13 +39,13 @@ MainMenu::~MainMenu()
 void MainMenu::previousGame()
 {
     currentGame = (numberGames+currentGame-1)%numberGames;
-    ui->stackedWidget->setCurrentIndex(currentGame);
+    ui->menuStackedWidget->setCurrentIndex(currentGame);
 }
 
 void MainMenu::nextGame()
 {
     currentGame = (currentGame+1)%numberGames;
-    ui->stackedWidget->setCurrentIndex(currentGame);
+    ui->menuStackedWidget->setCurrentIndex(currentGame);
 }
 
 void MainMenu::exitGame()
@@ -85,4 +87,22 @@ void MainMenu::on_playHangmanBt_clicked()
     Hangman *game = new Hangman;
     startGame(game);
     delete game;
+}
+
+void MainMenu::on_aboutBt_clicked()
+{
+    ui->aboutStackedWidget->setCurrentIndex(currentGame);
+    ui->mainStackedWidget->setCurrentIndex(1);
+}
+
+void MainMenu::on_backToMenuBt_clicked()
+{
+    ui->menuStackedWidget->setCurrentIndex(currentGame);
+    ui->mainStackedWidget->setCurrentIndex(0);
+}
+
+void MainMenu::on_tableMosaicBt_clicked()
+{
+    ui->menuStackedWidget->setCurrentIndex(0);
+    ui->mainStackedWidget->setCurrentIndex(2);
 }

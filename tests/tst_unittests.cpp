@@ -1,5 +1,6 @@
 #include <QtTest>
 #include <../src/utils.h>
+#include <../src/json_schemas.h>
 
 class UnitTests : public QObject
 {
@@ -12,6 +13,7 @@ public:
 private slots:
     void write_read_from_file();
     void base64_converting();
+    void json_validation();
 };
 
 void UnitTests::write_read_from_file()
@@ -33,6 +35,36 @@ void UnitTests::base64_converting()
     decoded = utils::base64_decode(encoded);
     QCOMPARE(original, decoded);
 }
+
+void UnitTests::json_validation()
+{
+    QJsonObject quiz
+    {
+        {
+            "Questions", QJsonArray{
+                QJsonObject{
+                    {"Question", "Some Question"},
+                    {"Answer", "Correct Answer"},
+                    {"A", "Some A Answer"},
+                    {"B", "Some B Answer"},
+                    {"C", "Some C Answer"},
+                    {"D", "Some D Answer"},
+                },
+                QJsonObject{
+                    {"Question", "Some Question 2"},
+                    {"Answer", "Correct Answer"},
+                    {"A", "Some A Answer"},
+                    {"B", "Some B Answer"},
+                    {"C", "Some C Answer"},
+                    {"D", "Some D Answer"},
+                }
+            }
+        }
+    };
+
+    QCOMPARE(utils::json_validation(quiz, json_schema::quiz_questions), true);
+}
+
 
 QTEST_APPLESS_MAIN(UnitTests)
 
