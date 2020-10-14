@@ -1,16 +1,16 @@
-#include "millionaire.h"
-#include "ui_millionaire.h"
+#include "quiz.h"
+#include "ui_quiz.h"
 
-Millionaire::Millionaire(QWidget *parent) :
+Quiz::Quiz(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::Millionaire)
+    ui(new Ui::Quiz)
 {
     ui->setupUi(this);
     setWindowFlags(Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
-Millionaire::~Millionaire()
+Quiz::~Quiz()
 {
     delete ui;
 }
