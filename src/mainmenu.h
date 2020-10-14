@@ -21,7 +21,7 @@ private slots:
     void exitGame();
     void startGame(QDialog *game);
 
-    void on_playMillionaireBt_clicked();
+    void on_playQuizBt_clicked();
 
     void on_playMosaicBt_clicked();
 

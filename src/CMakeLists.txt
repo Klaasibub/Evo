@@ -16,7 +16,7 @@ find_package(Qt5 COMPONENTS Widgets REQUIRED)
 set(SOURCES
     main.cpp
     mainmenu.cpp
-    Millionaire/millionaire.cpp
+    Quiz/quiz.cpp
     Mosaic/mosaic.cpp
     Hangman/hangman.cpp
     Memory/memory.cpp
@@ -24,7 +24,7 @@ set(SOURCES
 )
 set(HEADERS
     mainmenu.h
-    Millionaire/millionaire.h
+    Quiz/quiz.h
     Mosaic/mosaic.h
     Hangman/hangman.h
     Memory/memory.h
@@ -33,7 +33,7 @@ set(HEADERS
 )
 set(UI
     mainmenu.ui
-    Millionaire/millionaire.ui
+    Quiz/quiz.ui
     Mosaic/mosaic.ui
     Hangman/hangman.ui
     Memory/memory.ui
