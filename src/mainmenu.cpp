@@ -12,6 +12,8 @@ MainMenu::MainMenu(QWidget *parent)
 {
     ui->setupUi(this);
 
+    check_update();
+
     currentGame = 0;
 
     for(auto item : {ui->leftQuizBt, ui->leftHangmanBt, ui->leftMosaicBt, ui->leftMemoryBt})
@@ -105,4 +107,23 @@ void MainMenu::on_tableMosaicBt_clicked()
 {
     ui->menuStackedWidget->setCurrentIndex(0);
     ui->mainStackedWidget->setCurrentIndex(2);
+}
+
+void MainMenu::check_update()
+{
+    auto manager = new QNetworkAccessManager();
+    connect(manager, &QNetworkAccessManager::finished, [=](QNetworkReply *reply) {
+        if (reply->error()) {
+            ui->statusbar->showMessage(QString("Error %1").arg(reply->errorString()));
+            return;
+        }
+        QByteArray responseData = reply->readAll();
+        QJsonObject json = utils::json_loads(responseData);
+        ui->statusbar->showMessage(json["info"].toString());
+
+        reply->deleteLater();
+        manager->deleteLater();
+    });
+    QUrl check_update_url{service_url.toString()+"/check_update/?currentVersion="+currentVerison};
+    manager->get(QNetworkRequest(check_update_url));
 }

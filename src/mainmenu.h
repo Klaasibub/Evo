@@ -2,6 +2,7 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
+#include <QtNetwork>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -35,9 +36,13 @@ private slots:
 
     void on_tableMosaicBt_clicked();
 
+    void check_update();
+
 private:
     Ui::MainMenu *ui;
     int currentGame;                    // currently displayed game
     static const int numberGames = 4;   // number of games in the app
+    QUrl service_url{"http://justyell.pythonanywhere.com"};
+    const QString currentVerison = "v0.0.0";
 };
 #endif // MAINMENU_H
