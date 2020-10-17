@@ -11,12 +11,27 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-enable_testing()
 
-add_executable(UnitTests ${SOURCES} ${HEADERS} tst_unittests.cpp)
+set(TEST_SOURCES
+    main_gui_tests.cpp
+    utils_tests.cpp
+    quiz_tests.cpp
+    memory_tests.cpp
+    mosaic_tests.cpp
+    hangman_tests.cpp
+)
 
-add_test(NAME UnitTests COMMAND UnitTests)
+set(TEST_HEADERS
+    main_gui_tests.h
+    utils_tests.h
+    quiz_tests.h
+    memory_tests.h
+    mosaic_tests.h
+    hangman_tests.h
+)
+
+add_executable(UnitTests ${SOURCES} ${HEADERS} main.cpp ${TEST_SOURCES} ${TEST_HEADERS})
 
 target_link_libraries(UnitTests LINK_PRIVATE Evo Qt5::Test Qt5::Widgets)
