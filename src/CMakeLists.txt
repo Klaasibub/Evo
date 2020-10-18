@@ -38,13 +38,15 @@ set(UI
     Hangman/hangman.ui
     Memory/memory.ui
 )
+qt5_add_resources(SOURCES resources.qrc)
+
 if(ENABLE_UNIT_TESTS)
     add_library(Evo STATIC ${SOURCES} ${HEADERS} ${UI})
 else()
     if(ANDROID)
         add_library(Evo SHARED ${SOURCES} ${HEADERS} ${UI})
     else()
-        add_executable(Evo ${SOURCES} ${HEADERS} ${UI})
+        add_executable(Evo WIN32 ${SOURCES} ${HEADERS} ${UI})
     endif()
 endif()
 

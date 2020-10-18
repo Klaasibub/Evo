@@ -30,9 +30,9 @@ private slots:
 
     void on_playHangmanBt_clicked();
 
-    void on_aboutBt_clicked();
+    void about();
 
-    void on_backToMenuBt_clicked();
+    void backToMenu();
 
     void on_tableMosaicBt_clicked();
 

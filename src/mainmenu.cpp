@@ -23,11 +23,11 @@ MainMenu::MainMenu(QWidget *parent)
         connect(item, SIGNAL(clicked()),this,SLOT(nextGame()));
 
     for(auto item : {ui->aboutQuizBt, ui->aboutHangmanBt, ui->aboutMosaicBt, ui->aboutMemoryBt})
-        connect(item, SIGNAL(clicked()),this,SLOT(on_aboutBt_clicked()));
+        connect(item, SIGNAL(clicked()),this,SLOT(about()));
 
     for(auto item : {ui->backAboutQuizBt, ui->backAboutHangmanBt, ui->backAboutMosaicBt, ui->backAboutMemoryBt,
                      ui->backTableQuizBt, })
-        connect(item, SIGNAL(clicked()),this,SLOT(on_backToMenuBt_clicked()));
+        connect(item, SIGNAL(clicked()),this,SLOT(backToMenu()));
 
     for(auto item : {ui->exitQuizBt, ui->exitHangmanBt, ui->exitMosaicBt, ui->exitMemoryBt})
         connect(item, SIGNAL(clicked()),this,SLOT(exitGame()));
@@ -52,7 +52,7 @@ void MainMenu::nextGame()
 
 void MainMenu::exitGame()
 {
-    exit(0);
+    close();
 }
 
 void MainMenu::startGame(QDialog *game)
@@ -91,13 +91,13 @@ void MainMenu::on_playHangmanBt_clicked()
     delete game;
 }
 
-void MainMenu::on_aboutBt_clicked()
+void MainMenu::about()
 {
     ui->aboutStackedWidget->setCurrentIndex(currentGame);
     ui->mainStackedWidget->setCurrentIndex(1);
 }
 
-void MainMenu::on_backToMenuBt_clicked()
+void MainMenu::backToMenu()
 {
     ui->menuStackedWidget->setCurrentIndex(currentGame);
     ui->mainStackedWidget->setCurrentIndex(0);

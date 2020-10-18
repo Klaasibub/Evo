@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/Quiz"/>
+    <qresource prefix="/Mosaic"/>
+    <qresource prefix="/Hangman"/>
+    <qresource prefix="/Memory"/>
+</RCC>
