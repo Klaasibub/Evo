@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Widgets REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
 
 set(SOURCES
     main.cpp
@@ -38,15 +38,17 @@ set(UI
     Hangman/hangman.ui
     Memory/memory.ui
 )
+qt5_add_resources(SOURCES resources.qrc)
+
 if(ENABLE_UNIT_TESTS)
     add_library(Evo STATIC ${SOURCES} ${HEADERS} ${UI})
 else()
     if(ANDROID)
         add_library(Evo SHARED ${SOURCES} ${HEADERS} ${UI})
     else()
-        add_executable(Evo ${SOURCES} ${HEADERS} ${UI})
+        add_executable(Evo WIN32 ${SOURCES} ${HEADERS} ${UI})
     endif()
 endif()
 
 
-target_link_libraries(Evo PRIVATE Qt5::Widgets)
+target_link_libraries(Evo PRIVATE Qt5::Widgets Qt5::Network)

@@ -1,3 +1,6 @@
+#ifndef JSON_SCHEMAS_H
+#define JSON_SCHEMAS_H
+
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>
@@ -22,3 +25,5 @@ namespace json_schema {
         }
     };
 }
+
+#endif // JSON_SCHEMAS_H

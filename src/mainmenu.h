@@ -2,6 +2,8 @@
 #define MAINMENU_H
 
 #include <QMainWindow>
+#include <QtNetwork>
+#include <QTableWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -21,23 +23,24 @@ private slots:
     void exitGame();
     void startGame(QDialog *game);
 
-    void on_playQuizBt_clicked();
+    void play();
+    void about();
+    void table();
+    void backToMenu();
 
-    void on_playMosaicBt_clicked();
+    void check_update();
 
-    void on_playMemoryBt_clicked();
-
-    void on_playHangmanBt_clicked();
-
-    void on_aboutBt_clicked();
-
-    void on_backToMenuBt_clicked();
-
-    void on_tableMosaicBt_clicked();
+    void fillTable(QTableWidget *table, QString data);
 
 private:
     Ui::MainMenu *ui;
-    int currentGame;                    // currently displayed game
+
+    enum class MainWidget{Menu, About, Table};
+    enum class Game{Quiz, Mosaic, Memory, Hangman};
     static const int numberGames = 4;   // number of games in the app
+    Game currentGame;                   // currently displayed game
+
+    QUrl service_url{"http://justyell.pythonanywhere.com"};
+    const QString currentVerison = "1.0";
 };
 #endif // MAINMENU_H

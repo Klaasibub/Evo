@@ -14,8 +14,8 @@
    <string>MainMenu</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+   <layout class="QVBoxLayout" name="verticalLayout_9">
+    <item>
      <widget class="QStackedWidget" name="mainStackedWidget">
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
@@ -24,7 +24,7 @@
        <enum>QFrame::Plain</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="menuPage">
        <layout class="QGridLayout" name="gridLayout_5">
@@ -678,7 +678,7 @@
         <item row="0" column="0">
          <widget class="QStackedWidget" name="aboutStackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="aboutQuiz">
            <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -814,10 +814,10 @@ p, li { white-space: pre-wrap; }
         <item row="0" column="0">
          <widget class="QStackedWidget" name="tableStackedWidget">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="tableQuiz">
-           <layout class="QVBoxLayout" name="verticalLayout_13">
+           <layout class="QVBoxLayout" name="verticalLayout_13" stretch="0,0,0">
             <item>
              <widget class="QPushButton" name="backTableQuizBt">
               <property name="maximumSize">
@@ -827,28 +827,304 @@ p, li { white-space: pre-wrap; }
                </size>
               </property>
               <property name="text">
-               <string>PushButton</string>
+               <string>Вернуться</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="tableLabel">
+             <widget class="QLabel" name="tableQuizLabel">
               <property name="text">
-               <string>Таблица рекордов!</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
+               <string>Quiz</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QTableWidget" name="tableWidget"/>
+             <widget class="QTableWidget" name="recordsQuizTable">
+              <property name="styleSheet">
+               <string notr="true">QWidget {
+    background-color: #333333;
+    color: #fffff8;
+}
+
+QHeaderView::section {
+    background-color: #646464;
+    padding: 4px;
+    border: 1px solid #fffff8;
+    font-size: 14pt;
+}
+
+QTableWidget {
+    gridline-color: #fffff8;
+    font-size: 12pt;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #646464;
+    border: 1px solid #fffff8;
+}</string>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::NoSelection</enum>
+              </property>
+              <property name="sortingEnabled">
+               <bool>true</bool>
+              </property>
+              <property name="rowCount">
+               <number>0</number>
+              </property>
+              <property name="columnCount">
+               <number>0</number>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>150</number>
+              </attribute>
+              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderStretchLastSection">
+               <bool>false</bool>
+              </attribute>
+             </widget>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tableMosaic"/>
-          <widget class="QWidget" name="tableMemory"/>
-          <widget class="QWidget" name="tableHangman"/>
+          <widget class="QWidget" name="tableMosaic">
+           <layout class="QVBoxLayout" name="verticalLayout_10">
+            <item>
+             <widget class="QPushButton" name="backTableMosaicBt">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Вернуться</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="tableMosaicLabel">
+              <property name="text">
+               <string>Mosaic</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="recordsMosaicTable">
+              <property name="styleSheet">
+               <string notr="true">QWidget {
+    background-color: #333333;
+    color: #fffff8;
+}
+
+QHeaderView::section {
+    background-color: #646464;
+    padding: 4px;
+    border: 1px solid #fffff8;
+    font-size: 14pt;
+}
+
+QTableWidget {
+    gridline-color: #fffff8;
+    font-size: 12pt;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #646464;
+    border: 1px solid #fffff8;
+}</string>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::NoSelection</enum>
+              </property>
+              <property name="rowCount">
+               <number>0</number>
+              </property>
+              <property name="columnCount">
+               <number>0</number>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>150</number>
+              </attribute>
+              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tableMemory">
+           <layout class="QVBoxLayout" name="verticalLayout_11">
+            <item>
+             <widget class="QPushButton" name="backTableMemoryBt">
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Вернуться</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="tableMemoryLabel">
+              <property name="text">
+               <string>MemoryTable</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="recordsMemoryTable">
+              <property name="styleSheet">
+               <string notr="true">QWidget {
+    background-color: #333333;
+    color: #fffff8;
+}
+
+QHeaderView::section {
+    background-color: #646464;
+    padding: 4px;
+    border: 1px solid #fffff8;
+    font-size: 14pt;
+}
+
+QTableWidget {
+    gridline-color: #fffff8;
+    font-size: 12pt;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #646464;
+    border: 1px solid #fffff8;
+}</string>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::NoSelection</enum>
+              </property>
+              <property name="sortingEnabled">
+               <bool>false</bool>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>150</number>
+              </attribute>
+              <attribute name="horizontalHeaderHighlightSections">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tableHangman">
+           <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,0,0">
+            <item>
+             <widget class="QPushButton" name="backTableHangmanBt">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Вернуться</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="tableHangmanLabel">
+              <property name="text">
+               <string>Hangman</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="recordsHangmanTable">
+              <property name="styleSheet">
+               <string notr="true">QWidget {
+    background-color: #333333;
+    color: #fffff8;
+}
+
+QHeaderView::section {
+    background-color: #646464;
+    padding: 4px;
+    border: 1px solid #fffff8;
+    font-size: 14pt;
+}
+
+QTableWidget {
+    gridline-color: #fffff8;
+    font-size: 12pt;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #646464;
+    border: 1px solid #fffff8;
+}</string>
+              </property>
+              <property name="selectionMode">
+               <enum>QAbstractItemView::NoSelection</enum>
+              </property>
+              <attribute name="horizontalHeaderVisible">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="horizontalHeaderCascadingSectionResizes">
+               <bool>false</bool>
+              </attribute>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>150</number>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>true</bool>
+              </attribute>
+             </widget>
+            </item>
+           </layout>
+          </widget>
          </widget>
         </item>
        </layout>
@@ -863,12 +1139,48 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>760</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>playQuizBt</tabstop>
+  <tabstop>tableQuizBt</tabstop>
+  <tabstop>aboutQuizBt</tabstop>
+  <tabstop>exitQuizBt</tabstop>
+  <tabstop>leftQuizBt</tabstop>
+  <tabstop>rightQuizBt</tabstop>
+  <tabstop>leftMosaicBt</tabstop>
+  <tabstop>playMosaicBt</tabstop>
+  <tabstop>tableMosaicBt</tabstop>
+  <tabstop>aboutMosaicBt</tabstop>
+  <tabstop>exitMosaicBt</tabstop>
+  <tabstop>rightMosaicBt</tabstop>
+  <tabstop>leftMemoryBt</tabstop>
+  <tabstop>playMemoryBt</tabstop>
+  <tabstop>tableMemoryBt</tabstop>
+  <tabstop>aboutMemoryBt</tabstop>
+  <tabstop>exitMemoryBt</tabstop>
+  <tabstop>rightMemoryBt</tabstop>
+  <tabstop>leftHangmanBt</tabstop>
+  <tabstop>playHangmanBt</tabstop>
+  <tabstop>tableHangmanBt</tabstop>
+  <tabstop>aboutHangmanBt</tabstop>
+  <tabstop>exitHangmanBt</tabstop>
+  <tabstop>rightHangmanBt</tabstop>
+  <tabstop>backAboutQuizBt</tabstop>
+  <tabstop>infoAboutQuizTE</tabstop>
+  <tabstop>backAboutMosaicBt</tabstop>
+  <tabstop>infoAboutMosaicTE</tabstop>
+  <tabstop>backAboutMemoryBt</tabstop>
+  <tabstop>infoAboutMemoryTE</tabstop>
+  <tabstop>backAboutHangmanBt</tabstop>
+  <tabstop>infoAboutHangmanTE</tabstop>
+  <tabstop>backTableQuizBt</tabstop>
+  <tabstop>recordsQuizTable</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
