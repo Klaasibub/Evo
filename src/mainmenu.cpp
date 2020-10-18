@@ -14,7 +14,10 @@ MainMenu::MainMenu(QWidget *parent)
 
     check_update();
 
-    currentGame = 0;
+    currentGame = Game::Quiz;
+
+    ui->mainStackedWidget->setCurrentIndex((int)MainWidget::Menu);
+    ui->menuStackedWidget->setCurrentIndex((int)currentGame);
 
     for(auto item : {ui->leftQuizBt, ui->leftHangmanBt, ui->leftMosaicBt, ui->leftMemoryBt})
         connect(item, SIGNAL(clicked()),this,SLOT(previousGame()));
@@ -22,15 +25,22 @@ MainMenu::MainMenu(QWidget *parent)
     for(auto item : {ui->rightQuizBt, ui->rightHangmanBt, ui->rightMosaicBt, ui->rightMemoryBt})
         connect(item, SIGNAL(clicked()),this,SLOT(nextGame()));
 
+    for(auto item : {ui->playQuizBt, ui->playHangmanBt, ui->playMosaicBt, ui->playMemoryBt})
+        connect(item, SIGNAL(clicked()),this,SLOT(play()));
+
     for(auto item : {ui->aboutQuizBt, ui->aboutHangmanBt, ui->aboutMosaicBt, ui->aboutMemoryBt})
         connect(item, SIGNAL(clicked()),this,SLOT(about()));
 
+    for(auto item : {ui->tableQuizBt, ui->tableHangmanBt, ui->tableMosaicBt, ui->tableMemoryBt})
+        connect(item, SIGNAL(clicked()),this,SLOT(table()));
+
     for(auto item : {ui->backAboutQuizBt, ui->backAboutHangmanBt, ui->backAboutMosaicBt, ui->backAboutMemoryBt,
-                     ui->backTableQuizBt, })
+                     ui->backTableQuizBt, ui->backTableHangmanBt, ui->backTableMosaicBt, ui->backTableMemoryBt})
         connect(item, SIGNAL(clicked()),this,SLOT(backToMenu()));
 
     for(auto item : {ui->exitQuizBt, ui->exitHangmanBt, ui->exitMosaicBt, ui->exitMemoryBt})
         connect(item, SIGNAL(clicked()),this,SLOT(exitGame()));
+
 }
 
 MainMenu::~MainMenu()
@@ -40,14 +50,14 @@ MainMenu::~MainMenu()
 
 void MainMenu::previousGame()
 {
-    currentGame = (numberGames+currentGame-1)%numberGames;
-    ui->menuStackedWidget->setCurrentIndex(currentGame);
+    currentGame =  (Game)((numberGames + (int)(currentGame) - 1) % numberGames);
+    ui->menuStackedWidget->setCurrentIndex((int)currentGame);
 }
 
 void MainMenu::nextGame()
 {
-    currentGame = (currentGame+1)%numberGames;
-    ui->menuStackedWidget->setCurrentIndex(currentGame);
+    currentGame = (Game)(((int)(currentGame) + 1) % numberGames);
+    ui->menuStackedWidget->setCurrentIndex((int)currentGame);
 }
 
 void MainMenu::exitGame()
@@ -63,50 +73,94 @@ void MainMenu::startGame(QDialog *game)
     setVisible(true);
 }
 
-void MainMenu::on_playQuizBt_clicked()
+void MainMenu::play()
 {
-    Quiz *game = new Quiz;
-    startGame(game);
-    delete game;
-}
-
-void MainMenu::on_playMosaicBt_clicked()
-{
-    Mosaic *game = new Mosaic;
-    startGame(game);
-    delete game;
-}
-
-void MainMenu::on_playMemoryBt_clicked()
-{
-    Memory *game = new Memory;
-    startGame(game);
-    delete game;
-}
-
-void MainMenu::on_playHangmanBt_clicked()
-{
-    Hangman *game = new Hangman;
+    QDialog *game;
+    switch(currentGame){
+    case Game::Quiz:
+        game = new Quiz;
+        break;
+    case Game::Hangman:
+        game = new Hangman;
+        break;
+    case Game::Memory:
+        game = new Memory;
+        break;
+    case Game::Mosaic:
+        game = new Mosaic;
+        break;
+    }
     startGame(game);
     delete game;
 }
 
 void MainMenu::about()
 {
-    ui->aboutStackedWidget->setCurrentIndex(currentGame);
-    ui->mainStackedWidget->setCurrentIndex(1);
+    ui->aboutStackedWidget->setCurrentIndex((int)currentGame);
+    ui->mainStackedWidget->setCurrentIndex((int)MainWidget::About);
 }
 
 void MainMenu::backToMenu()
 {
-    ui->menuStackedWidget->setCurrentIndex(currentGame);
-    ui->mainStackedWidget->setCurrentIndex(0);
+    ui->menuStackedWidget->setCurrentIndex((int)currentGame);
+    ui->mainStackedWidget->setCurrentIndex((int)MainWidget::Menu);
 }
 
-void MainMenu::on_tableMosaicBt_clicked()
+void MainMenu::table()
 {
-    ui->menuStackedWidget->setCurrentIndex(0);
-    ui->mainStackedWidget->setCurrentIndex(2);
+    QString recordsPath = ":/Memory/table.test"; // ToDo: replace to Game.recordPath();
+    switch(currentGame)
+    {
+    case Game::Quiz:
+        //recordsPath = Quiz::recordsPath;
+        fillTable(ui->recordsQuizTable, recordsPath);
+        break;
+    case Game::Memory:
+        //recordsPath = Memory::recordsPath;
+        fillTable(ui->recordsMemoryTable, recordsPath);
+        break;
+    case Game::Hangman:
+        //recordsPath = Hangman::recordsPath;
+        fillTable(ui->recordsHangmanTable, recordsPath);
+        break;
+    case Game::Mosaic:
+        //recordsPath = Mosaic::recordsPath;
+        fillTable(ui->recordsMosaicTable, recordsPath);
+        break;
+    }
+    ui->tableStackedWidget->setCurrentIndex((int)currentGame);
+    ui->mainStackedWidget->setCurrentIndex((int)MainWidget::Table);
+}
+
+void MainMenu::fillTable(QTableWidget *table, QString filename)
+{
+    QString data;
+    utils::read_from_file(filename, data, false);
+    QStringList rowData, rowsData = data.split("\n");
+
+    table->horizontalHeader()->setVisible(true);
+
+    if(rowsData.size() > 0){
+        rowData = rowsData.at(0).split(";");
+        table->setColumnCount(rowData.size());
+        for (int i = 0; i < rowData.size(); i++){
+            table->setHorizontalHeaderItem(i, new QTableWidgetItem(rowData[i]));
+            table->setHorizontalHeaderLabels(rowData);
+            table->horizontalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
+        }
+    }
+
+    table->setRowCount(rowsData.size()-1);
+
+    for (int i = 1; i < rowsData.size(); i++){
+        rowData = rowsData.at(i).split(";");
+        for (int j = 0; j < rowData.size(); j++)
+            table->setItem(i-1, j, new QTableWidgetItem(rowData[j]));
+    }
+
+    table->sortByColumn(2, Qt::AscendingOrder);
+    table->sortByColumn(1, Qt::DescendingOrder);
+    table->setSortingEnabled(false);
 }
 
 void MainMenu::check_update()

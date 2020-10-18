@@ -2,5 +2,7 @@
     <qresource prefix="/Quiz"/>
     <qresource prefix="/Mosaic"/>
     <qresource prefix="/Hangman"/>
-    <qresource prefix="/Memory"/>
+    <qresource prefix="/Memory">
+        <file>table.test</file>
+    </qresource>
 </RCC>
