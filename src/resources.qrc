@@ -1,8 +1,19 @@
 <RCC>
-    <qresource prefix="/Quiz"/>
-    <qresource prefix="/Mosaic"/>
-    <qresource prefix="/Hangman"/>
+    <qresource prefix="/Quiz">
+        <file alias="selectDefault">static/QuizSelectDefault.png</file>
+        <file alias="selectHover">static/QuizSelectHover.png</file>
+    </qresource>
+    <qresource prefix="/Mosaic">
+        <file alias="selectDefault">static/MosaicSelectDefault.png</file>
+        <file alias="selectHover">static/MosaicSelectHover.png</file>
+    </qresource>
+    <qresource prefix="/Hangman">
+        <file alias="selectDefault">static/HangmanSelectDefault.png</file>
+        <file alias="selectHover">static/HangmanSelectHover.png</file>
+    </qresource>
     <qresource prefix="/Memory">
         <file>table.test</file>
+        <file alias="selectDefault">static/MemorySelectDefault.png</file>
+        <file alias="selectHover">static/MemorySelectHover.png</file>
     </qresource>
 </RCC>

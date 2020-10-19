@@ -6,1125 +6,206 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>760</width>
-    <height>616</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainMenu</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout_9">
-    <item>
-     <widget class="QStackedWidget" name="mainStackedWidget">
-      <property name="frameShape">
-       <enum>QFrame::NoFrame</enum>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QGroupBox" name="gameLabels">
+      <property name="styleSheet">
+       <string notr="true"/>
       </property>
-      <property name="frameShadow">
-       <enum>QFrame::Plain</enum>
+      <property name="title">
+       <string/>
       </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="allGamesLabel">
+         <property name="text">
+          <string>Все игры</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="quizGameBt">
+         <property name="text">
+          <string>Викторина</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="hangmanGameBt">
+         <property name="text">
+          <string>Виселица</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="mosaicGameBt">
+         <property name="text">
+          <string>Мозаика</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="memoryGameBt">
+         <property name="text">
+          <string>Память</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QStackedWidget" name="stackedWidget">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="menuPage">
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0">
-         <widget class="QStackedWidget" name="menuStackedWidget">
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="menuQuiz">
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QPushButton" name="leftQuizBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout">
-              <item>
-               <spacer name="verticalSpacer">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>100</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="nameQuiz">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Quiz</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_8">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>50</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="playQuizBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Играть</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="tableQuizBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Таблица рекордов</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="aboutQuizBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Об игре</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="exitQuizBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Выход</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="rightQuizBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="menuMosaic">
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QPushButton" name="leftMosaicBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <spacer name="verticalSpacer_2">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>100</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="nameMosaic">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Mosaic</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_7">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>50</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="playMosaicBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Играть</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="tableMosaicBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Таблица рекордов</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="aboutMosaicBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Об игре</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="exitMosaicBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Выход</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="rightMosaicBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="menuMemory">
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QPushButton" name="leftMemoryBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_6">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_3">
-              <item>
-               <spacer name="verticalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>100</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="nameMemory">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Memory</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_6">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>50</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="playMemoryBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Играть</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="tableMemoryBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Таблица рекордов</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="aboutMemoryBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Об игре</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="exitMemoryBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Выход</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="rightMemoryBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="menuHangman">
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QPushButton" name="leftHangmanBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_8">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
-               <spacer name="verticalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>100</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QLabel" name="nameHangman">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>20</pointsize>
-                 </font>
-                </property>
-                <property name="text">
-                 <string>Hangman</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="verticalSpacer_5">
-                <property name="orientation">
-                 <enum>Qt::Vertical</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>20</width>
-                  <height>50</height>
-                 </size>
-                </property>
-               </spacer>
-              </item>
-              <item>
-               <widget class="QPushButton" name="playHangmanBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Играть</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="tableHangmanBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Таблица рекордов</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="aboutHangmanBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Об игре</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="exitHangmanBt">
-                <property name="minimumSize">
-                 <size>
-                  <width>240</width>
-                  <height>80</height>
-                 </size>
-                </property>
-                <property name="text">
-                 <string>Выход</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_7">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-            <item>
-             <widget class="QPushButton" name="rightHangmanBt">
-              <property name="minimumSize">
-               <size>
-                <width>80</width>
-                <height>80</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>PushButton</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="aboutPage">
-       <layout class="QGridLayout" name="gridLayout_6">
-        <item row="0" column="0">
-         <widget class="QStackedWidget" name="aboutStackedWidget">
-          <property name="currentIndex">
-           <number>2</number>
-          </property>
-          <widget class="QWidget" name="aboutQuiz">
-           <layout class="QVBoxLayout" name="verticalLayout_5">
-            <item>
-             <widget class="QPushButton" name="backAboutQuizBt">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextEdit" name="infoAboutQuizTE">
-              <property name="markdown">
-               <string>***_info about Millionaire***_
-
-</string>
-              </property>
-              <property name="html">
-               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:5px; margin-bottom:5px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;info about Millionaire&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="aboutMosaic">
-           <layout class="QVBoxLayout" name="verticalLayout_8">
-            <item>
-             <widget class="QPushButton" name="backAboutMosaicBt">
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextEdit" name="infoAboutMosaicTE">
-              <property name="html">
-               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;info about Mosaic&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="aboutMemory">
-           <layout class="QVBoxLayout" name="verticalLayout_7">
-            <item>
-             <widget class="QPushButton" name="backAboutMemoryBt">
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextEdit" name="infoAboutMemoryTE">
-              <property name="html">
-               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;info about Memory&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="aboutHangman">
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QPushButton" name="backAboutHangmanBt">
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTextEdit" name="infoAboutHangmanTE">
-              <property name="html">
-               <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
-p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;info about Hangman&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="tablePage">
+      <widget class="QWidget" name="gamePage">
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QStackedWidget" name="tableStackedWidget">
-          <property name="currentIndex">
-           <number>3</number>
+         <widget class="QScrollArea" name="scrollArea">
+          <property name="widgetResizable">
+           <bool>true</bool>
           </property>
-          <widget class="QWidget" name="tableQuiz">
-           <layout class="QVBoxLayout" name="verticalLayout_13" stretch="0,0,0">
+          <widget class="QWidget" name="scrollWidget">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>852</width>
+             <height>520</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_14" stretch="0,1,7">
             <item>
-             <widget class="QPushButton" name="backTableQuizBt">
-              <property name="maximumSize">
+             <spacer name="vSpacer">
+              <property name="orientation">
+               <enum>Qt::Vertical</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
                <size>
-                <width>100</width>
-                <height>16777215</height>
+                <width>20</width>
+                <height>40</height>
                </size>
               </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
+             </spacer>
             </item>
             <item>
-             <widget class="QLabel" name="tableQuizLabel">
-              <property name="text">
-               <string>Quiz</string>
-              </property>
-             </widget>
+             <layout class="QHBoxLayout" name="playLayout" stretch="1,3">
+              <item>
+               <widget class="QPushButton" name="playBt">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Играть</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="hSpacer">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
             </item>
             <item>
-             <widget class="QTableWidget" name="recordsQuizTable">
-              <property name="styleSheet">
-               <string notr="true">QWidget {
-    background-color: #333333;
-    color: #fffff8;
-}
-
-QHeaderView::section {
-    background-color: #646464;
-    padding: 4px;
-    border: 1px solid #fffff8;
-    font-size: 14pt;
-}
-
-QTableWidget {
-    gridline-color: #fffff8;
-    font-size: 12pt;
-}
-
-QTableWidget QTableCornerButton::section {
-    background-color: #646464;
-    border: 1px solid #fffff8;
-}</string>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::NoSelection</enum>
-              </property>
-              <property name="sortingEnabled">
-               <bool>true</bool>
-              </property>
-              <property name="rowCount">
-               <number>0</number>
-              </property>
-              <property name="columnCount">
-               <number>0</number>
-              </property>
-              <attribute name="horizontalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>150</number>
-              </attribute>
-              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderStretchLastSection">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="verticalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="verticalHeaderCascadingSectionResizes">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="verticalHeaderStretchLastSection">
-               <bool>false</bool>
-              </attribute>
-             </widget>
+             <layout class="QHBoxLayout" name="infoLayout">
+              <item>
+               <widget class="QTableWidget" name="recordsTable">
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="editTriggers">
+                 <set>QAbstractItemView::NoEditTriggers</set>
+                </property>
+                <property name="selectionMode">
+                 <enum>QAbstractItemView::NoSelection</enum>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QTextEdit" name="aboutGameText"/>
+              </item>
+             </layout>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tableMosaic">
-           <layout class="QVBoxLayout" name="verticalLayout_10">
-            <item>
-             <widget class="QPushButton" name="backTableMosaicBt">
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="tableMosaicLabel">
-              <property name="text">
-               <string>Mosaic</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTableWidget" name="recordsMosaicTable">
-              <property name="styleSheet">
-               <string notr="true">QWidget {
-    background-color: #333333;
-    color: #fffff8;
-}
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="aboutEvoPage">
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="1" column="0">
+         <widget class="QTextEdit" name="aboutProjectText">
+          <property name="readOnly">
+           <bool>true</bool>
+          </property>
+          <property name="markdown">
+           <string>**Info about game**
 
-QHeaderView::section {
-    background-color: #646464;
-    padding: 4px;
-    border: 1px solid #fffff8;
-    font-size: 14pt;
-}
+**asdasd**
 
-QTableWidget {
-    gridline-color: #fffff8;
-    font-size: 12pt;
-}
-
-QTableWidget QTableCornerButton::section {
-    background-color: #646464;
-    border: 1px solid #fffff8;
-}</string>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::NoSelection</enum>
-              </property>
-              <property name="rowCount">
-               <number>0</number>
-              </property>
-              <property name="columnCount">
-               <number>0</number>
-              </property>
-              <attribute name="horizontalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>150</number>
-              </attribute>
-              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="verticalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tableMemory">
-           <layout class="QVBoxLayout" name="verticalLayout_11">
-            <item>
-             <widget class="QPushButton" name="backTableMemoryBt">
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="tableMemoryLabel">
-              <property name="text">
-               <string>MemoryTable</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTableWidget" name="recordsMemoryTable">
-              <property name="styleSheet">
-               <string notr="true">QWidget {
-    background-color: #333333;
-    color: #fffff8;
-}
-
-QHeaderView::section {
-    background-color: #646464;
-    padding: 4px;
-    border: 1px solid #fffff8;
-    font-size: 14pt;
-}
-
-QTableWidget {
-    gridline-color: #fffff8;
-    font-size: 12pt;
-}
-
-QTableWidget QTableCornerButton::section {
-    background-color: #646464;
-    border: 1px solid #fffff8;
-}</string>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::NoSelection</enum>
-              </property>
-              <property name="sortingEnabled">
-               <bool>false</bool>
-              </property>
-              <attribute name="horizontalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>150</number>
-              </attribute>
-              <attribute name="horizontalHeaderHighlightSections">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="verticalHeaderVisible">
-               <bool>false</bool>
-              </attribute>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tableHangman">
-           <layout class="QVBoxLayout" name="verticalLayout_12" stretch="0,0,0">
-            <item>
-             <widget class="QPushButton" name="backTableHangmanBt">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="text">
-               <string>Вернуться</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="tableHangmanLabel">
-              <property name="text">
-               <string>Hangman</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QTableWidget" name="recordsHangmanTable">
-              <property name="styleSheet">
-               <string notr="true">QWidget {
-    background-color: #333333;
-    color: #fffff8;
-}
-
-QHeaderView::section {
-    background-color: #646464;
-    padding: 4px;
-    border: 1px solid #fffff8;
-    font-size: 14pt;
-}
-
-QTableWidget {
-    gridline-color: #fffff8;
-    font-size: 12pt;
-}
-
-QTableWidget QTableCornerButton::section {
-    background-color: #646464;
-    border: 1px solid #fffff8;
-}</string>
-              </property>
-              <property name="selectionMode">
-               <enum>QAbstractItemView::NoSelection</enum>
-              </property>
-              <attribute name="horizontalHeaderVisible">
-               <bool>true</bool>
-              </attribute>
-              <attribute name="horizontalHeaderCascadingSectionResizes">
-               <bool>false</bool>
-              </attribute>
-              <attribute name="horizontalHeaderDefaultSectionSize">
-               <number>150</number>
-              </attribute>
-              <attribute name="verticalHeaderVisible">
-               <bool>true</bool>
-              </attribute>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+</string>
+          </property>
+          <property name="html">
+           <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Info about game&lt;/span&gt;&lt;/p&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-weight:600; color:#0055ff;&quot;&gt;asdasd&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
          </widget>
         </item>
        </layout>
@@ -1138,49 +219,13 @@ QTableWidget QTableCornerButton::section {
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>760</width>
+     <width>1000</width>
      <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <tabstops>
-  <tabstop>playQuizBt</tabstop>
-  <tabstop>tableQuizBt</tabstop>
-  <tabstop>aboutQuizBt</tabstop>
-  <tabstop>exitQuizBt</tabstop>
-  <tabstop>leftQuizBt</tabstop>
-  <tabstop>rightQuizBt</tabstop>
-  <tabstop>leftMosaicBt</tabstop>
-  <tabstop>playMosaicBt</tabstop>
-  <tabstop>tableMosaicBt</tabstop>
-  <tabstop>aboutMosaicBt</tabstop>
-  <tabstop>exitMosaicBt</tabstop>
-  <tabstop>rightMosaicBt</tabstop>
-  <tabstop>leftMemoryBt</tabstop>
-  <tabstop>playMemoryBt</tabstop>
-  <tabstop>tableMemoryBt</tabstop>
-  <tabstop>aboutMemoryBt</tabstop>
-  <tabstop>exitMemoryBt</tabstop>
-  <tabstop>rightMemoryBt</tabstop>
-  <tabstop>leftHangmanBt</tabstop>
-  <tabstop>playHangmanBt</tabstop>
-  <tabstop>tableHangmanBt</tabstop>
-  <tabstop>aboutHangmanBt</tabstop>
-  <tabstop>exitHangmanBt</tabstop>
-  <tabstop>rightHangmanBt</tabstop>
-  <tabstop>backAboutQuizBt</tabstop>
-  <tabstop>infoAboutQuizTE</tabstop>
-  <tabstop>backAboutMosaicBt</tabstop>
-  <tabstop>infoAboutMosaicTE</tabstop>
-  <tabstop>backAboutMemoryBt</tabstop>
-  <tabstop>infoAboutMemoryTE</tabstop>
-  <tabstop>backAboutHangmanBt</tabstop>
-  <tabstop>infoAboutHangmanTE</tabstop>
-  <tabstop>backTableQuizBt</tabstop>
-  <tabstop>recordsQuizTable</tabstop>
- </tabstops>
  <resources/>
  <connections/>
 </ui>
