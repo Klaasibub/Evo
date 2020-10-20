@@ -18,29 +18,27 @@ public:
     ~MainMenu();
 
 private slots:
-    void previousGame();
-    void nextGame();
-    void exitGame();
-    void startGame(QDialog *game);
+    void loadGamePage();
 
-    void play();
-    void about();
-    void table();
-    void backToMenu();
-
-    void check_update();
-
-    void fillTable(QTableWidget *table, QString data);
+    void on_playBt_clicked();
 
 private:
     Ui::MainMenu *ui;
 
     enum class MainWidget{Menu, About, Table};
     enum class Game{Quiz, Mosaic, Memory, Hangman};
+
     static const int numberGames = 4;   // number of games in the app
     Game currentGame;                   // currently displayed game
 
     QUrl service_url{"http://justyell.pythonanywhere.com"};
     const QString currentVerison = "1.0";
+
+    void loadStyle();
+    void check_update();
+    void table();
+    void about();
+    void fillTable(QTableWidget *table, QString data);
+
 };
 #endif // MAINMENU_H
