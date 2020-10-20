@@ -1,6 +1,7 @@
 #include "quiz.h"
 #include "ui_quiz.h"
 #include <random>
+#include <vector>
 #include <QTimer>
 #include <utils.h>
 #include <QMessageBox>
@@ -35,12 +36,12 @@ void Quiz::fillNumberQuestions(){
     utils::read_from_file(":/static/quiz_questions.json", str, false);
     questionsJson = utils::json_loads(str);
     int questionsCount = questionsJson["Questions"].toArray().size();
-    int questionsNumbers[questionsCount];
-    for (int i=0; i<questionsCount ; i++ ) {
-        questionsNumbers[i] = i;
+    std::vector<int> questionsNumbers;
+    for (int i=0; i < questionsCount ; i++ ) {
+        questionsNumbers.push_back(i);
     }
-    std::random_shuffle(questionsNumbers,questionsNumbers+questionsCount);
-    for (int i=0; i<maxQuestions ; i++ ) {
+    std::random_shuffle(questionsNumbers.begin(), questionsNumbers.end());
+    for (int i = 0; i < maxQuestions; i++) {
         orderQuestions[i] = questionsNumbers[i];
     }
 }
