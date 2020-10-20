@@ -2,5 +2,6 @@
     <qresource prefix="/">
         <file>static/style.css</file>
         <file>static/table.test</file>
+        <file>static/quiz_questions.json</file>
     </qresource>
 </RCC>

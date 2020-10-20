@@ -2,6 +2,8 @@
 #include "ui_quiz.h"
 #include <random>
 #include <QTimer>
+#include <utils.h>
+#include <QMessageBox>
 
 Quiz::Quiz(QWidget *parent) :
     QDialog(parent),
@@ -27,10 +29,22 @@ QRadioButton *Quiz::getRadioButton(int i){
     if (i == 3) return ui->radioButton_3;
     if (i == 4) return ui->radioButton_4;
 }
-void Quiz::OrderQuestion()
-{
-        std::random_shuffle(OrderQuestions,OrderQuestions+14);
+
+void Quiz::fillNumberQuestions(){
+    QString str;
+    utils::read_from_file(":/static/quiz_questions.json", str, false);
+    questionsJson = utils::json_loads(str);
+    int questionsCount = questionsJson["Questions"].toArray().size();
+    int questionsNumbers[questionsCount];
+    for (int i=0; i<questionsCount ; i++ ) {
+        questionsNumbers[i] = i;
+    }
+    std::random_shuffle(questionsNumbers,questionsNumbers+questionsCount);
+    for (int i=0; i<maxQuestions ; i++ ) {
+        orderQuestions[i] = questionsNumbers[i];
+    }
 }
+
 
 void Quiz::initNewGame(){
     question = 0;
@@ -39,35 +53,47 @@ void Quiz::initNewGame(){
         ui->listWidget_2->addItem(QString::number(points[i]));
     }
     ui->listWidget_2->item(0)->setBackground(QBrush(QColor(0,255,0)));
-    fifty=hundred=true;
-    chance=isUsedChanse=false;
-    OrderQuestion();
-    LoadQuestionByNum(question);
+    fifty=true;
+    hundred=true;
+    chance=false;
+    isUsedChanse=false;
+    gameOver=false;
+    fillNumberQuestions();
+    loadQuestionByNum(question);
     ui->Fifty->setVisible(true);
     ui->Hundred->setVisible(true);
     ui->Chance->setVisible(true);
+
 }
-bool Quiz::LoadQuestionByNum(int num_question){
-    ui->listWidget_2->addItem(QString::number(num_question));
-    num_question=OrderQuestions[num_question-1];
-    ui->plainTextEdit->setPlainText("Текст");
-    ui->radioButton->setText("A"+QString::number(question));
-    ui->radioButton_2->setText("B"+QString::number(question));
-    ui->radioButton_3->setText("C"+QString::number(question));
-    ui->radioButton_4->setText("D"+QString::number(question));
-    rightAnswer =1;
+
+bool Quiz::loadQuestionByNum(int num_question){
+    questionID=orderQuestions[num_question];
+    QJsonObject json = questionsJson["Questions"].toArray()[questionID].toObject();
+    ui->plainTextEdit->setPlainText(json["Question"].toString());
+    ui->radioButton->setText(json["A"].toString());
+    ui->radioButton_2->setText(json["B"].toString());
+    ui->radioButton_3->setText(json["C"].toString());
+    ui->radioButton_4->setText(json["D"].toString());
+    rightAnswer = json["Answer"].toString();
+    for(auto item : {ui->radioButton, ui->radioButton_2, ui->radioButton_3, ui->radioButton_4}){
+        item->setCheckable(false);
+        item->setChecked(false);
+        item->setCheckable(true);
+        item->setVisible(true);
+    }
     return true;
 }
 
 void Quiz::on_Fifty_clicked()
 {
+
     if (fifty) {
-        if (rightAnswer==1 || rightAnswer==3)
+        if (rightAnswer == ui->radioButton->text() || rightAnswer== ui->radioButton_3->text())
         {
             ui->radioButton_2->setVisible(false);
             ui->radioButton_4->setVisible(false);
         }
-        else  if (rightAnswer==2 || rightAnswer==4)
+        else  if (rightAnswer== ui->radioButton_2->text() || rightAnswer== ui->radioButton_4->text())
         {
             ui->radioButton->setVisible(false);
             ui->radioButton_3->setVisible(false);
@@ -86,10 +112,12 @@ void Quiz::on_Chance_clicked()
 void Quiz::on_Hundred_clicked()
 {
     if (hundred) {
-        for(int i = 1; i <= 4; i++)
-            if(rightAnswer!=i){
-                getRadioButton(i)->setVisible(false);
-            }
+        for(auto item : {ui->radioButton, ui->radioButton_2, ui->radioButton_3, ui->radioButton_4}){
+            if(item->text() == rightAnswer)
+                item->setVisible(true);
+            else
+                item->setVisible(false);
+        }
     }
     hundred = false;
     ui->Hundred->setVisible(false);
@@ -97,36 +125,35 @@ void Quiz::on_Hundred_clicked()
 
 void Quiz::on_rb_clicked()
 {
-    int checkedRadioBtn = 0;
-    for (int i = 1; i <= 4; i++)
-        if(getRadioButton(i)->isChecked()){
-            checkedRadioBtn = i;
-            break;
-        }
-    if (checkedRadioBtn == 0)
+    if(gameOver)
         return;
-    if(!chance && rightAnswer != checkedRadioBtn){
-        getRadioButton(checkedRadioBtn)->setStyleSheet("color: red");
-        //Timer2->Enabled=true;
+    QRadioButton *rb = qobject_cast<QRadioButton*>(QObject::sender());
+    if(!chance && rightAnswer != rb->text()){
+        rb->setStyleSheet("color: red");
+        gameOver = true;
+        return;
 
     }
-    else if (chance && rightAnswer != checkedRadioBtn){
+    else if (chance && rightAnswer != rb->text()){
         chance=false;
-        getRadioButton(checkedRadioBtn)->setVisible(false);
+        rb->setVisible(false);
     }
     else{
         ui->listWidget_2->item(question)->setBackground(QBrush(QColor(255,255,255)));
         chance=false;
-        getRadioButton(checkedRadioBtn)->setStyleSheet("color: green");
-        if(question == maxQuestions){
-            //Form3->Label1->Caption=Form1->Label26->Caption;
-            //Form3->ShowModal();
+        rb->setStyleSheet("color: green");
+        if(question == maxQuestions-1){
+            QMessageBox mb;
+            mb.setText("Вы выиграли");
+            mb.exec();
+            close();
         }
         else{
             //Timer1->Enabled=true;
             question++;
+            rb->setStyleSheet("color: black");
             ui->listWidget_2->item(question)->setBackground(QBrush(QColor(0,255,0)));
+            loadQuestionByNum(question);
         }
     }
-    getRadioButton(checkedRadioBtn)->setChecked(false);
 }

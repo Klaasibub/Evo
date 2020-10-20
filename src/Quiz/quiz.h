@@ -3,6 +3,7 @@
 
 #include <QRadioButton>
 #include <QDialog>
+#include <QJsonObject>
 
 namespace Ui {
 class Quiz;
@@ -30,13 +31,17 @@ private slots:
 private:
     Ui::Quiz *ui;
     const int points[maxQuestions]={ 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000 };
-    int OrderQuestions[14]={1,2,3,4,5,6,7,8,9,10,11,12,13,14};
-    bool fifty, hundred, chance, isUsedChanse;
-    bool LoadQuestionByNum(int num_question);
-    void initNewGame();
-    int question, rightAnswer;
-    void OrderQuestion();
+    int orderQuestions[maxQuestions];
+    bool fifty, hundred, chance, isUsedChanse, gameOver;
+    int question, questionID;
+    QJsonObject questionsJson;
+    QString rightAnswer;
+
+    void fillNumberQuestions();
     QRadioButton* getRadioButton(int i);
+    bool loadQuestionByNum(int num_question);
+    void initNewGame();
+
 };
 
 #endif // QUIZ_H
