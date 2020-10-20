@@ -3,19 +3,6 @@ QObject {
     color: #b3a0b4;
 }
 
-QPushButton{
-        background: #532753;
-    border: 2px solid #350d36;
-
-        border-radius: 10;
-        color: #8e8d8e;
-        padding: .7em 1.5em;
-}
-QPushButton::hover {
-     background: #3f0e40;
-         color: #ffffff;
-}
-
 QAbstractItemView, QAbstractScrollArea {
     background-color: #350d36;
     color: #fffff8;
@@ -36,4 +23,49 @@ QTableWidget {
 QTableWidget QTableCornerButton::section {
     background-color: #646464;
     border: 1px solid #fffff8;
+}
+
+#gameLabels {
+    border-bottom: 0px;
+    border-radius: 4px;
+}
+
+#gameLabels QPushButton, QLabel{
+    color: #f8fbfc;
+    padding: 1.1em 3.5em;
+    background: #532753;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+    font-size: 16px;
+    border: 2px solid #350d36;
+}
+
+#gameLabels QPushButton::hover{
+    background-color: #350d36;
+    color: white;
+}
+
+#allGamesLabel{
+    border-top-right-radius: 30;
+    padding-left: 1em;
+}
+
+#memoryGameBt{
+    border-bottom-left-radius: 30px;
+}
+
+#playBt{
+    color: #f8fbfc;
+    padding: 1.1em 3.5em;
+    background: #532753;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+    font-size: 20px;
+    border: 2px solid #350d36;
+
+    border-top-right-radius: 30;
+    border-bottom-left-radius: 30px;
+}
+
+#playBt::hover{
+    background-color: #350d36;
+    color: white;
 }
