@@ -18,7 +18,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1,4">
+    <layout class="QVBoxLayout" name="verticalLayout" stretch="10,0,4">
      <item>
       <layout class="QHBoxLayout" name="hor" stretch="5,1,2,3,4">
        <property name="sizeConstraint">
@@ -74,7 +74,7 @@
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="Fifty">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -88,12 +88,12 @@
             </size>
            </property>
            <property name="text">
-            <string>PushButton</string>
+            <string>Fifty/Fifty</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="Hundred">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -107,12 +107,12 @@
             </size>
            </property>
            <property name="text">
-            <string>PushButton</string>
+            <string>Hundred</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="Chance">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -132,7 +132,7 @@
             <enum>Qt::LeftToRight</enum>
            </property>
            <property name="text">
-            <string>Bt</string>
+            <string>Chance</string>
            </property>
           </widget>
          </item>
@@ -164,20 +164,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QListWidget" name="listWidget">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
-         <horstretch>0</horstretch>
-         <verstretch>3</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>16777215</width>
-         <height>16777215</height>
-        </size>
-       </property>
-      </widget>
+      <widget class="QPlainTextEdit" name="plainTextEdit"/>
      </item>
      <item>
       <layout class="QHBoxLayout" name="radioButtonsLayout" stretch="1,1">
@@ -187,7 +174,7 @@
        <item>
         <layout class="QVBoxLayout" name="LeftButtonsLayout">
          <item>
-          <widget class="QRadioButton" name="radioButton_2">
+          <widget class="QRadioButton" name="radioButton">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -206,7 +193,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton">
+          <widget class="QRadioButton" name="radioButton_2">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -229,7 +216,7 @@
        <item>
         <layout class="QVBoxLayout" name="RightButtonsLayout">
          <item>
-          <widget class="QRadioButton" name="radioButton_4">
+          <widget class="QRadioButton" name="radioButton_3">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
@@ -248,7 +235,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="radioButton_3">
+          <widget class="QRadioButton" name="radioButton_4">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
              <horstretch>0</horstretch>
