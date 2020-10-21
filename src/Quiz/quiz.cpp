@@ -28,7 +28,7 @@ QRadioButton *Quiz::getRadioButton(int i){
     if (i == 1) return ui->radioButton;
     if (i == 2) return ui->radioButton_2;
     if (i == 3) return ui->radioButton_3;
-    if (i == 4) return ui->radioButton_4;
+    return ui->radioButton_4;
 }
 
 void Quiz::fillNumberQuestions(){
