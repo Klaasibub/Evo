@@ -73,12 +73,13 @@ void Hangman::on_letter_clicked()
         }
 
     }
-    ui->label_word->setText(word_on_screen + " " + words[current_word]);
+    ui->label_word->setText(word_on_screen);
 
     if (point){
         score += kol*score_m;
         score_m += 1;
     }
+
     else{
         score_m = 1;
         mistakes+=1;
@@ -112,7 +113,7 @@ void Hangman:: showPic(int p){
 void Hangman:: startPol(){
     word_on_screen = words[current_word];
     word_on_screen.replace(QRegExp("."), "?");
-    ui->label_word->setText(word_on_screen + " " + words[current_word]);
+    ui->label_word->setText(word_on_screen);
 
     mistakes = -1;
 
