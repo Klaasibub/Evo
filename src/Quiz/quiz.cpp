@@ -2,7 +2,6 @@
 #include "ui_quiz.h"
 #include <random>
 #include <vector>
-#include <QTimer>
 #include <utils.h>
 #include <QMessageBox>
 
@@ -17,18 +16,12 @@ Quiz::Quiz(QWidget *parent) :
     for(auto item : {ui->radioButton, ui->radioButton_2, ui->radioButton_3, ui->radioButton_4})
         connect(item, SIGNAL(clicked()),this,SLOT(on_rb_clicked()));
     initNewGame();
+
 }
 
 Quiz::~Quiz()
 {
     delete ui;
-}
-
-QRadioButton *Quiz::getRadioButton(int i){
-    if (i == 1) return ui->radioButton;
-    if (i == 2) return ui->radioButton_2;
-    if (i == 3) return ui->radioButton_3;
-    return ui->radioButton_4;
 }
 
 void Quiz::fillNumberQuestions(){
@@ -51,7 +44,7 @@ void Quiz::initNewGame(){
     question = 0;
     ui->listWidget_2->clear();
     for(int i = 0; i < maxQuestions; i++){
-        ui->listWidget_2->addItem(QString::number(points[i]));
+        ui->listWidget_2->addItem(QString::number(i+1));
     }
     ui->listWidget_2->item(0)->setBackground(QBrush(QColor(0,255,0)));
     fifty=true;
@@ -64,7 +57,6 @@ void Quiz::initNewGame(){
     ui->Fifty->setVisible(true);
     ui->Hundred->setVisible(true);
     ui->Chance->setVisible(true);
-
 }
 
 bool Quiz::loadQuestionByNum(int num_question){
@@ -126,12 +118,18 @@ void Quiz::on_Hundred_clicked()
 
 void Quiz::on_rb_clicked()
 {
+
     if(gameOver)
         return;
     QRadioButton *rb = qobject_cast<QRadioButton*>(QObject::sender());
     if(!chance && rightAnswer != rb->text()){
         rb->setStyleSheet("color: red");
+        QMessageBox mb;
+        mb.setWindowTitle("Проигрыш!");
+        mb.setText("Ответ неверный. Игра окончена.");
+        mb.exec();
         gameOver = true;
+        close();
         return;
 
     }
@@ -150,7 +148,6 @@ void Quiz::on_rb_clicked()
             close();
         }
         else{
-            //Timer1->Enabled=true;
             question++;
             rb->setStyleSheet("color: black");
             ui->listWidget_2->item(question)->setBackground(QBrush(QColor(0,255,0)));

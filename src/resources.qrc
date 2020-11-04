@@ -18,5 +18,6 @@
         <file alias="memory/10">static/Memory/memory10.jfif</file>
         <file alias="memory/font">static/Memory/font.jpg</file>
         <file alias="memory/2">static/Memory/memory2.jfif</file>
+        <file>static/Quiz/sova.bmp</file>
     </qresource>
 </RCC>
