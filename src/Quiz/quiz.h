@@ -16,6 +16,7 @@ class Quiz : public QDialog
     Q_OBJECT
 
 public:
+    static const QString recordsPath, aboutPath;
     static const int maxQuestions = 27;//максимальное число вопросов
     explicit Quiz(QWidget *parent = nullptr);
     ~Quiz();
@@ -42,6 +43,8 @@ private:
     void fillNumberQuestions();
     bool loadQuestionByNum(int num_question);
     void initNewGame();
+    static bool comp(QPair <QString, int > a, QPair <QString, int > b);
+    void check_records();
 
 };
 

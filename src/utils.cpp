@@ -1,5 +1,5 @@
 #include "utils.h"
-
+#include <QDir>
 
 QString utils::base64_encode(QString src)
 {
@@ -13,6 +13,13 @@ QString utils::base64_decode(QString src)
 
 int utils::write_to_file(QString filename, QString src, bool encoded)
 {
+    QDir mDir;
+    QFileInfo f = QFileInfo(filename);
+    QString path = f.dir().path();
+    if (!mDir.exists(path))
+    {
+        mDir.mkpath(path);
+    }
     QFile file(filename);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return 1;

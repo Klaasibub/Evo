@@ -38,7 +38,7 @@ void MainMenu::table()
     switch(currentGame)
     {
     case Game::Quiz:
-        //recordsPath = Quiz::recordsPath;
+        recordsPath = QDir::currentPath() + "/" + Quiz::recordsPath;
         break;
     case Game::Memory:
         //recordsPath = Memory::recordsPath;
@@ -94,8 +94,11 @@ void MainMenu::fillTable(QTableWidget *table, QString filename)
         }
     }
 
-    table->setRowCount(fmin(rowsData.size()-1, 15));
-
+    int rowCounts = 0;
+    for (int i = 1; i < rowsData.size(); i++)
+        if (rowsData.at(i).split(";").size()>1)
+            rowCounts++;
+    table->setRowCount(fmin(rowCounts, 20));
     for (int i = 1; i < rowsData.size(); i++){
         rowData = rowsData.at(i).split(";");
         for (int j = 0; j < rowData.size(); j++){
@@ -167,6 +170,7 @@ void MainMenu::on_playBt_clicked()
     game->setModal(true);
     setVisible(false);
     game->exec();
+    loadGamePage();
     setVisible(true);
     delete game;
 }

@@ -4,19 +4,30 @@
 #include <vector>
 #include <utils.h>
 #include <QMessageBox>
+#include <algorithm>
+#include <QDir>
+#include <QTextCodec>
+#include <QInputDialog>
+#include <QLineEdit>
+
+const QString Quiz::recordsPath = "static/records_quiz.csv";
+const QString Quiz::aboutPath = "static/records_quiz.txt";
 
 Quiz::Quiz(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Quiz)
-{
+{  
     ui->setupUi(this);
+
+    QTextCodec* codec = QTextCodec::codecForName("UTF-8");
+    QTextCodec::setCodecForLocale(codec);
+
     setWindowFlags(Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     for(auto item : {ui->radioButton, ui->radioButton_2, ui->radioButton_3, ui->radioButton_4})
         connect(item, SIGNAL(clicked()),this,SLOT(on_rb_clicked()));
     initNewGame();
-
 }
 
 Quiz::~Quiz()
@@ -128,6 +139,7 @@ void Quiz::on_rb_clicked()
         mb.setWindowTitle("Проигрыш!");
         mb.setText("Ответ неверный. Игра окончена.");
         mb.exec();
+        check_records();
         gameOver = true;
         close();
         return;
@@ -140,11 +152,13 @@ void Quiz::on_rb_clicked()
     else{
         ui->listWidget_2->item(question)->setBackground(QBrush(QColor(255,255,255)));
         chance=false;
+
         rb->setStyleSheet("color: green");
         if(question == maxQuestions-1){
             QMessageBox mb;
             mb.setText("Вы выиграли");
             mb.exec();
+            check_records();
             close();
         }
         else{
@@ -154,4 +168,54 @@ void Quiz::on_rb_clicked()
             loadQuestionByNum(question);
         }
     }
+}
+
+void Quiz::check_records(){
+    QVector<QPair<QString, int>> records;
+    QString data;
+    QString record_path = QDir::currentPath() + "/" + Quiz::recordsPath;
+    utils::read_from_file(record_path, data, false);
+    QStringList rowData, rowsData = data.split("\n");
+
+    for (int i = 1; i < rowsData.size(); i++){
+        rowData = rowsData.at(i).split(";");
+        if (rowData.size()>1){
+            records.push_back(QPair<QString, int>(rowData[0], rowData[1].toInt()));
+        }
+    }
+    std::sort(records.begin(),records.end(),this->comp);
+
+    if (records.size()<20 || records[19].second<question){
+        bool bOk;
+        QString str = QInputDialog::getText( 0,
+                                             "Введите имя",
+                                             "Ваше имя:",
+                                             QLineEdit::Normal,
+                                             "",
+                                             &bOk
+                                            );
+        if (bOk) {
+            if (records.size()<20){
+                records.append(QPair<QString, int>(str,question));
+            }
+            else{
+                 records[19].first = str;
+                 records[19].second = question;
+            }
+        }
+    }
+
+    std::sort(records.begin(),records.end(),this->comp);
+
+    data = "Nickname;Questions\n";
+
+    for(auto i: records){
+        data += i.first + ";" + QString::number(i.second) + "\n";
+    }
+
+    utils::write_to_file(record_path, data, false);
+}
+
+bool Quiz::comp (QPair <QString, int > a, QPair <QString, int > b) {
+  return a.second > b.second;
 }
