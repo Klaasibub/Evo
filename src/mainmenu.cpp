@@ -6,12 +6,16 @@
 #include <Memory/memory.h>
 #include <Mosaic/mosaic.h>
 #include <QTextCodec>
+#include <QDir>
 
 MainMenu::MainMenu(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
+
+    QTextCodec* codec = QTextCodec::codecForName("UTF-8");
+    QTextCodec::setCodecForLocale(codec);
 
     currentGame = Game::Quiz;
 
@@ -40,7 +44,7 @@ void MainMenu::table()
         //recordsPath = Memory::recordsPath;
         break;
     case Game::Hangman:
-        //recordsPath = Hangman::recordsPath;
+        recordsPath = QDir::currentPath() + "/" + Hangman::recordsPath;
         break;
     case Game::Mosaic:
         //recordsPath = Mosaic::recordsPath;
@@ -137,7 +141,7 @@ void MainMenu::loadGamePage(){
 
 void MainMenu::loadStyle(){
     QString style;
-    utils::read_from_file(":static/style.css", style, false);
+    utils::read_from_file(":/static/style.css", style, false);
     setStyleSheet(style);
 }
 

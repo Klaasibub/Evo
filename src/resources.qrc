@@ -30,5 +30,6 @@
         <file>static/Hangman/9.png</file>
         <file>static/about_hangman.txt</file>
         <file>static/Hangman/words.txt</file>
+        <file>static/Hangman/Style_Hangman.css</file>
     </qresource>
 </RCC>
