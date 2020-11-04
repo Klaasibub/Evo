@@ -19,5 +19,20 @@
         <file alias="memory/font">static/Memory/font.jpg</file>
         <file alias="memory/2">static/Memory/memory2.jfif</file>
         <file>static/Quiz/sova.bmp</file>
+        <file>static/Hangman/0.png</file>
+        <file>static/Hangman/1.png</file>
+        <file>static/Hangman/2.png</file>
+        <file>static/Hangman/3.png</file>
+        <file>static/Hangman/4.png</file>
+        <file>static/Hangman/5.png</file>
+        <file>static/Hangman/6.png</file>
+        <file>static/Hangman/7.png</file>
+        <file>static/Hangman/8.png</file>
+        <file>static/Hangman/9.png</file>
+        <file>static/about_hangman.txt</file>
+        <file>static/Hangman/words.txt</file>
+        <file>static/Hangman/Style_Hangman.css</file>
+        <file>static/mosaic_about.txt</file>
+        <file>static/images.txt</file>
     </qresource>
 </RCC>

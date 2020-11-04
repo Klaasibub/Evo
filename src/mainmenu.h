@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QtNetwork>
 #include <QTableWidget>
+#include <QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
