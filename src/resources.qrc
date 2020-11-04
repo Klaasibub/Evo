@@ -31,5 +31,7 @@
         <file>static/about_hangman.txt</file>
         <file>static/Hangman/words.txt</file>
         <file>static/Hangman/Style_Hangman.css</file>
+        <file>static/mosaic_about.txt</file>
+        <file>static/images.txt</file>
     </qresource>
 </RCC>

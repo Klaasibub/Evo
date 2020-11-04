@@ -32,11 +32,20 @@ QTableWidget QTableCornerButton::section {
 
 #gameLabels QPushButton, QLabel{
     color: #f8fbfc;
-    padding: 1.1em 3.5em;
     background: #532753;
     border-top: 1px solid rgba(0, 0, 0, .05);
     font-size: 16px;
     border: 2px solid #350d36;
+}
+
+#gameLabels QLabel{
+    padding: 1.1em 3.5em;
+}
+
+#gameLabels QPushButton{
+    text-align: center;
+    height: 75px;
+    width: 150px;
 }
 
 #gameLabels QPushButton::hover{
@@ -55,7 +64,9 @@ QTableWidget QTableCornerButton::section {
 
 #playBt{
     color: #f8fbfc;
-    padding: 1.1em 3.5em;
+    text-align: center;
+    height: 75px;
+    width: 150px;
     background: #532753;
     border-top: 1px solid rgba(0, 0, 0, .05);
     font-size: 20px;
