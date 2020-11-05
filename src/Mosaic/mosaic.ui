@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>979</width>
-    <height>629</height>
+    <width>1000</width>
+    <height>600</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
@@ -16,465 +22,486 @@
   <property name="sizeGripEnabled">
    <bool>false</bool>
   </property>
-  <widget class="QTableWidget" name="fieldBig">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>40</y>
-     <width>581</width>
-     <height>551</height>
-    </rect>
-   </property>
-   <property name="selectionMode">
-    <enum>QAbstractItemView::NoSelection</enum>
-   </property>
-   <property name="rowCount">
-    <number>20</number>
-   </property>
-   <property name="columnCount">
-    <number>20</number>
-   </property>
-   <attribute name="horizontalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="horizontalHeaderMinimumSectionSize">
-    <number>0</number>
-   </attribute>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>23</number>
-   </attribute>
-   <attribute name="verticalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="verticalHeaderMinimumSectionSize">
-    <number>0</number>
-   </attribute>
-   <attribute name="verticalHeaderDefaultSectionSize">
-    <number>23</number>
-   </attribute>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-  </widget>
-  <widget class="QTableWidget" name="fieldSmall">
-   <property name="geometry">
-    <rect>
-     <x>670</x>
-     <y>50</y>
-     <width>251</width>
-     <height>241</height>
-    </rect>
-   </property>
-   <property name="selectionMode">
-    <enum>QAbstractItemView::NoSelection</enum>
-   </property>
-   <property name="rowCount">
-    <number>20</number>
-   </property>
-   <property name="columnCount">
-    <number>20</number>
-   </property>
-   <attribute name="horizontalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="horizontalHeaderMinimumSectionSize">
-    <number>0</number>
-   </attribute>
-   <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>10</number>
-   </attribute>
-   <attribute name="verticalHeaderVisible">
-    <bool>false</bool>
-   </attribute>
-   <attribute name="verticalHeaderMinimumSectionSize">
-    <number>0</number>
-   </attribute>
-   <attribute name="verticalHeaderDefaultSectionSize">
-    <number>10</number>
-   </attribute>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <row/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-   <column/>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>630</x>
-     <y>320</y>
-     <width>321</width>
-     <height>181</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <property name="sizeConstraint">
-     <enum>QLayout::SetDefaultConstraint</enum>
-    </property>
-    <item row="3" column="1">
-     <widget class="QPushButton" name="oliveBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 85, 0)</string>
-      </property>
-      <property name="text">
-       <string>olive</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="1">
-     <widget class="QPushButton" name="greenBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(85, 170, 0)</string>
-      </property>
-      <property name="text">
-       <string>green</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="2">
-     <widget class="QPushButton" name="yellowBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 0)</string>
-      </property>
-      <property name="text">
-       <string>yellow</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="0">
-     <widget class="QPushButton" name="redBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string>red</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="1">
-     <widget class="QPushButton" name="pinkBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(255, 0, 127)</string>
-      </property>
-      <property name="text">
-       <string>pink</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="2">
-     <widget class="QPushButton" name="blackBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string>black</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="0">
-     <widget class="QPushButton" name="greyBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(139, 139, 139)</string>
-      </property>
-      <property name="text">
-       <string>grey</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="0">
-     <widget class="QPushButton" name="navyBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 0, 255)</string>
-      </property>
-      <property name="text">
-       <string>navy</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="3">
-     <widget class="QPushButton" name="brownBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(85, 0, 0)</string>
-      </property>
-      <property name="text">
-       <string>brown</string>
-      </property>
-     </widget>
-    </item>
-    <item row="3" column="3">
-     <widget class="QPushButton" name="whiteBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(255, 255, 255)</string>
-      </property>
-      <property name="text">
-       <string>white</string>
-      </property>
-     </widget>
-    </item>
-    <item row="5" column="3">
-     <widget class="QPushButton" name="blueBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(85, 170, 255)</string>
-      </property>
-      <property name="text">
-       <string>blue</string>
-      </property>
-     </widget>
-    </item>
-    <item row="2" column="2">
-     <widget class="QPushButton" name="cyanBt">
-      <property name="minimumSize">
-       <size>
-        <width>30</width>
-        <height>20</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>60</width>
-        <height>40</height>
-       </size>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color:rgb(0, 255, 255)</string>
-      </property>
-      <property name="text">
-       <string>cyan</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QPushButton" name="readyBt">
-   <property name="geometry">
-    <rect>
-     <x>820</x>
-     <y>540</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Готово</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="startBt">
-   <property name="geometry">
-    <rect>
-     <x>660</x>
-     <y>540</y>
-     <width>93</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Старт</string>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout_4">
+   <item row="1" column="0">
+    <layout class="QGridLayout" name="gridLayout_3" rowstretch="0" columnstretch="3,2">
+     <item row="0" column="0">
+      <widget class="QTableWidget" name="fieldBig">
+       <property name="selectionMode">
+        <enum>QAbstractItemView::NoSelection</enum>
+       </property>
+       <property name="rowCount">
+        <number>20</number>
+       </property>
+       <property name="columnCount">
+        <number>20</number>
+       </property>
+       <attribute name="horizontalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="horizontalHeaderMinimumSectionSize">
+        <number>0</number>
+       </attribute>
+       <attribute name="horizontalHeaderDefaultSectionSize">
+        <number>23</number>
+       </attribute>
+       <attribute name="verticalHeaderVisible">
+        <bool>false</bool>
+       </attribute>
+       <attribute name="verticalHeaderMinimumSectionSize">
+        <number>0</number>
+       </attribute>
+       <attribute name="verticalHeaderDefaultSectionSize">
+        <number>23</number>
+       </attribute>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <row/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+       <column/>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="7,3,1">
+       <item>
+        <widget class="QTableWidget" name="fieldSmall">
+         <property name="selectionMode">
+          <enum>QAbstractItemView::NoSelection</enum>
+         </property>
+         <property name="rowCount">
+          <number>20</number>
+         </property>
+         <property name="columnCount">
+          <number>20</number>
+         </property>
+         <attribute name="horizontalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>0</number>
+         </attribute>
+         <attribute name="horizontalHeaderDefaultSectionSize">
+          <number>10</number>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderMinimumSectionSize">
+          <number>0</number>
+         </attribute>
+         <attribute name="verticalHeaderDefaultSectionSize">
+          <number>10</number>
+         </attribute>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <row/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+         <column/>
+        </widget>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetDefaultConstraint</enum>
+         </property>
+         <item row="3" column="1">
+          <widget class="QPushButton" name="oliveBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(0, 85, 0)</string>
+           </property>
+           <property name="text">
+            <string>olive</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="QPushButton" name="greenBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(85, 170, 0)</string>
+           </property>
+           <property name="text">
+            <string>green</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="QPushButton" name="yellowBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(255, 255, 0)</string>
+           </property>
+           <property name="text">
+            <string>yellow</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="QPushButton" name="redBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(255, 0, 0)</string>
+           </property>
+           <property name="text">
+            <string>red</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="pinkBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 0, 127)</string>
+           </property>
+           <property name="text">
+            <string>pink</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QPushButton" name="blackBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(0, 0, 0); color: rgb(255,255,255);</string>
+           </property>
+           <property name="text">
+            <string>black</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QPushButton" name="greyBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(139, 139, 139)</string>
+           </property>
+           <property name="text">
+            <string>grey</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QPushButton" name="navyBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(0, 0, 255)</string>
+           </property>
+           <property name="text">
+            <string>navy</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QPushButton" name="brownBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(85, 0, 0)</string>
+           </property>
+           <property name="text">
+            <string>brown</string>
+           </property>
+          </widget>
+         </item>
+         <item row="3" column="3">
+          <widget class="QPushButton" name="whiteBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(255, 255, 255)</string>
+           </property>
+           <property name="text">
+            <string>white</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="3">
+          <widget class="QPushButton" name="blueBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(85, 170, 255)</string>
+           </property>
+           <property name="text">
+            <string>blue</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QPushButton" name="cyanBt">
+           <property name="minimumSize">
+            <size>
+             <width>30</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:rgb(0, 255, 255)</string>
+           </property>
+           <property name="text">
+            <string>cyan</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,1,1" columnstretch="1,1,1">
+         <item row="0" column="1">
+          <widget class="QLabel" name="timeLabel">
+           <property name="text">
+            <string>Время:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QPushButton" name="startBt">
+           <property name="text">
+            <string>Старт</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QPushButton" name="readyBt">
+           <property name="text">
+            <string>Готово</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QPushButton" name="pauseBt">
+           <property name="text">
+            <string>Пауза</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QPushButton" name="restartBt">
+           <property name="text">
+            <string>Продолжить</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QTimeEdit" name="timeEdit">
+           <property name="styleSheet">
+            <string notr="true">#timeEdit:disabled {
+    color:black;
+}</string>
+           </property>
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::NoButtons</enum>
+           </property>
+           <property name="displayFormat">
+            <string>mm:ss</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

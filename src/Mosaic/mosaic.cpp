@@ -5,15 +5,23 @@
 #include <vector>
 #include <random>
 #include <ctime>
+#include <map>
+#include <QTime>
+#include <QDir>
+#include <QTextCodec>
+#include <QInputDialog>
 
-const QString Mosaic::recordsPath = "/static/mosaic_records.csv";
-const QString Mosaic::aboutPath = ":/static/mosaic_about.txt";
+const QString Mosaic::recordsPath = "/static/records_mosaic.csv";
+const QString Mosaic::aboutPath = ":/static/about_mosaic.txt";
 
 Mosaic::Mosaic(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Mosaic)
 {
     ui->setupUi(this);
+    QTextCodec* codec = QTextCodec::codecForName("UTF-8");
+    QTextCodec::setCodecForLocale(codec);
+    loadStyle();
     setWindowFlags(Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
     for(auto item : {ui->blueBt,ui->greyBt,ui->oliveBt,ui->greenBt,ui->blackBt, ui->whiteBt,
@@ -34,17 +42,21 @@ Mosaic::Mosaic(QWidget *parent) :
         ui->fieldBig->verticalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
         ui->fieldSmall->verticalHeader()->setSectionResizeMode(i, QHeaderView::Stretch);
         for (int j = 0; j < size; j++ ) {
-            image[i][j]=QColor(0,0,0);
             ui->fieldBig->setItem(i,j,new QTableWidgetItem());
             ui->fieldSmall->setItem(i,j,new QTableWidgetItem());
         }
     }
+    ui->fieldBig->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->fieldSmall->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    ui->timeEdit->setEnabled(false);
 
-    //clearField(ui->fieldBig);
-    //clearField(ui->fieldSmall);
+    clearField(ui->fieldBig);
+    clearField(ui->fieldSmall);
 
     ui->readyBt->setEnabled(false);
     ui->startBt->setEnabled(true);
+    ui->pauseBt->setEnabled(false);
+    ui->restartBt->setEnabled(false);
 
     QString out;
     utils::read_from_file(":/static/images.txt", out, false);
@@ -53,17 +65,27 @@ Mosaic::Mosaic(QWidget *parent) :
     images = json["Images"].toArray();
     imagesCount = images.size();
 
-//    srand(time(NULL));
-//    for(int i = 0; i < imagesCount; i++){
-//        vec.push_back(i);
-//    }
-    //std::random_shuffle(vec.begin(), vec.end());
-    //std::random_shuffle(images.begin(), images.end());
+    srand(time(NULL));
+    for(int i = 0; i < imagesCount; i++){
+        vec.push_back(i);
+    }
+    std::random_shuffle(vec.begin(), vec.end());
+    timer = new QTimer;
+    timer->setInterval(1000);
+    connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
+    paused = true;
 }
 
 Mosaic::~Mosaic()
 {
+    delete timer;
     delete ui;
+}
+
+void Mosaic::loadStyle(){
+    /*QString style;
+    utils::read_from_file(":static/style.css", style, false);
+    setStyleSheet(style);*/
 }
 
 void Mosaic::on_colorBt_clicked()
@@ -74,6 +96,8 @@ void Mosaic::on_colorBt_clicked()
 
 void Mosaic::on_fieldBig_cellClicked(int row, int column)
 {
+    if(paused)
+        return;
     ui->fieldBig->item(row, column)->setBackground(QBrush(currentColor));
 }
 
@@ -89,13 +113,25 @@ void Mosaic::checkResults()
             }
         }
     }
-    QMessageBox mb;
-    mb.setText("Молодец!");
-    mb.exec();
     step+=1;
-    loadImages();
+    if(step == imagesCount){
+        QMessageBox mb;
+        mb.setText("Игра окончена!");
+        mb.exec();
+        checkTop();
+        close();
+    }
+    else{
+        QMessageBox mb;
+        mb.setText("Молодец!");
+        mb.exec();
+        loadImages();
+    }
+}
 
-/* QJsonObject json;
+void Mosaic::writeImage()
+{
+    QJsonObject json;
     QJsonArray arr;
 
     for (int i = 0; i < size; i++ ) {
@@ -110,12 +146,12 @@ void Mosaic::checkResults()
     json["Points"] = arr;
     QString str = utils::json_dumps(json);
     utils::write_to_file("POINTS.txt", str, false);
-    loadColors();*/
 }
+
 void Mosaic::loadImages()
 {
     clearField(ui->fieldBig);
-    QJsonObject json = images[step].toObject();
+    QJsonObject json = images[vec[step]].toObject();
     int c = 0;
     for (int i = 0; i < size; i++ ) {
         for (int j = 0; j < size; j++ ) {
@@ -132,6 +168,9 @@ void Mosaic::on_startBt_clicked()
     loadImages();
     ui->readyBt->setEnabled(true);
     ui->startBt->setEnabled(false);
+    ui->pauseBt->setEnabled(true);
+    timer->start();
+    paused = false;
 }
 
 void Mosaic::clearField(QTableWidget *table)
@@ -142,4 +181,72 @@ void Mosaic::clearField(QTableWidget *table)
             table->item(i, j)->setBackground(QBrush(QColor(255,255,255)));
         }
     }
+}
+
+void Mosaic::updateTime()
+{
+    ui->timeEdit->setTime(QTime(ui->timeEdit->time().addSecs(1)));
+}
+
+void Mosaic::on_pauseBt_clicked()
+{
+    timer->stop();
+    ui->restartBt->setEnabled(true);
+    ui->pauseBt->setEnabled(false);
+    paused = true;
+    checkTop();
+}
+
+void Mosaic::on_restartBt_clicked()
+{
+    timer->start();
+    ui->restartBt->setEnabled(false);
+    ui->pauseBt->setEnabled(true);
+    paused = false;
+}
+
+void Mosaic::checkTop()
+{
+    QVector<QPair<QString,QTime>> records;
+    QString data;
+    QTime time = ui->timeEdit->time();
+    QString record_path = QDir::currentPath() + "/" + Mosaic::recordsPath;
+    utils::read_from_file(record_path, data, false);
+    QStringList rowData, rowsData = data.split("\n");
+
+    for (int i = 1; i < rowsData.size(); i++){
+        rowData = rowsData.at(i).split(";");
+        if (rowData.size()>1){
+            records.push_back(QPair<QString, QTime>(rowData[0], QTime::fromString(rowData[1],"mm:ss")));
+        }
+    }
+    std::sort(records.begin(),records.end(),this->comp);
+
+    if (records.size()<20 || records[19].second > time){
+        bool bOk;
+        QString str = QInputDialog::getText( this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
+        if (bOk) {
+            if (records.size()<20){
+                records.append(QPair<QString, QTime>(str,time));
+            }
+            else{
+                 records[19].first = str;
+                 records[19].second = time;
+            }
+        }
+    }
+
+    std::sort(records.begin(),records.end(),this->comp);
+
+    data = "Nickname;Score\n";
+
+    for(auto i: records){
+        data += i.first + ";" + i.second.toString("mm:ss") + "\n";
+    }
+
+    utils::write_to_file(record_path, data, false);
+}
+
+bool Mosaic::comp (QPair <QString,QTime> a, QPair <QString, QTime> b) {
+  return a.second < b.second;
 }

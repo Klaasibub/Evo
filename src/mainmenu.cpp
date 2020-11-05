@@ -47,7 +47,7 @@ void MainMenu::table()
         recordsPath = QDir::currentPath() + "/" + Hangman::recordsPath;
         break;
     case Game::Mosaic:
-        //recordsPath = Mosaic::recordsPath;
+        recordsPath = QDir::currentPath() + "/" + Mosaic::recordsPath;
         break;
     }
     fillTable(ui->recordsTable, recordsPath);
