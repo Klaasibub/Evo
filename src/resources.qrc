@@ -18,6 +18,7 @@
         <file alias="memory/10">static/Memory/memory10.jfif</file>
         <file alias="memory/font">static/Memory/font.jpg</file>
         <file alias="memory/2">static/Memory/memory2.jfif</file>
+        <file>static/Quiz/sova.bmp</file>
         <file>static/Hangman/0.png</file>
         <file>static/Hangman/1.png</file>
         <file>static/Hangman/2.png</file>
@@ -33,5 +34,6 @@
         <file>static/Hangman/Style_Hangman.css</file>
         <file>static/about_mosaic.txt</file>
         <file>static/images.txt</file>
+        <file>static/Quiz/fon.jpg</file>
     </qresource>
 </RCC>
