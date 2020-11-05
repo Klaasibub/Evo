@@ -18,7 +18,7 @@ Quiz::Quiz(QWidget *parent) :
     ui(new Ui::Quiz)
 {  
     ui->setupUi(this);
-
+    loadStyle();
     QTextCodec* codec = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForLocale(codec);
 
@@ -28,6 +28,12 @@ Quiz::Quiz(QWidget *parent) :
     for(auto item : {ui->radioButton, ui->radioButton_2, ui->radioButton_3, ui->radioButton_4})
         connect(item, SIGNAL(clicked()),this,SLOT(on_rb_clicked()));
     initNewGame();
+
+
+    QString style;
+    //utils::read_from_file(":/static/Hangman/Style_Quiz.css", style, false);
+    //setStyleSheet(style);
+
 }
 
 Quiz::~Quiz()
@@ -50,6 +56,11 @@ void Quiz::fillNumberQuestions(){
     }
 }
 
+void Quiz::loadStyle(){
+    QString css;
+    css ="QDialog {border-image: url(:/static/Quiz/fon.jpg)};";
+    setStyleSheet(css);
+}
 
 void Quiz::initNewGame(){
     question = 0;

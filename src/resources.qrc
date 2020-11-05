@@ -34,5 +34,6 @@
         <file>static/Hangman/Style_Hangman.css</file>
         <file>static/about_mosaic.txt</file>
         <file>static/images.txt</file>
+        <file>static/Quiz/fon.jpg</file>
     </qresource>
 </RCC>

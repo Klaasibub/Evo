@@ -45,6 +45,7 @@ private:
     void initNewGame();
     static bool comp(QPair <QString, int > a, QPair <QString, int > b);
     void check_records();
+    void loadStyle();
 
 };
 
