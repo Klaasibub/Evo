@@ -17,7 +17,7 @@ public:
     ~Hangman();
 
 private slots:
-    void on_letter_clicked();
+    void onLetterClicked();
     void showPic(int);
     void startPol();
     void on_pushButton_show_clicked();

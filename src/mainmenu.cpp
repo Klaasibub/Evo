@@ -34,20 +34,20 @@ MainMenu::~MainMenu()
 
 void MainMenu::table()
 {
-    QString recordsPath = ":/static/table.test"; // ToDo: replace to Game.recordPath();
+    QString recordsPath = QDir::currentPath() + "/";
     switch(currentGame)
     {
     case Game::Quiz:
-        recordsPath = QDir::currentPath() + "/" + Quiz::recordsPath;
+        recordsPath += Quiz::recordsPath;
         break;
     case Game::Memory:
-        recordsPath = QDir::currentPath() + "/" + Memory::recordsPath;
+        recordsPath += Memory::recordsPath;
         break;
     case Game::Hangman:
-        recordsPath = QDir::currentPath() + "/" + Hangman::recordsPath;
+        recordsPath += Hangman::recordsPath;
         break;
     case Game::Mosaic:
-        recordsPath = QDir::currentPath() + "/" + Mosaic::recordsPath;
+        recordsPath += Mosaic::recordsPath;
         break;
     }
 
@@ -56,25 +56,25 @@ void MainMenu::table()
 
 void MainMenu::about()
 {
-    QString aboutPath, recordsPath = ":/static/table.test"; // ToDo: replace to Game.aboutPath();
+    QString aboutPath; // ToDo: replace to Game.aboutPath();
     switch(currentGame)
     {
     case Game::Quiz:
         aboutPath = "Quiz::aboutPath";
         break;
     case Game::Memory:
-        aboutPath = "Memory::aboutPath";
+        aboutPath = Memory::aboutPath;
         break;
     case Game::Hangman:
-        aboutPath = "Hangman::aboutPath";
+        aboutPath = Hangman::aboutPath;
         break;
     case Game::Mosaic:
-        aboutPath = "Mosaic::aboutPath";
+        aboutPath = Mosaic::aboutPath;
         break;
     }
     QString about;
-    utils::read_from_file(recordsPath, about, false);
-    ui->aboutGameText->setMarkdown(about+aboutPath);
+    // utils::read_from_file(aboutPath, about, false);
+    ui->aboutGameText->setMarkdown(aboutPath);
 }
 
 void MainMenu::fillTable(QTableWidget *table, QString filename)
@@ -145,7 +145,7 @@ void MainMenu::loadGamePage(){
 
 void MainMenu::loadStyle(){
     QString style;
-    utils::read_from_file(":/static/style.css", style, false);
+    utils::read_from_file(":/style.css", style, false);
     setStyleSheet(style);
 }
 

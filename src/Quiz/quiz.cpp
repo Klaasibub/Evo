@@ -26,7 +26,7 @@ Quiz::Quiz(QWidget *parent) :
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     for(auto item : {ui->radioButton, ui->radioButton_2, ui->radioButton_3, ui->radioButton_4})
-        connect(item, SIGNAL(clicked()),this,SLOT(on_rb_clicked()));
+        connect(item, SIGNAL(clicked()),this,SLOT(onRbClicked()));
     initNewGame();
 
 
@@ -43,7 +43,7 @@ Quiz::~Quiz()
 
 void Quiz::fillNumberQuestions(){
     QString str;
-    utils::read_from_file(":/static/quiz_questions.json", str, false);
+    utils::read_from_file(":/Quiz/questions.json", str, false);
     questionsJson = utils::json_loads(str);
     int questionsCount = questionsJson["Questions"].toArray().size();
     std::vector<int> questionsNumbers;
@@ -58,7 +58,7 @@ void Quiz::fillNumberQuestions(){
 
 void Quiz::loadStyle(){
     QString css;
-    css ="QDialog {border-image: url(:/static/Quiz/fon.jpg)};";
+    css ="QDialog {border-image: url(:/Quiz/fon.jpg)};";
     setStyleSheet(css);
 }
 
@@ -138,7 +138,7 @@ void Quiz::on_Hundred_clicked()
     ui->Hundred->setVisible(false);
 }
 
-void Quiz::on_rb_clicked()
+void Quiz::onRbClicked()
 {
 
     if(gameOver)

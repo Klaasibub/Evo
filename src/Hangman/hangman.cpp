@@ -11,13 +11,11 @@
 #include <QLineEdit>
 
 const QString Hangman::recordsPath = "static/records_hangman.csv";
-const QString Hangman::aboutPath = "static/records_hangman.txt";
+const QString Hangman::aboutPath = ":/Hangman/about.txt";
 
 QStringList words;
 int current_word, mistakes, score, score_m;
 QString word_on_screen;
-QPushButton* bt1;
-
 
 Hangman::Hangman(QWidget *parent) :
     QDialog(parent),
@@ -31,22 +29,20 @@ Hangman::Hangman(QWidget *parent) :
     setWindowFlags(Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
     QString out;
-    utils::read_from_file(":/static/Hangman/words.txt", out, false);
+    utils::read_from_file(":/Hangman/words.txt", out, false);
     words = out.split("\n");
-
-    words.pop_back();
+    if(words.size() && words[words.size()-1] == "")
+        words.pop_back();
 
     srand(time(NULL));
     std::random_shuffle(words.begin(), words.end());
-
-   // bt1 = new QPushButton;
 
     for(auto bt: {ui->buttonA, ui->buttonB, ui->buttonV, ui->buttonG, ui->buttonD, ui->buttonYE,
         ui->buttonYE1, ui->buttonZH, ui->buttonZ, ui->buttonI, ui->buttonYI, ui->buttonK, ui->buttonL,
         ui->buttonM, ui->buttonN, ui->buttonO, ui->buttonP, ui->buttonR, ui->buttonS, ui->buttonT,
         ui->buttonU, ui->buttonF, ui->buttonKH, ui->buttonTC, ui->buttonCH, ui->buttonSH, ui->buttonSHCH,
-        ui->buttonTv, ui->buttonY, ui->buttonMya, ui->buttonE, ui->buttonYU, ui->ButtonYA, bt1})
-        connect(bt, SIGNAL(clicked()), this, SLOT(on_letter_clicked()));
+        ui->buttonTv, ui->buttonY, ui->buttonMya, ui->buttonE, ui->buttonYU, ui->ButtonYA})
+        connect(bt, SIGNAL(clicked()), this, SLOT(onLetterClicked()));
     score = 0;
     current_word = 0;
     score_m = 1;
@@ -54,10 +50,9 @@ Hangman::Hangman(QWidget *parent) :
     startPol();
 
     ui->label_score->setText("Текущий результат: " + QString::number(score));
-    //кнопка для подсказки буквы
-   // ui ->pushButton_show->setVisible(false);
+
     QString style;
-    utils::read_from_file(":/static/Hangman/Style_Hangman.css", style, false);
+    utils::read_from_file(":/Hangman/Style_Hangman.css", style, false);
     setStyleSheet(style);
 }
 
@@ -66,7 +61,7 @@ Hangman::~Hangman()
     delete ui;
 }
 
-void Hangman::on_letter_clicked()
+void Hangman::onLetterClicked()
 {
     bool point = false;
     QPushButton* bt = qobject_cast<QPushButton*>(sender());
@@ -123,7 +118,7 @@ void Hangman::on_letter_clicked()
 
 void Hangman:: showPic(int p){
     QString css;
-    css = "background-image: url(:/static/Hangman/" + QString::number(p) + ".png);";
+    css = "background-image: url(:/Hangman/" + QString::number(p) + ".png);";
     ui->label_hangman->setStyleSheet(css);
 }
 
