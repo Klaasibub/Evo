@@ -82,9 +82,9 @@ Mosaic::~Mosaic()
 }
 
 void Mosaic::loadStyle(){
-    /*QString style;
-    utils::read_from_file(":static/style.css", style, false);
-    setStyleSheet(style);*/
+    QString style;
+    utils::read_from_file(":/Mosaic/style.css", style, false);
+    setStyleSheet(style);
 }
 
 void Mosaic::onColorBtClicked()
