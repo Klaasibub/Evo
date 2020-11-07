@@ -38,7 +38,7 @@ private:
     static bool comp(QPair <QString,QTime> a, QPair <QString, QTime> b);
 
 private slots:
-    void on_colorBt_clicked();
+    void onColorBtClicked();
     void on_fieldBig_cellClicked(int row, int column);
     void checkResults();
     void on_startBt_clicked();

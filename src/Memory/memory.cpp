@@ -10,13 +10,13 @@
 #include <QInputDialog>
 #include <QLineEdit>
 
-const QString Memory::recordsPath = "static/records_memory.csv";
-const QString Memory::aboutPath = "static/about_memory.txt";
+const QString Memory::recordsPath = "static/memory_records.csv";
+const QString Memory::aboutPath = ":/Memory/about.txt";
 const int time_after_wrong_hod = 1;
 
 static QBrush* brush;
 static QBrush brush_font;
-//int w, h;
+
 Memory::Memory(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Memory)
@@ -33,9 +33,9 @@ Memory::Memory(QWidget *parent) :
     shuffle_cards();
     brush = new QBrush[10];
 
-    brush_font.setTextureImage(QImage(":/memory/font"));
+    brush_font.setTextureImage(QImage(":/Memory/font"));
     for(int i = 0; i < 10; i++){
-        brush[i].setTextureImage(QImage(":/memory/" + QString::number(i)));
+        brush[i].setTextureImage(QImage(":/Memory/" + QString::number(i)));
     }
 
     ui->timerLabel->setText(QTime(0, 0, game_time, 0).toString("m:ss"));
@@ -129,7 +129,7 @@ void Memory::on_gameField_cellClicked(int row, int column)
         first_coord = qMakePair(row, column);
         is_first_card = !is_first_card;
         QBrush brush;
-        brush.setTextureImage(QImage(":/memory/" + QString::number(game_field[row][column])));
+        brush.setTextureImage(QImage(":/Memory/" + QString::number(game_field[row][column])));
         ui->gameField->item(row, column)->setBackground(brush);
         return;
     }
@@ -139,7 +139,7 @@ void Memory::on_gameField_cellClicked(int row, int column)
     //Ход сделан неверно
     else if(game_field[row][column] != game_field[first_coord.first][first_coord.second]){
         QBrush brush;
-        brush.setTextureImage(QImage(":/memory/" + QString::number(game_field[row][column])));
+        brush.setTextureImage(QImage(":/Memory/" + QString::number(game_field[row][column])));
         ui->gameField->item(row, column)->setBackground(brush);
         second_coord = qMakePair(row, column);
         last_wrong = game_time;
@@ -151,7 +151,7 @@ void Memory::on_gameField_cellClicked(int row, int column)
     //Ход сделан верно
     else{
         QBrush brush;
-        brush.setTextureImage(QImage(":/memory/" + QString::number(game_field[row][column])));
+        brush.setTextureImage(QImage(":/Memory/" + QString::number(game_field[row][column])));
         ui->gameField->item(row, column)->setBackground(brush);
         points += 10;
         game_field[row][column] = -1;
@@ -171,7 +171,7 @@ void Memory::on_gameField_cellClicked(int row, int column)
 
 void Memory:: fill_font_card(int row, int column){
     QBrush brush;
-    brush.setTextureImage(QImage(":/memory/font"));
+    brush.setTextureImage(QImage(":/Memory/font"));
     ui->gameField->item(row, column)->setBackground(brush);
 }
 

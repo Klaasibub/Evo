@@ -1,39 +1,45 @@
 <RCC>
-    <qresource prefix="/Memory">
-        <file alias="table.test">static/table.test</file>
-    </qresource>
     <qresource prefix="/">
-        <file>static/Hangman/0.png</file>
-        <file>static/Hangman/1.png</file>
-        <file>static/Hangman/2.png</file>
-        <file>static/Hangman/3.png</file>
-        <file>static/Hangman/4.png</file>
-        <file>static/Hangman/5.png</file>
-        <file>static/Hangman/6.png</file>
-        <file>static/Hangman/7.png</file>
-        <file>static/Hangman/8.png</file>
-        <file>static/Hangman/9.png</file>
-        <file>static/Hangman/Style_Hangman.css</file>
-        <file>static/Hangman/words.txt</file>
-        <file alias="memory/font">static/Memory/font.jpg</file>
-        <file alias="memory/0">static/Memory/memory0.jpg</file>
-        <file alias="memory/1">static/Memory/memory1.jpg</file>
-        <file alias="memory/2">static/Memory/memory2.jfif</file>
-        <file alias="memory/3">static/Memory/memory3.jpg</file>
-        <file alias="memory/4">static/Memory/memory4.jpg</file>
-        <file alias="memory/5">static/Memory/memory5.jpeg</file>
-        <file alias="memory/6">static/Memory/memory6.jpg</file>
-        <file alias="memory/7">static/Memory/memory7.jpg</file>
-        <file alias="memory/8">static/Memory/memory8.jpg</file>
-        <file alias="memory/9">static/Memory/memory9.jfif</file>
-        <file>static/Quiz/sova.bmp</file>
-        <file>static/about_hangman.txt</file>
-        <file>static/about_memory.txt</file>
-        <file>static/about_mosaic.txt</file>
-        <file>static/images.txt</file>
-        <file>static/quiz_questions.json</file>
-        <file>static/style.css</file>
-        <file>static/table.test</file>
-        <file>static/Quiz/fon.jpg</file>
+        <file alias="style.css">static/style.css</file>
+    </qresource>
+    <qresource prefix="/Mosaic">
+        <file alias="images.txt">static/Mosaic/images.txt</file>
+        <file alias="about.txt">static/Mosaic/about.txt</file>
+    </qresource>
+    <qresource prefix="/Hangman">
+        <file alias="0.png">static/Hangman/0.png</file>
+        <file alias="1.png">static/Hangman/1.png</file>
+        <file alias="2.png">static/Hangman/2.png</file>
+        <file alias="3.png">static/Hangman/3.png</file>
+        <file alias="4.png">static/Hangman/4.png</file>
+        <file alias="5.png">static/Hangman/5.png</file>
+        <file alias="6.png">static/Hangman/6.png</file>
+        <file alias="7.png">static/Hangman/7.png</file>
+        <file alias="8.png">static/Hangman/8.png</file>
+        <file alias="9.png">static/Hangman/9.png</file>
+        <file alias="Style_Hangman.css">static/Hangman/Style_Hangman.css</file>
+        <file alias="words.txt">static/Hangman/words.txt</file>
+        <file alias="about.txt">static/Hangman/about.txt</file>
+    </qresource>
+    <qresource prefix="/Quiz">
+        <file alias="questions.json">static/Quiz/quiz_questions.json</file>
+        <file alias="about.txt">static/Quiz/about.txt</file>
+        <file alias="fon.jpg">static/Quiz/fon.jpg</file>
+        <file alias="sova.bmp">static/Quiz/sova.bmp</file>
+    </qresource>
+    <qresource prefix="/Memory">
+        <file alias="about.txt">static/Memory/about.txt</file>
+        <file alias="font">static/Memory/font.jpg</file>
+        <file alias="font">static/Memory/font.jpg</file>
+        <file alias="0">static/Memory/memory0.jpg</file>
+        <file alias="1">static/Memory/memory1.jpg</file>
+        <file alias="2">static/Memory/memory2.jfif</file>
+        <file alias="3">static/Memory/memory3.jpg</file>
+        <file alias="4">static/Memory/memory4.jpg</file>
+        <file alias="5">static/Memory/memory5.jpeg</file>
+        <file alias="6">static/Memory/memory6.jpg</file>
+        <file alias="7">static/Memory/memory7.jpg</file>
+        <file alias="8">static/Memory/memory8.jpg</file>
+        <file alias="9">static/Memory/memory9.jfif</file>
     </qresource>
 </RCC>

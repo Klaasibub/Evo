@@ -12,8 +12,7 @@
 #include <QInputDialog>
 
 const QString Mosaic::recordsPath = "/static/records_mosaic.csv";
-const QString Mosaic::aboutPath = ":/static/about_mosaic.txt";
-
+const QString Mosaic::aboutPath = ":/Mosaic/about.txt";
 Mosaic::Mosaic(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Mosaic)
@@ -26,7 +25,7 @@ Mosaic::Mosaic(QWidget *parent) :
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
     for(auto item : {ui->blueBt,ui->greyBt,ui->oliveBt,ui->greenBt,ui->blackBt, ui->whiteBt,
                      ui->cyanBt,ui->pinkBt,ui->yellowBt,ui->navyBt, ui->brownBt,ui->redBt}){
-        connect(item, SIGNAL(clicked()),this, SLOT(on_colorBt_clicked()));
+        connect(item, SIGNAL(clicked()),this, SLOT(onColorBtClicked()));
     }
     connect(ui->readyBt, SIGNAL(clicked()),this,SLOT(checkResults()));
 
@@ -59,7 +58,7 @@ Mosaic::Mosaic(QWidget *parent) :
     ui->restartBt->setEnabled(false);
 
     QString out;
-    utils::read_from_file(":/static/images.txt", out, false);
+    utils::read_from_file(":/Mosaic/images.txt", out, false);
     QJsonObject json = utils::json_loads(out);
 
     images = json["Images"].toArray();
@@ -88,7 +87,7 @@ void Mosaic::loadStyle(){
     setStyleSheet(style);*/
 }
 
-void Mosaic::on_colorBt_clicked()
+void Mosaic::onColorBtClicked()
 {
     QPushButton* btSender = qobject_cast<QPushButton*>(sender());
     currentColor = btSender->palette().color(QWidget::backgroundRole());
@@ -105,7 +104,7 @@ void Mosaic::checkResults()
 {
     for (int i = 0; i < size; i++ ) {
         for (int j = 0; j < size; j++ ) {
-            if(ui->fieldSmall->item(i,j)->backgroundColor() != ui->fieldBig->item(i,j)->backgroundColor()){
+            if(ui->fieldSmall->item(i,j)->background() != ui->fieldBig->item(i,j)->background()){
                 QMessageBox mb;
                 mb.setText("Ошибка!");
                 mb.exec();
@@ -137,15 +136,15 @@ void Mosaic::writeImage()
     for (int i = 0; i < size; i++ ) {
         for (int j = 0; j < size; j++ ) {
             QJsonObject point;
-            point["r"] = ui->fieldBig->item(i,j)->backgroundColor().red();
-            point["g"] = ui->fieldBig->item(i,j)->backgroundColor().green();
-            point["b"] = ui->fieldBig->item(i,j)->backgroundColor().blue();
+            point["r"] = ui->fieldBig->item(i,j)->background().color().red();
+            point["g"] = ui->fieldBig->item(i,j)->background().color().red();
+            point["b"] = ui->fieldBig->item(i,j)->background().color().red();
             arr.append(point);
         }
     }
     json["Points"] = arr;
     QString str = utils::json_dumps(json);
-    utils::write_to_file("POINTS.txt", str, false);
+    utils::write_to_file(QDir::currentPath() + "/POINTS.txt", str, false);
 }
 
 void Mosaic::loadImages()

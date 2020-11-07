@@ -29,7 +29,7 @@ private slots:
 
     void on_Hundred_clicked();
 
-    void on_rb_clicked();
+    void onRbClicked();
 
 
 private:

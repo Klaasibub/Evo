@@ -49,7 +49,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/static/Quiz/sova.bmp)</string>
+          <string notr="true">border-image: url(:/Quiz/sova.bmp);</string>
          </property>
          <property name="text">
           <string/>
