@@ -193,7 +193,6 @@ void Mosaic::on_pauseBt_clicked()
     ui->restartBt->setEnabled(true);
     ui->pauseBt->setEnabled(false);
     paused = true;
-    checkTop();
 }
 
 void Mosaic::on_restartBt_clicked()
@@ -221,16 +220,16 @@ void Mosaic::checkTop()
     }
     std::sort(records.begin(),records.end(),this->comp);
 
-    if (records.size()<20 || records[19].second > time){
+    if (records.size() < max_records || records[max_records-1].second > time){
         bool bOk;
-        QString str = QInputDialog::getText( this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
+        QString str = QInputDialog::getText(this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
         if (bOk) {
-            if (records.size()<20){
+            if (records.size() < max_records){
                 records.append(QPair<QString, QTime>(str,time));
             }
             else{
-                 records[19].first = str;
-                 records[19].second = time;
+                 records[max_records-1].first = str;
+                 records[max_records-1].second = time;
             }
         }
     }

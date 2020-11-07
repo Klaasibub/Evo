@@ -24,6 +24,7 @@ private:
     int step;
     QJsonArray images;
     static const int size = 20;
+    static const int max_records = 20;
     int imagesCount;
     QVector<int> vec;
     Ui::Mosaic *ui;
