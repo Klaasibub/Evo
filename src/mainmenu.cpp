@@ -41,7 +41,7 @@ void MainMenu::table()
         recordsPath = QDir::currentPath() + "/" + Quiz::recordsPath;
         break;
     case Game::Memory:
-        //recordsPath = Memory::recordsPath;
+        recordsPath = QDir::currentPath() + "/" + Memory::recordsPath;
         break;
     case Game::Hangman:
         recordsPath = QDir::currentPath() + "/" + Hangman::recordsPath;
@@ -50,6 +50,7 @@ void MainMenu::table()
         recordsPath = QDir::currentPath() + "/" + Mosaic::recordsPath;
         break;
     }
+
     fillTable(ui->recordsTable, recordsPath);
 }
 
