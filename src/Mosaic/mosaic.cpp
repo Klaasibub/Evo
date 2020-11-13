@@ -26,8 +26,13 @@ Mosaic::Mosaic(QWidget *parent) :
     for(auto item : {ui->blueBt,ui->greyBt,ui->oliveBt,ui->greenBt,ui->blackBt, ui->whiteBt,
                      ui->cyanBt,ui->pinkBt,ui->yellowBt,ui->navyBt, ui->brownBt,ui->redBt}){
         connect(item, SIGNAL(clicked()),this, SLOT(onColorBtClicked()));
+        item->installEventFilter(this);
     }
     connect(ui->readyBt, SIGNAL(clicked()),this,SLOT(checkResults()));
+    ui->readyBt->installEventFilter(this);
+    ui->pauseBt->installEventFilter(this);
+    ui->startBt->installEventFilter(this);
+    ui->restartBt->installEventFilter(this);
 
     //заполнение матрицы цветами
     currentColor = QColor(255,255,255);
@@ -73,10 +78,25 @@ Mosaic::Mosaic(QWidget *parent) :
     timer->setInterval(1000);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     paused = true;
+
+    playlist = new QMediaPlaylist(this);
+    playlist->addMedia(QUrl("qrc:/static/default_hover_button.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
 }
 
 Mosaic::~Mosaic()
 {
+    if (player){
+        player->stop();
+        player->deleteLater();
+        player = nullptr;
+    }
+
+    if (playlist){
+        playlist->clear();
+        playlist = nullptr;
+    }
+
     delete timer;
     delete ui;
 }
@@ -247,4 +267,19 @@ void Mosaic::checkTop()
 
 bool Mosaic::comp (QPair <QString,QTime> a, QPair <QString, QTime> b) {
   return a.second < b.second;
+}
+
+bool Mosaic::eventFilter(QObject* watched, QEvent* event)
+{
+    if (event->type() == QEvent::HoverEnter && qobject_cast <QPushButton*>(watched)->isEnabled())
+    {
+        if (!player){
+            player = new QMediaPlayer(this);
+        }
+
+        player->setPlaylist(playlist);
+        player->setVolume(10);
+        player->play();
+    }
+    return QDialog::eventFilter(watched, event);
 }

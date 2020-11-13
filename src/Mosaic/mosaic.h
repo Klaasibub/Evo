@@ -5,6 +5,8 @@
 #include <QTableWidget>
 #include <QJsonArray>
 #include <QTimer>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
 
 namespace Ui {
 class Mosaic;
@@ -71,6 +73,16 @@ private:
     QColor currentColor; /// Текущий цвет рисования.
     QTimer *timer; /// Время игры.
     bool paused; /// Флажок паузы.
+    QMediaPlayer *player = nullptr; /// Плеер для озвучки.
+    QMediaPlaylist *playlist = nullptr; /// Плейлист.
+    /*!
+     * \brief Фильтр событий.
+     *
+     * Фильтрует события, если этот объект был установлен в качестве фильтра событий для наблюдаемого объекта.
+     * \param watched - наблюдаемый объект.
+     * \param event - событие.
+     */
+    virtual bool eventFilter(QObject* watched, QEvent* event);
     /*!
      * \brief Функция сравнения двух элементов.
      * \param a - первый элемент стравнения.
