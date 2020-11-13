@@ -96,9 +96,9 @@ void MainMenu::fillTable(QTableWidget *table, QString filename)
 
     int rowCounts = 0;
     for (int i = 1; i < rowsData.size(); i++)
-        if (rowsData.at(i).split(";").size()>1)
+        if (rowsData.at(i).split(";").size() > 1)
             rowCounts++;
-    table->setRowCount(fmin(rowCounts, 20));
+    table->setRowCount(rowCounts);
     for (int i = 1; i < rowsData.size(); i++){
         rowData = rowsData.at(i).split(";");
         for (int j = 0; j < rowData.size(); j++){
