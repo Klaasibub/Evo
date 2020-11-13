@@ -4,11 +4,19 @@
 #include <QJsonValue>
 #include <QJsonObject>
 #include <QJsonArray>
+
+/*!
+ * \brief Модуль json шаблонов.
+ *
+ * Этот модуль содержит шаблоны json,
+ * для проверки корректности json объектов.
+ */
 namespace json_schema {
+     ///Набор конечных состояний шаблона.
     QJsonValue  Bool = true,
                 Double = 0.0,
                 String = "0";
-
+    /// Шаблон для вопросов игры Quiz.
     QJsonObject quiz_questions
     {
         {
