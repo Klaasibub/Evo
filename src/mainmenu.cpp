@@ -37,20 +37,30 @@ MainMenu::~MainMenu()
         player_->deleteLater();
         player_ = nullptr;
     }
+    dropAudio();
     delete ui;
 }
 
+void MainMenu::dropAudio()
+{
+    if (playlist){
+        playlist->clear();
+        playlist = nullptr;
+    }
+}
 bool MainMenu::eventFilter(QObject* watched, QEvent* event)
 {
+
     if (event->type() == QEvent::HoverEnter)
     {
         if (!player_){
             player_ = new QMediaPlayer(this);
         }
-        QMediaPlaylist *playlist = new QMediaPlaylist(this);
-        playlist->addMedia(QUrl("qrc:/static/default_hover_button.mp3"));
-        playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
-
+        if (!playlist){
+            playlist = new QMediaPlaylist(this);
+            playlist->addMedia(QUrl("qrc:/static/default_hover_button.mp3"));
+            playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+        }
         player_->setPlaylist(playlist);
         player_->setVolume(10);
         player_->play();
@@ -193,6 +203,8 @@ void MainMenu::on_playBt_clicked()
         game = new Mosaic;
         break;
     }
+
+    dropAudio();
 
     game->setModal(true);
     setVisible(false);
