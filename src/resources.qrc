@@ -1,6 +1,7 @@
 <RCC>
     <qresource prefix="/">
         <file alias="style.css">static/style.css</file>
+        <file>static/default_hover_button.mp3</file>
     </qresource>
     <qresource prefix="/Mosaic">
         <file alias="images.txt">static/Mosaic/images.txt</file>

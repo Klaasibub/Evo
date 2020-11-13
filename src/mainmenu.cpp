@@ -7,6 +7,7 @@
 #include <Mosaic/mosaic.h>
 #include <QTextCodec>
 #include <QDir>
+#include <QWidget>
 
 MainMenu::MainMenu(QWidget *parent)
     : QMainWindow(parent)
@@ -22,13 +23,39 @@ MainMenu::MainMenu(QWidget *parent)
     checkUpdate();
     loadGamePage();
 
-    for(auto bt: {ui->quizGameBt, ui->memoryGameBt, ui->hangmanGameBt, ui->mosaicGameBt})
+    for(auto bt: {ui->quizGameBt, ui->memoryGameBt, ui->hangmanGameBt, ui->mosaicGameBt}){
         connect(bt, SIGNAL(clicked()), this, SLOT(loadGamePage()));
+        bt->installEventFilter(this);
+    }
+    ui->playBt->installEventFilter(this);
 }
 
 MainMenu::~MainMenu()
 {
+    if (player_){
+        player_->stop();
+        player_->deleteLater();
+        player_ = nullptr;
+    }
     delete ui;
+}
+
+bool MainMenu::eventFilter(QObject* watched, QEvent* event)
+{
+    if (event->type() == QEvent::HoverEnter)
+    {
+        if (!player_){
+            player_ = new QMediaPlayer(this);
+        }
+        QMediaPlaylist *playlist = new QMediaPlaylist(this);
+        playlist->addMedia(QUrl("qrc:/static/default_hover_button.mp3"));
+        playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+
+        player_->setPlaylist(playlist);
+        player_->setVolume(10);
+        player_->play();
+    }
+    return QMainWindow::eventFilter(watched, event);
 }
 
 void MainMenu::table()
