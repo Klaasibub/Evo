@@ -26,8 +26,13 @@ Mosaic::Mosaic(QWidget *parent) :
     for(auto item : {ui->blueBt,ui->greyBt,ui->oliveBt,ui->greenBt,ui->blackBt, ui->whiteBt,
                      ui->cyanBt,ui->pinkBt,ui->yellowBt,ui->navyBt, ui->brownBt,ui->redBt}){
         connect(item, SIGNAL(clicked()),this, SLOT(onColorBtClicked()));
+        item->installEventFilter(this);
     }
     connect(ui->readyBt, SIGNAL(clicked()),this,SLOT(checkResults()));
+    ui->readyBt->installEventFilter(this);
+    ui->pauseBt->installEventFilter(this);
+    ui->startBt->installEventFilter(this);
+    ui->restartBt->installEventFilter(this);
 
     //заполнение матрицы цветами
     currentColor = QColor(255,255,255);
@@ -62,7 +67,8 @@ Mosaic::Mosaic(QWidget *parent) :
     QJsonObject json = utils::json_loads(out);
 
     images = json["Images"].toArray();
-    imagesCount = images.size();
+    //imagesCount = images.size();
+    imagesCount = 1;
 
     srand(time(NULL));
     for(int i = 0; i < imagesCount; i++){
@@ -77,6 +83,17 @@ Mosaic::Mosaic(QWidget *parent) :
 
 Mosaic::~Mosaic()
 {
+    if (player){
+        player->stop();
+        player->deleteLater();
+        player = nullptr;
+    }
+
+    if (playlist){
+        playlist->clear();
+        playlist = nullptr;
+    }
+
     delete timer;
     delete ui;
 }
@@ -222,6 +239,7 @@ void Mosaic::checkTop()
 
     if (records.size() < max_records || records[max_records-1].second > time){
         bool bOk;
+        fireworkAudio();
         QString str = QInputDialog::getText(this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
         if (bOk) {
             if (records.size() < max_records){
@@ -247,4 +265,34 @@ void Mosaic::checkTop()
 
 bool Mosaic::comp (QPair <QString,QTime> a, QPair <QString, QTime> b) {
   return a.second < b.second;
+}
+
+bool Mosaic::eventFilter(QObject* watched, QEvent* event)
+{
+    if (event->type() == QEvent::HoverEnter && qobject_cast <QPushButton*>(watched)->isEnabled())
+    {
+        if (!player){
+            player = new QMediaPlayer(this);
+        }
+        if (!playlist){
+            playlist = new QMediaPlaylist(this);
+            playlist->addMedia(QUrl("qrc:/default_hover_button.mp3"));
+            playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+        }
+        player->setPlaylist(playlist);
+        player->setVolume(10);
+        player->play();
+    }
+    return QDialog::eventFilter(watched, event);
+}
+
+void Mosaic::fireworkAudio()
+{
+    playlist->clear();
+    playlist->addMedia(QUrl("qrc:/end_of_game.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    player->setPlaylist(playlist);
+    player->setVolume(10);
+    player->play();
 }

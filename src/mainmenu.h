@@ -79,6 +79,7 @@ private:
     QUrl service_url{"http://justyell.pythonanywhere.com"};
     const QString currentVerison = "1.0"; /// Текущая версия приложения
     QMediaPlayer *player_ = nullptr;
+    QMediaPlaylist *playlist = nullptr;
     /*!
      * \brief Заполнение таблицы.
      *
@@ -87,5 +88,6 @@ private:
      * \param data - данные для записи.
      */
     void fillTable(QTableWidget *table, QString data);
+    void dropAudio();
 };
 #endif // MAINMENU_H
