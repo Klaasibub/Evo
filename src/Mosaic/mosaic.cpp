@@ -67,7 +67,8 @@ Mosaic::Mosaic(QWidget *parent) :
     QJsonObject json = utils::json_loads(out);
 
     images = json["Images"].toArray();
-    imagesCount = images.size();
+    //imagesCount = images.size();
+    imagesCount = 1;
 
     srand(time(NULL));
     for(int i = 0; i < imagesCount; i++){
@@ -78,10 +79,6 @@ Mosaic::Mosaic(QWidget *parent) :
     timer->setInterval(1000);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
     paused = true;
-
-    playlist = new QMediaPlaylist(this);
-    playlist->addMedia(QUrl("qrc:/static/default_hover_button.mp3"));
-    playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
 }
 
 Mosaic::~Mosaic()
@@ -242,6 +239,7 @@ void Mosaic::checkTop()
 
     if (records.size() < max_records || records[max_records-1].second > time){
         bool bOk;
+        fireworkAudio();
         QString str = QInputDialog::getText(this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
         if (bOk) {
             if (records.size() < max_records){
@@ -276,10 +274,25 @@ bool Mosaic::eventFilter(QObject* watched, QEvent* event)
         if (!player){
             player = new QMediaPlayer(this);
         }
-
+        if (!playlist){
+            playlist = new QMediaPlaylist(this);
+            playlist->addMedia(QUrl("qrc:/default_hover_button.mp3"));
+            playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+        }
         player->setPlaylist(playlist);
         player->setVolume(10);
         player->play();
     }
     return QDialog::eventFilter(watched, event);
+}
+
+void Mosaic::fireworkAudio()
+{
+    playlist->clear();
+    playlist->addMedia(QUrl("qrc:/end_of_game.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    player->setPlaylist(playlist);
+    player->setVolume(10);
+    player->play();
 }

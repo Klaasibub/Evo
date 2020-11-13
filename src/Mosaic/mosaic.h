@@ -90,6 +90,7 @@ private:
      * \return результат сравнения двух элементов.
      */
     static bool comp(QPair <QString,QTime> a, QPair <QString, QTime> b);
+    void fireworkAudio(); /// Запуск аудио "Салют" по причине победы.
 
 public slots:
     /*!

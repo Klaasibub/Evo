@@ -58,7 +58,7 @@ bool MainMenu::eventFilter(QObject* watched, QEvent* event)
         }
         if (!playlist){
             playlist = new QMediaPlaylist(this);
-            playlist->addMedia(QUrl("qrc:/static/default_hover_button.mp3"));
+            playlist->addMedia(QUrl("qrc:/default_hover_button.mp3"));
             playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
         }
         player_->setPlaylist(playlist);
