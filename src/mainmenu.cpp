@@ -13,14 +13,13 @@ MainMenu::MainMenu(QWidget *parent)
     , ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-
     QTextCodec* codec = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForLocale(codec);
 
     currentGame = Game::Quiz;
 
     loadStyle();
-    check_update();
+    checkUpdate();
     loadGamePage();
 
     for(auto bt: {ui->quizGameBt, ui->memoryGameBt, ui->hangmanGameBt, ui->mosaicGameBt})
@@ -109,7 +108,7 @@ void MainMenu::fillTable(QTableWidget *table, QString filename)
     table->setSortingEnabled(false);
 }
 
-void MainMenu::check_update()
+void MainMenu::checkUpdate()
 {
     auto manager = new QNetworkAccessManager();
     connect(manager, &QNetworkAccessManager::finished, [=](QNetworkReply *reply) {
