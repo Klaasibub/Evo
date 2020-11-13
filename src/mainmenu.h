@@ -5,6 +5,8 @@
 #include <QtNetwork>
 #include <QTableWidget>
 #include <QVector>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainMenu; }
@@ -25,6 +27,7 @@ public:
     MainMenu(QWidget *parent = nullptr);
     /// Деструктор класса главного меню.
     ~MainMenu();
+    virtual bool eventFilter(QObject* watched, QEvent* event);
 
 public slots:
     /*!
@@ -75,7 +78,7 @@ private:
 
     QUrl service_url{"http://justyell.pythonanywhere.com"};
     const QString currentVerison = "1.0"; /// Текущая версия приложения
-
+    QMediaPlayer *player_ = nullptr;
     /*!
      * \brief Заполнение таблицы.
      *

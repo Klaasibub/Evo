@@ -11,7 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt5 COMPONENTS Widgets Network REQUIRED)
+find_package(Qt5 COMPONENTS Widgets Network Multimedia REQUIRED)
 
 set(SOURCES
     main.cpp
@@ -51,4 +51,4 @@ else()
 endif()
 
 
-target_link_libraries(Evo PRIVATE Qt5::Widgets Qt5::Network)
+target_link_libraries(Evo PRIVATE Qt5::Widgets Qt5::Network Qt5::Multimedia)
