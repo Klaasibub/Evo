@@ -1,7 +1,6 @@
 QObject {
     background: #9FB1FF;
     color: #FFFFFF;
-
 }
 
 #label_word {
@@ -13,14 +12,31 @@ QObject {
     text-align:  center;
 }
 #label_score{
-color: #FFFFFF;
-padding: 1.1em 3.5em;
-background: #9FB1FF;
-font-size: 18px;
-border: 2px solid #9FB1FF;
-text-align:  center;
+    color: #FFFFFF;
+    padding: 1.1em 3.5em;
+    background: #9FB1FF;
+    font-size: 18px;
+    border: 2px solid #9FB1FF;
+    text-align:  center;
 }
 
-QObject:disabled{
-background: #FFFFFF;
+QObject::disabled{
+    background: #2C50F1;
+}
+
+#helpBT QPushButton{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    border: 3px solid rgba(0, 30, 164, 0.5);
+    border-radius: 10px;
+    background: #9FB1FF;
+}
+#helpBT QPushButton::hover{
+background-color: #6D87FD;
+color: white;
+}
+QPushButton::hover{
+    background-color: #6D87FD;
+    color: white;
 }

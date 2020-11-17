@@ -58,6 +58,7 @@ Hangman::Hangman(QWidget *parent) :
 
 Hangman::~Hangman()
 {
+
     delete ui;
 }
 
