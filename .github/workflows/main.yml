@@ -3,15 +3,10 @@ name: CMake
 on: [push]
 
 env:
-  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
   BUILD_TYPE: Release
 
 jobs:
   build:
-    # The CMake configure and build commands are platform agnostic and should work equally
-    # well on Windows or Mac.  You can convert this to a matrix build if you need
-    # cross-platform coverage.
-    # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: windows-latest
 
     steps:
@@ -20,52 +15,33 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v2.10.0
       with:
-        # Directory to install Qt
-        # dir:  # optional
-        # Version of Qt to install
-        # version: # optional, default is 5.12.9
-        # Host platform
         host: 'windows'
-        # Target platform for build
-        # target: # optional, default is desktop
-        # Architecture for Windows/Android
         arch: 'win64_msvc2017_64'
-        # Whether or not to install Qt dependencies on Linux
-        # install-deps: # optional, default is true
-        # Additional Qt modules to install
-        # modules: # optional
-        # Force a Qt mirror in case the default is not working
-        # mirror: # optional
-        # Whether or not to actually download Qt
-        # cached: # optional, default is false
-        # Qt tools to download--specify comma-separated argument lists which are themselves separated by spaces: <tool_name>,<tool_version>,<tool_arch>
         tools: 'tools_ifw,4.0,qt.tools.ifw.40 tools_qtcreator,4.13.2-0,qt.tools.qtcreator'
-        # Whether or not to actually install Qt or just the tools from the tools argument
-        # tools-only: # optional, default is false
-        # Version of aqtinstall to use in case of issues
-        # aqtversion: # optional, default is ==0.9.7
-        # Version of py7zr to use in case of issues
-        # py7zrversion: # optional, default is ==0.10.1
-        # Any extra arguments to append to the back
         extra: '--external 7z'
     
     - name: Create Build Environment
-      # Some projects don't allow in-source building, so create a separate build directory
-      # We'll use this as our working directory for all subsequent commands
       run: cmake -E make_directory ${{runner.workspace}}/build
 
     - name: Configure CMake
-      # Use a bash shell so we can use the same syntax for environment variable
-      # access regardless of the host operating system
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      # Note the current convention is to use the -S and -B options here to specify source 
-      # and build directories, but this is only available with CMake 3.13 and higher.  
-      # The CMake binaries on the Github Actions machines are (as of this writing) 3.12
       run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
 
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      # Execute the build.  You can specify a specific target with "--target <NAME>"
       run: cmake.exe --build . --config $BUILD_TYPE
+    
+    - name: Create Installer
+      shell: bash
+      run: |
+        cd InnoSetup 
+        echo "#define Qt5_Dir \"$Qt5_Dir\"" > script.iss
+        cat EvoScript.iss >> script.iss 
+        ISCC.exe script.iss
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: setup.exe
+        path: D:/a/Evo/installer
