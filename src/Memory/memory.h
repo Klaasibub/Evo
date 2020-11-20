@@ -15,7 +15,7 @@ class Memory : public QDialog
     Q_OBJECT
 public:
     int width, height;
-    static const QString recordsPath, aboutPath;
+    static const QString recordsPath, aboutPath, savePath;
     explicit Memory(QWidget *parent = nullptr);
     ~Memory();
 
@@ -34,6 +34,13 @@ private:
     bool is_first_card;//проверка на номер хода игрока
     int points;//количество очков
     Ui::Memory *ui;
+    /*!
+     * \brief случайное раскладывание карт по игровому полю
+     *
+     * Функция случайно распределяет по полю 10 пар карт
+     * \param
+     *
+     */
     void shuffle_cards();//случайное распределение карточек
     void fill_font();//переворачивание всех карт рубашкой вверх
     void create_game(int row, int col);//создание игрового поля данного размера
@@ -41,8 +48,11 @@ private:
 
     void check_records();
     static bool comp(QPair <QString, int > a, QPair <QString, int > b);
+    int save_game();
+    int load_game();
 
     void set_widget();
 };
 
 #endif // MEMORY_H
+

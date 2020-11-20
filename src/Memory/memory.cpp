@@ -12,6 +12,7 @@
 
 const QString Memory::recordsPath = "static/memory_records.csv";
 const QString Memory::aboutPath = ":/Memory/about.txt";
+const QString Memory::savePath = "/Memory/save.txt";
 const int time_after_wrong_hod = 1;
 
 static QBrush* brush;
@@ -28,9 +29,10 @@ Memory::Memory(QWidget *parent) :
 
     setWindowFlags(Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
-
-    this->create_game(4, 5);
-    shuffle_cards();
+    if(this->load_game() != 0){
+        this->create_game(4, 5);
+        this->shuffle_cards();
+    }
     brush = new QBrush[10];
 
     brush_font.setTextureImage(QImage(":/Memory/font"));
@@ -72,8 +74,10 @@ Memory::~Memory()
     ui->gameField->setColumnCount(0);
     for(int i = 0; i < this->height; i++){
         delete[] game_field[i];
+        delete[] open_cards[i];
     }
     delete[] game_field;
+    delete[] open_cards;
     delete[] brush;
     delete tmr;
     delete ui;
@@ -97,11 +101,11 @@ void Memory:: shuffle_cards(){//Перемешивание карт
 void Memory:: fill_font(){//Закраска внешней стороной карточек
     for(int i = 0; i < this->height; i++){
         for(int j = 0; j < this->width; j++){
-            if(game_field[i][j] != -1){
+            if(open_cards[i][j] == false){
                 ui->gameField->item(i, j)->setBackground(brush_font);
             }
             else{
-                ui->gameField->item(i, j)->setBackground(brush[i]);
+                ui->gameField->item(i, j)->setBackground(brush[game_field[i][j]]);
             }
         }
     }
@@ -114,15 +118,17 @@ void Memory:: create_game(int row, int col){//Случайное заполне�
     this->game_time = 0;
     this->width = col;// w = 5;
     this->height = row;// h = 4;
-    this->game_field = new int*[this->width];
+    this->game_field = new int*[this->height];
+    this->open_cards = new bool*[this->height];
     for(int i = 0; i < this->height; i ++){
         this->game_field[i] = new int[this->width];
+        this->open_cards[i] = new bool[this->width]();//Заполняем сразу же ложью
     }
 }
 
 void Memory::on_gameField_cellClicked(int row, int column)
 {
-    if(game_field[row][column] == -1 || game_time - last_wrong < time_after_wrong_hod){
+    if(open_cards[row][column] == true || game_time - last_wrong < time_after_wrong_hod){
         return;
     }
     else if(is_first_card == true){
@@ -154,8 +160,8 @@ void Memory::on_gameField_cellClicked(int row, int column)
         brush.setTextureImage(QImage(":/Memory/" + QString::number(game_field[row][column])));
         ui->gameField->item(row, column)->setBackground(brush);
         points += 10;
-        game_field[row][column] = -1;
-        game_field[first_coord.first][first_coord.second] = -1;
+        open_cards[row][column] = true;
+        open_cards[first_coord.first][first_coord.second] = true;
         is_first_card = !is_first_card;
         amount_dont_opened--;
         if(amount_dont_opened == 0){
@@ -166,6 +172,7 @@ void Memory::on_gameField_cellClicked(int row, int column)
             close();
         }
     }
+    this->save_game();
     ui->pointsLabel->setText(QString:: number(points));
 }
 
@@ -234,4 +241,79 @@ void Memory::check_records(){
 
 bool Memory::comp (QPair <QString, int > a, QPair <QString, int > b) {
   return a.second > b.second;
+}
+
+int Memory:: save_game(){
+    QString result_string;
+    QString saveFilePath = QDir:: currentPath() + "/" + Memory::savePath;
+    if(amount_dont_opened == 0){
+        //Удаление файла
+        QDir file;
+        file.remove(saveFilePath);
+        return -1;
+    }
+    else{
+        result_string += QString::number(amount_dont_opened).rightJustified(3, '0');
+        //Запись информации о времени
+        result_string += QString::number(game_time).rightJustified(3, '0');
+        //Points
+        result_string += QString::number(points).rightJustified(3, '0');
+        //width,height
+        result_string += QString::number(width).rightJustified(3, '0');
+        result_string += QString::number(height).rightJustified(3, '0');
+        //game_field
+        for(int i = 0; i < this->height; i++){
+            for(int j = 0; j < this->width; j++){
+                result_string += QString::number(game_field[i][j]) + "|";
+            }
+        }
+        result_string += "!";
+        //open_cards
+        for(int i = 0; i < this->height; i++){
+            for(int j = 0; j < this->width; j++){
+                result_string += QString::number(open_cards[i][j]) + "|";
+            }
+        }
+        if(utils:: write_to_file(saveFilePath, result_string, true) != 0){
+            return 1;
+        }
+        return 0;
+    }
+}
+
+int Memory:: load_game(){
+    QString result_string;
+    QString loadFilePath = QDir:: currentPath() + "/" + Memory::savePath;
+    if(utils::read_from_file(loadFilePath, result_string, true) != 0 ){
+        //Игра не открылась или не существует
+        return 1;
+    }
+    else{
+        //Записаны сохраненные данные
+        this->amount_dont_opened = result_string.midRef(0, 3).toInt();
+        this->game_time = result_string.midRef(3, 3).toInt();
+        this->points = result_string.midRef(6, 3).toInt();
+        this->width = result_string.midRef(9, 3).toInt();
+        this->height = result_string.midRef(12, 3).toInt();
+        this->last_wrong = -10;
+        this->open_cards = new bool*[this->height];
+        this->game_field = new int*[this->width];
+        for(int i = 0; i < this->height; i ++){
+            this->game_field[i] = new int[this->width];
+            this->open_cards[i] = new bool[this->width];
+        }
+        QStringRef str_game_field = result_string.midRef(15, result_string.size() - 15);
+        QVector<QStringRef> game_stats = str_game_field.split(QLatin1Char('!'), Qt::SkipEmptyParts);
+        QVector<QStringRef> vect_game_field, vect_open_cards;
+        vect_game_field = game_stats[0].split(QLatin1Char('|'), Qt::SkipEmptyParts);
+        vect_open_cards = game_stats[1].split(QLatin1Char('|'), Qt::SkipEmptyParts);
+        for(int i = 0 ; i < this->height; i++){
+            for(int j = 0; j < this->width; j++){
+                game_field[i][j] = (vect_game_field[i * this->width + j]).toInt();
+                open_cards[i][j] = (vect_open_cards[i * this->width + j]).toInt();
+            }
+        }
+    }
+    int a = 5;
+    return 0;
 }
