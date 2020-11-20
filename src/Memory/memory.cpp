@@ -303,10 +303,10 @@ int Memory:: load_game(){
             this->open_cards[i] = new bool[this->width];
         }
         QStringRef str_game_field = result_string.midRef(15, result_string.size() - 15);
-        QVector<QStringRef> game_stats = str_game_field.split(QLatin1Char('!'), Qt::SkipEmptyParts);
+        QVector<QStringRef> game_stats = str_game_field.split('!');
         QVector<QStringRef> vect_game_field, vect_open_cards;
-        vect_game_field = game_stats[0].split(QLatin1Char('|'), Qt::SkipEmptyParts);
-        vect_open_cards = game_stats[1].split(QLatin1Char('|'), Qt::SkipEmptyParts);
+        vect_game_field = game_stats[0].split('|');
+        vect_open_cards = game_stats[1].split('|');
         for(int i = 0 ; i < this->height; i++){
             for(int j = 0; j < this->width; j++){
                 game_field[i][j] = (vect_game_field[i * this->width + j]).toInt();
@@ -314,6 +314,5 @@ int Memory:: load_game(){
             }
         }
     }
-    int a = 5;
     return 0;
 }

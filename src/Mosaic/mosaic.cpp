@@ -26,8 +26,13 @@ Mosaic::Mosaic(QWidget *parent) :
     for(auto item : {ui->blueBt,ui->greyBt,ui->oliveBt,ui->greenBt,ui->blackBt, ui->whiteBt,
                      ui->cyanBt,ui->pinkBt,ui->yellowBt,ui->navyBt, ui->brownBt,ui->redBt}){
         connect(item, SIGNAL(clicked()),this, SLOT(onColorBtClicked()));
+        item->installEventFilter(this);
     }
     connect(ui->readyBt, SIGNAL(clicked()),this,SLOT(checkResults()));
+    ui->readyBt->installEventFilter(this);
+    ui->pauseBt->installEventFilter(this);
+    ui->startBt->installEventFilter(this);
+    ui->restartBt->installEventFilter(this);
 
     //заполнение матрицы цветами
     currentColor = QColor(255,255,255);
@@ -77,14 +82,25 @@ Mosaic::Mosaic(QWidget *parent) :
 
 Mosaic::~Mosaic()
 {
+    if (player){
+        player->stop();
+        player->deleteLater();
+        player = nullptr;
+    }
+
+    if (playlist){
+        playlist->clear();
+        playlist = nullptr;
+    }
+
     delete timer;
     delete ui;
 }
 
 void Mosaic::loadStyle(){
-    /*QString style;
-    utils::read_from_file(":static/style.css", style, false);
-    setStyleSheet(style);*/
+    QString style;
+    utils::read_from_file(":/Mosaic/style.css", style, false);
+    setStyleSheet(style);
 }
 
 void Mosaic::onColorBtClicked()
@@ -193,7 +209,6 @@ void Mosaic::on_pauseBt_clicked()
     ui->restartBt->setEnabled(true);
     ui->pauseBt->setEnabled(false);
     paused = true;
-    checkTop();
 }
 
 void Mosaic::on_restartBt_clicked()
@@ -221,16 +236,17 @@ void Mosaic::checkTop()
     }
     std::sort(records.begin(),records.end(),this->comp);
 
-    if (records.size()<20 || records[19].second > time){
+    if (records.size() < max_records || records[max_records-1].second > time){
         bool bOk;
-        QString str = QInputDialog::getText( this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
+        fireworkAudio();
+        QString str = QInputDialog::getText(this, "Новый рекорд!", "Введите свой ник:", QLineEdit::Normal, "", &bOk);
         if (bOk) {
-            if (records.size()<20){
+            if (records.size() < max_records){
                 records.append(QPair<QString, QTime>(str,time));
             }
             else{
-                 records[19].first = str;
-                 records[19].second = time;
+                 records[max_records-1].first = str;
+                 records[max_records-1].second = time;
             }
         }
     }
@@ -248,4 +264,34 @@ void Mosaic::checkTop()
 
 bool Mosaic::comp (QPair <QString,QTime> a, QPair <QString, QTime> b) {
   return a.second < b.second;
+}
+
+bool Mosaic::eventFilter(QObject* watched, QEvent* event)
+{
+    if (event->type() == QEvent::HoverEnter && qobject_cast <QPushButton*>(watched)->isEnabled())
+    {
+        if (!player){
+            player = new QMediaPlayer(this);
+        }
+        if (!playlist){
+            playlist = new QMediaPlaylist(this);
+            playlist->addMedia(QUrl("qrc:/default_hover_button.mp3"));
+            playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+        }
+        player->setPlaylist(playlist);
+        player->setVolume(10);
+        player->play();
+    }
+    return QDialog::eventFilter(watched, event);
+}
+
+void Mosaic::fireworkAudio()
+{
+    playlist->clear();
+    playlist->addMedia(QUrl("qrc:/end_of_game.mp3"));
+    playlist->setPlaybackMode(QMediaPlaylist::Loop);
+
+    player->setPlaylist(playlist);
+    player->setVolume(10);
+    player->play();
 }

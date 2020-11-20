@@ -1,10 +1,13 @@
 <RCC>
     <qresource prefix="/">
         <file alias="style.css">static/style.css</file>
+        <file alias="default_hover_button.mp3">static/default_hover_button.mp3</file>
+        <file alias="end_of_game.mp3">static/end_of_game.mp3</file>
     </qresource>
     <qresource prefix="/Mosaic">
         <file alias="images.txt">static/Mosaic/images.txt</file>
         <file alias="about.txt">static/Mosaic/about.txt</file>
+        <file alias="style.css">static/Mosaic/style.css</file>
     </qresource>
     <qresource prefix="/Hangman">
         <file alias="0.png">static/Hangman/0.png</file>

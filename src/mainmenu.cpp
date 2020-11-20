@@ -7,29 +7,65 @@
 #include <Mosaic/mosaic.h>
 #include <QTextCodec>
 #include <QDir>
+#include <QWidget>
 
 MainMenu::MainMenu(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainMenu)
 {
     ui->setupUi(this);
-
     QTextCodec* codec = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForLocale(codec);
 
     currentGame = Game::Quiz;
 
     loadStyle();
-    check_update();
+    checkUpdate();
     loadGamePage();
 
-    for(auto bt: {ui->quizGameBt, ui->memoryGameBt, ui->hangmanGameBt, ui->mosaicGameBt})
+    for(auto bt: {ui->quizGameBt, ui->memoryGameBt, ui->hangmanGameBt, ui->mosaicGameBt}){
         connect(bt, SIGNAL(clicked()), this, SLOT(loadGamePage()));
+        bt->installEventFilter(this);
+    }
+    ui->playBt->installEventFilter(this);
 }
 
 MainMenu::~MainMenu()
 {
+    if (player_){
+        player_->stop();
+        player_->deleteLater();
+        player_ = nullptr;
+    }
+    dropAudio();
     delete ui;
+}
+
+void MainMenu::dropAudio()
+{
+    if (playlist){
+        playlist->clear();
+        playlist = nullptr;
+    }
+}
+bool MainMenu::eventFilter(QObject* watched, QEvent* event)
+{
+
+    if (event->type() == QEvent::HoverEnter)
+    {
+        if (!player_){
+            player_ = new QMediaPlayer(this);
+        }
+        if (!playlist){
+            playlist = new QMediaPlaylist(this);
+            playlist->addMedia(QUrl("qrc:/default_hover_button.mp3"));
+            playlist->setPlaybackMode(QMediaPlaylist::CurrentItemOnce);
+        }
+        player_->setPlaylist(playlist);
+        player_->setVolume(10);
+        player_->play();
+    }
+    return QMainWindow::eventFilter(watched, event);
 }
 
 void MainMenu::table()
@@ -73,8 +109,8 @@ void MainMenu::about()
         break;
     }
     QString about;
-    // utils::read_from_file(aboutPath, about, false);
-    ui->aboutGameText->setMarkdown(aboutPath);
+    utils::read_from_file(aboutPath, about, false);
+    ui->aboutGameText->setHtml(aboutPath);
 }
 
 void MainMenu::fillTable(QTableWidget *table, QString filename)
@@ -97,9 +133,9 @@ void MainMenu::fillTable(QTableWidget *table, QString filename)
 
     int rowCounts = 0;
     for (int i = 1; i < rowsData.size(); i++)
-        if (rowsData.at(i).split(";").size()>1)
+        if (rowsData.at(i).split(";").size() > 1)
             rowCounts++;
-    table->setRowCount(fmin(rowCounts, 20));
+    table->setRowCount(rowCounts);
     for (int i = 1; i < rowsData.size(); i++){
         rowData = rowsData.at(i).split(";");
         for (int j = 0; j < rowData.size(); j++){
@@ -109,7 +145,7 @@ void MainMenu::fillTable(QTableWidget *table, QString filename)
     table->setSortingEnabled(false);
 }
 
-void MainMenu::check_update()
+void MainMenu::checkUpdate()
 {
     auto manager = new QNetworkAccessManager();
     connect(manager, &QNetworkAccessManager::finished, [=](QNetworkReply *reply) {
@@ -167,6 +203,8 @@ void MainMenu::on_playBt_clicked()
         game = new Mosaic;
         break;
     }
+
+    dropAudio();
 
     game->setModal(true);
     setVisible(false);
