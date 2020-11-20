@@ -67,8 +67,7 @@ Mosaic::Mosaic(QWidget *parent) :
     QJsonObject json = utils::json_loads(out);
 
     images = json["Images"].toArray();
-    //imagesCount = images.size();
-    imagesCount = 1;
+    imagesCount = images.size();
 
     srand(time(NULL));
     for(int i = 0; i < imagesCount; i++){
