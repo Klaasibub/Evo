@@ -34,7 +34,11 @@ public:
      *
      * Считывание данных отдельного изображения и отрисовка его на поле.
      */
-    void loadImages();
+    void loadImage();
+    /*!
+     * \brief readImage
+     */
+    void readImages();
     /*!
      * \brief Сохранение изображения с поля fieldBig.
      *
@@ -61,6 +65,16 @@ public:
      * достаточно для внесения его в таблицу рекордов.
      */
     void checkTop();
+    /*!
+     * \brief Получение текущего цвета рисования на поле.
+     * \return Текущий цвет рисования.
+     */
+    QColor getCurrentColor();
+    /*!
+     * \brief Флажок пауза игры.
+     * \return Игра стоит на паузе.
+     */
+    bool gameNotOnPause();
 
 private:
     int step; /// Текущий номер изображения.
@@ -108,9 +122,18 @@ public slots:
      */
     void on_fieldBig_cellClicked(int row, int column);
     /*!
-     * \brief Проверка результатов.
+     * \brief Сравнение двух таблиц.
      *
      * Соотвествие нарисованного изображения и шаблона.
+     * \param field1 - первое поле для сравнения.
+     * \param field2 - второе поле для сравнения.
+     * \return результат сравнения.
+     */
+    bool compareTables(QTableWidget *field1, QTableWidget *field2);
+    /*!
+     * \brief Проверка результатов.
+     *
+     * Сравнение игровых полей при нажатии на кнопку.
      */
     void checkResults();
     /*!
@@ -135,6 +158,5 @@ public slots:
 private slots:
     void updateTime();
 };
-
 
 #endif // MOSAIC_H
