@@ -62,18 +62,8 @@ Mosaic::Mosaic(QWidget *parent) :
     ui->pauseBt->setEnabled(false);
     ui->restartBt->setEnabled(false);
 
-    QString out;
-    utils::read_from_file(":/Mosaic/images.txt", out, false);
-    QJsonObject json = utils::json_loads(out);
+    readImages();
 
-    images = json["Images"].toArray();
-    imagesCount = images.size();
-
-    srand(time(NULL));
-    for(int i = 0; i < imagesCount; i++){
-        vec.push_back(i);
-    }
-    std::random_shuffle(vec.begin(), vec.end());
     timer = new QTimer;
     timer->setInterval(1000);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));
@@ -115,32 +105,42 @@ void Mosaic::on_fieldBig_cellClicked(int row, int column)
         return;
     ui->fieldBig->item(row, column)->setBackground(QBrush(currentColor));
 }
-
-void Mosaic::checkResults()
+bool Mosaic::compareTables(QTableWidget *field1, QTableWidget *field2)
 {
-    for (int i = 0; i < size; i++ ) {
-        for (int j = 0; j < size; j++ ) {
-            if(ui->fieldSmall->item(i,j)->background() != ui->fieldBig->item(i,j)->background()){
-                QMessageBox mb;
-                mb.setText("Ошибка!");
-                mb.exec();
-                return;
+    if (field1->rowCount() != field2->rowCount() || field1->columnCount() != field2->columnCount()){
+        return false;
+    }
+    for (int i = 0; i < field2->rowCount(); i++ ) {
+        for (int j = 0; j < field2->columnCount(); j++ ) {
+            if(field1->item(i,j)->background() != field2->item(i,j)->background()){
+                return false;
             }
         }
     }
-    step+=1;
-    if(step == imagesCount){
-        QMessageBox mb;
-        mb.setText("Игра окончена!");
-        mb.exec();
-        checkTop();
-        close();
+    return true;
+}
+void Mosaic::checkResults()
+{
+    if (compareTables(ui->fieldSmall,ui->fieldBig) == true){
+        step+=1;
+        if(step == imagesCount){
+            QMessageBox mb;
+            mb.setText("Игра окончена!");
+            mb.exec();
+            checkTop();
+            close();
+        }
+        else{
+            QMessageBox mb;
+            mb.setText("Молодец!");
+            mb.exec();
+            loadImage();
+        }
     }
     else{
         QMessageBox mb;
-        mb.setText("Молодец!");
+        mb.setText("Ошибка!");
         mb.exec();
-        loadImages();
     }
 }
 
@@ -163,9 +163,27 @@ void Mosaic::writeImage()
     utils::write_to_file(QDir::currentPath() + "/POINTS.txt", str, false);
 }
 
-void Mosaic::loadImages()
+void Mosaic::readImages()
+{
+    QString out;
+    utils::read_from_file(":/Mosaic/images.txt", out, false);
+    QJsonObject json = utils::json_loads(out);
+
+    images = json["Images"].toArray();
+    imagesCount = images.size();
+
+    srand(time(NULL));
+    for(int i = 0; i < imagesCount; i++){
+        vec.push_back(i);
+    }
+    std::random_shuffle(vec.begin(), vec.end());
+}
+
+void Mosaic::loadImage()
 {
     clearField(ui->fieldBig);
+    if(imagesCount == 0)
+        return;
     QJsonObject json = images[vec[step]].toObject();
     int c = 0;
     for (int i = 0; i < size; i++ ) {
@@ -180,7 +198,7 @@ void Mosaic::loadImages()
 void Mosaic::on_startBt_clicked()
 {
     step = 0;
-    loadImages();
+    loadImage();
     ui->readyBt->setEnabled(true);
     ui->startBt->setEnabled(false);
     ui->pauseBt->setEnabled(true);
@@ -190,9 +208,8 @@ void Mosaic::on_startBt_clicked()
 
 void Mosaic::clearField(QTableWidget *table)
 {
-
-    for (int i = 0; i < size; i++ ) {
-        for (int j = 0; j < size; j++ ) {
+    for (int i = 0; i < table->rowCount(); i++ ) {
+        for (int j = 0; j < table->columnCount(); j++ ) {
             table->item(i, j)->setBackground(QBrush(QColor(255,255,255)));
         }
     }
@@ -294,4 +311,14 @@ void Mosaic::fireworkAudio()
     player->setPlaylist(playlist);
     player->setVolume(10);
     player->play();
+}
+
+QColor Mosaic::getCurrentColor()
+{
+    return currentColor;
+}
+
+bool Mosaic::gameNotOnPause()
+{
+    return timer->isActive();
 }
