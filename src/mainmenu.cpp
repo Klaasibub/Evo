@@ -109,8 +109,8 @@ void MainMenu::about()
         break;
     }
     QString about;
-    // utils::read_from_file(aboutPath, about, false);
-    ui->aboutGameText->setMarkdown(aboutPath);
+    utils::read_from_file(aboutPath, about, false);
+    ui->aboutGameText->setHtml(aboutPath);
 }
 
 void MainMenu::fillTable(QTableWidget *table, QString filename)
