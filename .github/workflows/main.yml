@@ -1,0 +1,47 @@
+name: CMake
+
+on: [push]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2.10.0
+      with:
+        host: 'windows'
+        arch: 'win64_msvc2017_64'
+        tools: 'tools_ifw,4.0,qt.tools.ifw.40 tools_qtcreator,4.13.2-0,qt.tools.qtcreator'
+        extra: '--external 7z'
+    
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+    - name: Build
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: cmake.exe --build . --config $BUILD_TYPE
+    
+    - name: Create Installer
+      shell: bash
+      run: |
+        cd InnoSetup 
+        echo "#define Qt5_Dir \"$Qt5_Dir\"" > script.iss
+        cat EvoScript.iss >> script.iss 
+        ISCC.exe script.iss
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: setup.exe
+        path: D:/a/Evo/installer

@@ -10,6 +10,8 @@
 
 int main(int argc, char** argv)
 {
+    QApplication a(argc, argv);
+
     int status = 0;
 
     QObject *tests[]
@@ -28,6 +30,7 @@ int main(int argc, char** argv)
     for(auto test : tests)
         delete test;
 
+    a.exec();
     return status;
 }
 
