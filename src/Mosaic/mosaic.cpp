@@ -64,17 +64,6 @@ Mosaic::Mosaic(QWidget *parent) :
 
     readImages();
 
-<<<<<<< HEAD
-    images = json["Images"].toArray();
-    imagesCount = images.size();
-
-    srand(time(NULL));
-    for(int i = 0; i < imagesCount; i++){
-        vec.push_back(i);
-    }
-    std::random_shuffle(vec.begin(), vec.end());
-=======
->>>>>>> c42fd15eb473271b861364ee8154280d79193880
     timer = new QTimer;
     timer->setInterval(1000);
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTime()));

@@ -6,16 +6,12 @@
 #include <ctime>
 #include <algorithm>
 #include <QDir>
-#include <QTextCodec>
 #include <QInputDialog>
 #include <QLineEdit>
+#include <QTextCodec>
 
 const QString Hangman::recordsPath = "static/records_hangman.csv";
 const QString Hangman::aboutPath = ":/Hangman/about.txt";
-
-QStringList words;
-int current_word, mistakes, score, score_m;
-QString word_on_screen;
 
 Hangman::Hangman(QWidget *parent) :
     QDialog(parent),
@@ -23,19 +19,14 @@ Hangman::Hangman(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QTextCodec* codec = QTextCodec::codecForName("UTF-8");
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForLocale(codec);
 
     setWindowFlags(Qt::WindowSystemMenuHint | Qt::WindowMinimizeButtonHint | Qt::WindowMaximizeButtonHint
                    | windowFlags() & ~Qt::WindowContextHelpButtonHint);
-    QString out;
-    utils::read_from_file(":/Hangman/words.txt", out, false);
-    words = out.split("\n");
-    if(words.size() && words[words.size()-1] == "")
-        words.pop_back();
 
-    srand(time(NULL));
-    std::random_shuffle(words.begin(), words.end());
+    setStartData(":/Hangman/words.txt");
+    setStyle(":/Hangman/Style_Hangman.css");
 
     for(auto bt: {ui->buttonA, ui->buttonB, ui->buttonV, ui->buttonG, ui->buttonD, ui->buttonYE,
         ui->buttonYE1, ui->buttonZH, ui->buttonZ, ui->buttonI, ui->buttonYI, ui->buttonK, ui->buttonL,
@@ -43,22 +34,14 @@ Hangman::Hangman(QWidget *parent) :
         ui->buttonU, ui->buttonF, ui->buttonKH, ui->buttonTC, ui->buttonCH, ui->buttonSH, ui->buttonSHCH,
         ui->buttonTv, ui->buttonY, ui->buttonMya, ui->buttonE, ui->buttonYU, ui->ButtonYA})
         connect(bt, SIGNAL(clicked()), this, SLOT(onLetterClicked()));
-    score = 0;
-    current_word = 0;
-    score_m = 1;
 
     startPol();
 
-    ui->label_score->setText("Текущий результат: " + QString::number(score));
-
-    QString style;
-    utils::read_from_file(":/Hangman/Style_Hangman.css", style, false);
-    setStyleSheet(style);
+    ui->label_score->setText("Текущий результат: " + QString::number(score));  
 }
 
 Hangman::~Hangman()
 {
-
     delete ui;
 }
 
@@ -128,7 +111,6 @@ void Hangman:: startPol(){
     word_on_screen.replace(QRegExp("."), "?");
     ui->label_word->setText(word_on_screen);
 
-    mistakes = -1;
 
     ui -> label_hangman -> setStyleSheet("");
 
@@ -147,33 +129,7 @@ void Hangman:: startPol(){
 
 void Hangman::on_pushButton_show_clicked()
 {
-    int score1 = score;
-    QVector<int> vec;
-
-    for (int i = 0; i<words[current_word].length(); i++){
-        if (word_on_screen[i] == "?"){
-            vec.push_back(i);
-        }
-    }
-    if (vec.size() == 0){
-        return;
-    }
-    std::random_shuffle(vec.begin(), vec.end());
-    int n = vec[0];
-
-    for (int i = 0; i < ui->gridLayout->count(); ++i){
-          QWidget* widget = ui->gridLayout->itemAt(i)->widget();
-          if (widget != NULL)
-          {
-            QPushButton* item = qobject_cast<QPushButton*>(widget);
-            if(words[current_word][n] == item->text()){
-                item->click();
-            }
-          }
-        }
-
-    score = score1;
-    score_m = 1;
+    showLetter();
     ui->label_score->setText("Текущий результат: " + QString::number(score));
     ui ->pushButton_show->setEnabled(false);
 }
@@ -234,4 +190,55 @@ void Hangman::check_records(){
 
 bool Hangman::comp (QPair <QString, int > a, QPair <QString, int > b) {
   return a.second > b.second;
+}
+
+void Hangman::setStartData(QString s){
+    current_word = 0;
+    mistakes = -1;
+    score_m = 1;
+    score = 0;
+
+    QString out;
+    utils::read_from_file(s, out, false);
+    words = out.split("\n");
+    if(words.size() && words[words.size()-1] == "")
+        words.pop_back();
+
+    srand(time(NULL));
+    std::random_shuffle(words.begin(), words.end());
+}
+
+void Hangman::setStyle(QString s){
+    QString style;
+    utils::read_from_file(s, style, false);
+    setStyleSheet(style);
+}
+
+void Hangman::showLetter(){
+    int score1 = score;
+    QVector<int> vec;
+
+    for (int i = 0; i<words[current_word].length(); i++){
+        if (word_on_screen[i] == "?"){
+            vec.push_back(i);
+        }
+    }
+    if (vec.size() == 0){
+        return;
+    }
+    std::random_shuffle(vec.begin(), vec.end());
+    int n = vec[0];
+
+    for (int i = 0; i < ui->gridLayout->count(); ++i){
+            QWidget* widget = ui->gridLayout->itemAt(i)->widget();
+            if (widget != NULL)
+            {
+                QPushButton* item = qobject_cast<QPushButton*>(widget);
+                if(words[current_word][n] == item->text()){
+                    item->click();
+                }
+            }
+    }
+    score = score1;
+    score_m = 1;
 }

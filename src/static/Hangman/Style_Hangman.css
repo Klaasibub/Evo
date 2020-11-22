@@ -40,3 +40,7 @@ QPushButton::hover{
     background-color: #6D87FD;
     color: white;
 }
+
+#helpBT QPushButton::disabled{
+    background: #2C50F1;
+}
