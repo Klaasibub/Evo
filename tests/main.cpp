@@ -30,7 +30,6 @@ int main(int argc, char** argv)
     for(auto test : tests)
         delete test;
 
-    a.exec();
     return status;
 }
 
