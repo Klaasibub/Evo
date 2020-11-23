@@ -1,0 +1,82 @@
+QObject {
+    background: #3f0e40;
+    color: #b3a0b4;
+}
+
+QAbstractItemView, QAbstractScrollArea {
+    background-color: #350d36;
+    color: #fffff8;
+}
+
+QHeaderView::section {
+    background-color: #646464;
+    padding: 4px;
+    border: 1px solid #fffff8;
+    font-size: 14pt;
+}
+
+QTableWidget {
+    gridline-color: #fffff8;
+    font-size: 12pt;
+}
+
+QTableWidget QTableCornerButton::section {
+    background-color: #646464;
+    border: 1px solid #fffff8;
+}
+
+#gameLabels {
+    border-bottom: 0px;
+    border-radius: 4px;
+}
+
+#gameLabels QPushButton, QLabel{
+    color: #f8fbfc;
+    background: #532753;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+    font-size: 16px;
+    border: 2px solid #350d36;
+}
+
+#gameLabels QLabel{
+    padding: 1.1em 3.5em;
+}
+
+#gameLabels QPushButton{
+    text-align: center;
+    height: 75px;
+    width: 150px;
+}
+
+#gameLabels QPushButton::hover{
+    background-color: #350d36;
+    color: white;
+}
+
+#allGamesLabel{
+    border-top-right-radius: 30;
+    padding-left: 1em;
+}
+
+#memoryGameBt{
+    border-bottom-left-radius: 30px;
+}
+
+#playBt{
+    color: #f8fbfc;
+    text-align: center;
+    height: 75px;
+    width: 150px;
+    background: #532753;
+    border-top: 1px solid rgba(0, 0, 0, .05);
+    font-size: 20px;
+    border: 2px solid #350d36;
+
+    border-top-right-radius: 30;
+    border-bottom-left-radius: 30px;
+}
+
+#playBt::hover{
+    background-color: #350d36;
+    color: white;
+}

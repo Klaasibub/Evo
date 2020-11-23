@@ -1,0 +1,26 @@
+QObject {
+    background: #9FB1FF;
+    color: #FFFFFF;
+
+}
+
+#label_word {
+    color: #FFFFFF;
+    padding: 1.1em 3.5em;
+    background: #9FB1FF;
+    font-size: 18px;
+    border: 2px solid #9FB1FF;
+    text-align:  center;
+}
+#label_score{
+color: #FFFFFF;
+padding: 1.1em 3.5em;
+background: #9FB1FF;
+font-size: 18px;
+border: 2px solid #9FB1FF;
+text-align:  center;
+}
+
+QObject:disabled{
+background: #FFFFFF;
+}
