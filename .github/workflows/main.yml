@@ -10,11 +10,19 @@ jobs:
     runs-on: windows-latest
 
     steps:
+    - name: Cache Qt
+      id: cache-qt
+      uses: actions/cache@v1
+      with:
+        path: ../Qt
+        key: ${{ runner.os }}-QtCache
+
     - uses: actions/checkout@v2
 
     - name: Install Qt
       uses: jurplel/install-qt-action@v2.10.0
       with:
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
         host: 'windows'
         arch: 'win64_msvc2017_64'
         tools: 'tools_ifw,4.0,qt.tools.ifw.40 tools_qtcreator,4.13.2-0,qt.tools.qtcreator'
@@ -32,7 +40,7 @@ jobs:
       working-directory: ${{runner.workspace}}/build
       shell: bash
       run: cmake.exe --build . --config $BUILD_TYPE
-    
+  
     - name: Create Installer
       shell: bash
       run: |
