@@ -35,6 +35,7 @@ CMakeLists.txt.user
 *.rc
 /.qmake.cache
 /.qmake.stash
+*.vscode
 
 # qtcreator generated files
 *.pro.user*
