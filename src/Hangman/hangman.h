@@ -21,6 +21,8 @@ public:
     static const QString recordsPath;
     /// Путь до файла с информацией об игре.
     static const QString aboutPath;
+    /// Путь до файла с информацией о предыдущей игре.
+    static const QString previousGame;
     /// Конструктор класса Виселица.
     explicit Hangman(QWidget *parent = nullptr);
     /// Деструктор класса Виселица.
@@ -89,6 +91,14 @@ private slots:
      * \return возвращает true если первыый параметр больше второго.
      */
     static bool comp(QPair <QString, int > a, QPair <QString, int > b);
+    /*!
+     * \brief Сохранение данных текущей игры.
+     */
+    void saveGame();
+    /*!
+     * \brief Загрузить предыдущую игру.
+     */
+    void Hangman::loadGame();
 
 private:
     Ui::Hangman *ui;
