@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['loadgamepage_61',['loadGamePage',['../class_main_menu.html#a00268de962d92f6d2cb4b0214a90d14e',1,'MainMenu']]],
-  ['loadimage_62',['loadImage',['../class_mosaic.html#a6aea031457e6c9e959d4f375112010c5',1,'Mosaic']]],
-  ['loadstyle_63',['loadStyle',['../class_main_menu.html#a9e6dc79f324328b49d40ac2f5d5f14b5',1,'MainMenu::loadStyle()'],['../class_mosaic.html#a48dbf08c7d5692bb3d09c7bcf8a4d02d',1,'Mosaic::loadStyle()']]]
+  ['json_5fdumps_68',['json_dumps',['../namespaceutils.html#a0d9cc9498b6ad90319ce8b4f2ab18340',1,'utils']]],
+  ['json_5floads_69',['json_loads',['../namespaceutils.html#a770259797cdb54a7d1c5c64257070d9e',1,'utils']]],
+  ['json_5fvalidation_70',['json_validation',['../namespaceutils.html#af87827635164b8708fe3cb03cbd8535d',1,'utils']]]
 ];

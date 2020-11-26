@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['quiz_30',['Quiz',['../class_quiz.html',1,'']]],
-  ['quiz_5fquestions_31',['quiz_questions',['../namespacejson__schema.html#a41c915bd7355ea6174e44c7dca2e1c0c',1,'json_schema']]]
+  ['previousgame_31',['previousGame',['../class_hangman.html#afc81d2b9638bedefa96c9b361c413dfe',1,'Hangman']]]
 ];

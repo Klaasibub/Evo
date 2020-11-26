@@ -75,34 +75,59 @@ $(function() {
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">namespace </span>Ui {</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">class </span><a class="code" href="class_hangman.html">Hangman</a>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;}</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_hangman.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_hangman.html">Hangman</a> : <span class="keyword">public</span> QDialog</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;{</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString recordsPath, aboutPath;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_hangman.html">Hangman</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    ~<a class="code" href="class_hangman.html">Hangman</a>();</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">namespace </span>Ui {</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">class </span><a class="code" href="class_hangman.html">Hangman</a>;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;}</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_hangman.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_hangman.html">Hangman</a> : <span class="keyword">public</span> QDialog</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    Q_OBJECT</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">private</span> slots:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordtype">void</span> onLetterClicked();</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">void</span> showPic(<span class="keywordtype">int</span>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">void</span> startPol();</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> on_pushButton_show_clicked();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> on_pushButton_second_clicked();</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> comp(QPair &lt;QString, int &gt; a, QPair &lt;QString, int &gt; b);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordtype">void</span> check_records();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    Ui::Hangman *ui;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif // HANGMAN_H</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_hangman.html#ae34eb83b158f8e9d9c3fcefa2bb44355">   21</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="class_hangman.html#ae34eb83b158f8e9d9c3fcefa2bb44355">recordsPath</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="class_hangman.html#a10336888c48fab59b88530778b6c1141">   23</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="class_hangman.html#a10336888c48fab59b88530778b6c1141">aboutPath</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_hangman.html#afc81d2b9638bedefa96c9b361c413dfe">   25</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="class_hangman.html#afc81d2b9638bedefa96c9b361c413dfe">previousGame</a>;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_hangman.html#aa612948aeefe72f1fd3a8a3fff74c8cc">Hangman</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="class_hangman.html#a353657d470c500f75c6628cdd119e272">~Hangman</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hangman.html#a11cdb6deb329110dc6f461ff393e715d">check_records</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hangman.html#ae0ec97729d8f4b39e65e316c9cd3e5a0">setStartData</a>(QString);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hangman.html#a12efc0d0f75f17faa24cf2e00fa6898c">setStyle</a>(QString);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hangman.html#ac01c784eef38307b8d68979744a0eba8">showPic</a>(<span class="keywordtype">int</span> p);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hangman.html#a23e8a98374a9699e2d4e8694470c59f6">startPol</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_hangman.html#aee4d661c592cfa650ae29abf4e99466c">showLetter</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> onLetterClicked();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> on_pushButton_show_clicked();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> on_pushButton_second_clicked();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> comp(QPair &lt;QString, int &gt; a, QPair &lt;QString, int &gt; b);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> saveGame();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    <span class="keywordtype">void</span> Hangman::loadGame();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    Ui::Hangman *ui;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    QStringList words;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    QString word_on_screen;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <span class="keywordtype">int</span> score;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <span class="keywordtype">int</span> score_m;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    <span class="keywordtype">int</span> mistakes;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">int</span> current_word;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;};</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#endif // HANGMAN_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_hangman_html"><div class="ttname"><a href="class_hangman.html">Hangman</a></div><div class="ttdef"><b>Definition:</b> hangman.h:11</div></div>
+<div class="ttc" id="aclass_hangman_html_aee4d661c592cfa650ae29abf4e99466c"><div class="ttname"><a href="class_hangman.html#aee4d661c592cfa650ae29abf4e99466c">Hangman::showLetter</a></div><div class="ttdeci">void showLetter()</div><div class="ttdoc">Отображение буквы на поле при использовании подсказки &quot;Показать букву&quot;.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:208</div></div>
+<div class="ttc" id="aclass_hangman_html_ae34eb83b158f8e9d9c3fcefa2bb44355"><div class="ttname"><a href="class_hangman.html#ae34eb83b158f8e9d9c3fcefa2bb44355">Hangman::recordsPath</a></div><div class="ttdeci">static const QString recordsPath</div><div class="ttdoc">Путь до файла содержащего информацию о рекордах.</div><div class="ttdef"><b>Definition:</b> hangman.h:21</div></div>
+<div class="ttc" id="aclass_hangman_html_aa612948aeefe72f1fd3a8a3fff74c8cc"><div class="ttname"><a href="class_hangman.html#aa612948aeefe72f1fd3a8a3fff74c8cc">Hangman::Hangman</a></div><div class="ttdeci">Hangman(QWidget *parent=nullptr)</div><div class="ttdoc">Конструктор класса Виселица.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:18</div></div>
+<div class="ttc" id="aclass_hangman_html_a10336888c48fab59b88530778b6c1141"><div class="ttname"><a href="class_hangman.html#a10336888c48fab59b88530778b6c1141">Hangman::aboutPath</a></div><div class="ttdeci">static const QString aboutPath</div><div class="ttdoc">Путь до файла с информацией об игре.</div><div class="ttdef"><b>Definition:</b> hangman.h:23</div></div>
+<div class="ttc" id="aclass_hangman_html_ae0ec97729d8f4b39e65e316c9cd3e5a0"><div class="ttname"><a href="class_hangman.html#ae0ec97729d8f4b39e65e316c9cd3e5a0">Hangman::setStartData</a></div><div class="ttdeci">void setStartData(QString)</div><div class="ttdoc">Присваивание переменным класса начальных значений.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:186</div></div>
+<div class="ttc" id="aclass_hangman_html_a23e8a98374a9699e2d4e8694470c59f6"><div class="ttname"><a href="class_hangman.html#a23e8a98374a9699e2d4e8694470c59f6">Hangman::startPol</a></div><div class="ttdeci">void startPol()</div><div class="ttdoc">Отображение данных на поле в при начале новой игры или отображении нового слова.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:110</div></div>
+<div class="ttc" id="aclass_hangman_html"><div class="ttname"><a href="class_hangman.html">Hangman</a></div><div class="ttdoc">Модуль игры &quot;Висилица&quot;.</div><div class="ttdef"><b>Definition:</b> hangman.h:16</div></div>
+<div class="ttc" id="aclass_hangman_html_afc81d2b9638bedefa96c9b361c413dfe"><div class="ttname"><a href="class_hangman.html#afc81d2b9638bedefa96c9b361c413dfe">Hangman::previousGame</a></div><div class="ttdeci">static const QString previousGame</div><div class="ttdoc">Путь до файла с информацией о предыдущей игре.</div><div class="ttdef"><b>Definition:</b> hangman.h:25</div></div>
+<div class="ttc" id="aclass_hangman_html_a353657d470c500f75c6628cdd119e272"><div class="ttname"><a href="class_hangman.html#a353657d470c500f75c6628cdd119e272">Hangman::~Hangman</a></div><div class="ttdeci">~Hangman()</div><div class="ttdoc">Деструктор класса Виселица.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:48</div></div>
+<div class="ttc" id="aclass_hangman_html_ac01c784eef38307b8d68979744a0eba8"><div class="ttname"><a href="class_hangman.html#ac01c784eef38307b8d68979744a0eba8">Hangman::showPic</a></div><div class="ttdeci">void showPic(int p)</div><div class="ttdoc">Отображение картинки.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:103</div></div>
+<div class="ttc" id="aclass_hangman_html_a11cdb6deb329110dc6f461ff393e715d"><div class="ttname"><a href="class_hangman.html#a11cdb6deb329110dc6f461ff393e715d">Hangman::check_records</a></div><div class="ttdeci">void check_records()</div><div class="ttdoc">Проверка очков игрока на попадение в таблицу рекордов.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:140</div></div>
+<div class="ttc" id="aclass_hangman_html_a12efc0d0f75f17faa24cf2e00fa6898c"><div class="ttname"><a href="class_hangman.html#a12efc0d0f75f17faa24cf2e00fa6898c">Hangman::setStyle</a></div><div class="ttdeci">void setStyle(QString)</div><div class="ttdoc">Определение стиля для формы.</div><div class="ttdef"><b>Definition:</b> hangman.cpp:201</div></div>
 <!-- start footer part -->
 		<script src="custom.js"></script>
 	</body>
