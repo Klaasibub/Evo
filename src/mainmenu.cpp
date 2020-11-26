@@ -110,7 +110,9 @@ void MainMenu::about()
     }
     QString about;
     utils::read_from_file(aboutPath, about, false);
-    ui->aboutGameText->setHtml(aboutPath);
+
+    ui->aboutGameText->setHtml(about);
+
 }
 
 void MainMenu::fillTable(QTableWidget *table, QString filename)
@@ -211,5 +213,6 @@ void MainMenu::on_playBt_clicked()
     game->exec();
     loadGamePage();
     setVisible(true);
+    game->close();
     delete game;
 }
