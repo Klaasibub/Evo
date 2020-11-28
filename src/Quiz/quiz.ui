@@ -202,6 +202,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 127)</string>
            </property>
@@ -223,6 +228,11 @@
              <width>0</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 127)</string>
@@ -250,6 +260,11 @@
              <height>50</height>
             </size>
            </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 127)</string>
            </property>
@@ -271,6 +286,11 @@
              <width>0</width>
              <height>50</height>
             </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
            </property>
            <property name="styleSheet">
             <string notr="true">color: rgb(255, 255, 127)</string>
