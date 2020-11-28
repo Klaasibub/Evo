@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['maxquestions_115',['maxQuestions',['../class_quiz.html#ab8d886d84da9c77179acb48840836bbd',1,'Quiz']]]
+  ['previousgame_97',['previousGame',['../class_hangman.html#afc81d2b9638bedefa96c9b361c413dfe',1,'Hangman']]]
 ];

@@ -81,59 +81,45 @@ $(function() {
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">namespace </span>Ui {</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">class </span><a class="code" href="class_memory.html">Memory</a>;</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;}</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_memory.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_memory.html">Memory</a> : <span class="keyword">public</span> QDialog</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_memory.html#a6df41c8ef32e6dcf7c31cd68db8d6e68">   22</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="class_memory.html#a6df41c8ef32e6dcf7c31cd68db8d6e68">recordsPath</a>;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_memory.html#adbd91ae699d3524afb53b806fd74f0e6">   24</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="class_memory.html#adbd91ae699d3524afb53b806fd74f0e6">aboutPath</a>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="class_memory.html#a2b0194564609c914b86999c4fd1b4a1d">   26</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString <a class="code" href="class_memory.html#a2b0194564609c914b86999c4fd1b4a1d">savePath</a>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_memory.html#ad615d4a1f71a8af95c2d7ecf06fb0a33">Memory</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="class_memory.html#a0ffa9759ebbf103f11132a505b93bdc0">~Memory</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_memory.html#af2afe2d73d18d071f86f1c86090bbc17">save_game</a>();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="class_memory.html#a16507d95623761e9117f68159e5847bc">load_game</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_memory.html#a0c0901efbd6b0f5b23491a9ef217faa3">create_game</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_memory.html#af2455576e27e4d808828cf2d98562823">on_gameField_cellClicked</a>(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_memory.html#affab5de6020f25c66f3eba99ed6d7808">updateTime</a>();</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> width;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="keywordtype">int</span> height;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">int</span> amount_dont_opened;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    QTimer *tmr;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> last_wrong;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> game_time;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span>** game_field;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">bool</span>** open_cards;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    QPair&lt;int, int&gt; first_coord;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    QPair&lt;int, int&gt; second_coord;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">bool</span> is_first_card;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordtype">int</span> points;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    Ui::Memory *ui;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordtype">void</span> shuffle_cards();</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> fill_font();</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> fill_font_card(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordtype">void</span> check_records();</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> comp(QPair &lt;QString, int &gt; a, QPair &lt;QString, int &gt; b);</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> set_widget();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;};</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif // MEMORY_H</span></div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="class_memory.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_memory.html">Memory</a> : <span class="keyword">public</span> QDialog</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordtype">int</span> width, height;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> QString recordsPath, aboutPath;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_memory.html">Memory</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    ~<a class="code" href="class_memory.html">Memory</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span> slots:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">void</span> on_gameField_cellClicked(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordtype">void</span> updateTime();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">int</span> amount_dont_opened;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    QTimer *tmr;<span class="comment">//Таймер</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">int</span> last_wrong;<span class="comment">//время после ошибочно увиденной карты</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">int</span> game_time;<span class="comment">//игровое время</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">int</span>** game_field;<span class="comment">//игровое поле</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">bool</span>** open_cards;<span class="comment">//игровое поле</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    QPair&lt;int, int&gt; first_coord, second_coord;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">bool</span> is_first_card;<span class="comment">//проверка на номер хода игрока</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">int</span> points;<span class="comment">//количество очков</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    Ui::Memory *ui;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> shuffle_cards();<span class="comment">//случайное распределение карточек</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> fill_font();<span class="comment">//переворачивание всех карт рубашкой вверх</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> create_game(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> col);<span class="comment">//создание игрового поля данного размера</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> fill_font_card(<span class="keywordtype">int</span> row, <span class="keywordtype">int</span> column);<span class="comment">//Закрашивание определенной карты</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> check_records();</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">bool</span> comp(QPair &lt;QString, int &gt; a, QPair &lt;QString, int &gt; b);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> set_widget();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#endif // MEMORY_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_memory_html"><div class="ttname"><a href="class_memory.html">Memory</a></div><div class="ttdoc">Модуль игры Память.</div><div class="ttdef"><b>Definition:</b> memory.h:18</div></div>
-<div class="ttc" id="aclass_memory_html_affab5de6020f25c66f3eba99ed6d7808"><div class="ttname"><a href="class_memory.html#affab5de6020f25c66f3eba99ed6d7808">Memory::updateTime</a></div><div class="ttdeci">void updateTime()</div><div class="ttdoc">функция таймера Таймер, выполняется раз в time, увеличивает счетчик времени</div><div class="ttdef"><b>Definition:</b> memory.cpp:185</div></div>
-<div class="ttc" id="aclass_memory_html_af2455576e27e4d808828cf2d98562823"><div class="ttname"><a href="class_memory.html#af2455576e27e4d808828cf2d98562823">Memory::on_gameField_cellClicked</a></div><div class="ttdeci">void on_gameField_cellClicked(int row, int column)</div><div class="ttdoc">Обработчик нажатия на ячейку игрового поля</div><div class="ttdef"><b>Definition:</b> memory.cpp:129</div></div>
-<div class="ttc" id="aclass_memory_html_a2b0194564609c914b86999c4fd1b4a1d"><div class="ttname"><a href="class_memory.html#a2b0194564609c914b86999c4fd1b4a1d">Memory::savePath</a></div><div class="ttdeci">static const QString savePath</div><div class="ttdoc">Путь до файла содержащего сохраненную игру</div><div class="ttdef"><b>Definition:</b> memory.h:26</div></div>
-<div class="ttc" id="aclass_memory_html_a0c0901efbd6b0f5b23491a9ef217faa3"><div class="ttname"><a href="class_memory.html#a0c0901efbd6b0f5b23491a9ef217faa3">Memory::create_game</a></div><div class="ttdeci">void create_game(int row, int col)</div><div class="ttdoc">Создание игры</div><div class="ttdef"><b>Definition:</b> memory.cpp:114</div></div>
-<div class="ttc" id="aclass_memory_html_a0ffa9759ebbf103f11132a505b93bdc0"><div class="ttname"><a href="class_memory.html#a0ffa9759ebbf103f11132a505b93bdc0">Memory::~Memory</a></div><div class="ttdeci">~Memory()</div><div class="ttdoc">Деструктор класса память</div><div class="ttdef"><b>Definition:</b> memory.cpp:70</div></div>
-<div class="ttc" id="aclass_memory_html_af2afe2d73d18d071f86f1c86090bbc17"><div class="ttname"><a href="class_memory.html#af2afe2d73d18d071f86f1c86090bbc17">Memory::save_game</a></div><div class="ttdeci">int save_game()</div><div class="ttdoc">Сохранение игры</div><div class="ttdef"><b>Definition:</b> memory.cpp:246</div></div>
-<div class="ttc" id="aclass_memory_html_a16507d95623761e9117f68159e5847bc"><div class="ttname"><a href="class_memory.html#a16507d95623761e9117f68159e5847bc">Memory::load_game</a></div><div class="ttdeci">int load_game()</div><div class="ttdoc">Загрузка текущей игры</div><div class="ttdef"><b>Definition:</b> memory.cpp:284</div></div>
-<div class="ttc" id="aclass_memory_html_a6df41c8ef32e6dcf7c31cd68db8d6e68"><div class="ttname"><a href="class_memory.html#a6df41c8ef32e6dcf7c31cd68db8d6e68">Memory::recordsPath</a></div><div class="ttdeci">static const QString recordsPath</div><div class="ttdoc">Путь до файла с рекордами</div><div class="ttdef"><b>Definition:</b> memory.h:22</div></div>
-<div class="ttc" id="aclass_memory_html_adbd91ae699d3524afb53b806fd74f0e6"><div class="ttname"><a href="class_memory.html#adbd91ae699d3524afb53b806fd74f0e6">Memory::aboutPath</a></div><div class="ttdeci">static const QString aboutPath</div><div class="ttdoc">Путь до файла, содержащего информацию об игре</div><div class="ttdef"><b>Definition:</b> memory.h:24</div></div>
-<div class="ttc" id="aclass_memory_html_ad615d4a1f71a8af95c2d7ecf06fb0a33"><div class="ttname"><a href="class_memory.html#ad615d4a1f71a8af95c2d7ecf06fb0a33">Memory::Memory</a></div><div class="ttdeci">Memory(QWidget *parent=nullptr)</div><div class="ttdoc">Конструктор класса Память</div><div class="ttdef"><b>Definition:</b> memory.cpp:21</div></div>
+<div class="ttc" id="aclass_memory_html"><div class="ttname"><a href="class_memory.html">Memory</a></div><div class="ttdef"><b>Definition:</b> memory.h:14</div></div>
 <!-- start footer part -->
 		<script src="custom.js"></script>
 	</body>

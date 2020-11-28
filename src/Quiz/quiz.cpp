@@ -29,7 +29,10 @@ Quiz::Quiz(QWidget *parent) :
         connect(item, SIGNAL(clicked()),this,SLOT(onRbClicked()));
     initNewGame();
 
+
     QString style;
+    //utils::read_from_file(":/static/Hangman/Style_Quiz.css", style, false);
+    //setStyleSheet(style);
 
 }
 
@@ -69,6 +72,7 @@ void Quiz::initNewGame(){
     fifty=true;
     hundred=true;
     chance=false;
+    isUsedChanse=false;
     gameOver=false;
     fillNumberQuestions();
     loadQuestionByNum(question);
@@ -116,7 +120,7 @@ void Quiz::on_Fifty_clicked()
 
 void Quiz::on_Chance_clicked()
 {
-    chance = true;
+    chance = isUsedChanse = true;
     ui->Chance->setVisible(false);
 }
 
@@ -170,6 +174,7 @@ void Quiz::onRbClicked()
         }
         else{
             question++;
+            rb->setStyleSheet("color: black");
             ui->listWidget_2->item(question)->setBackground(QBrush(QColor(0,255,0)));
             loadQuestionByNum(question);
         }

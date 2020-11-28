@@ -9,125 +9,40 @@
 namespace Ui {
 class Memory;
 }
-/*!
- * \brief Модуль игры Память.
- *
- * Этот модуль содержит основную логику игры "Память".
- */
+
 class Memory : public QDialog
 {
     Q_OBJECT
 public:
-    ///Путь до файла с рекордами
-    static const QString recordsPath;
-    ///Путь до файла, содержащего информацию об игре
-    static const QString aboutPath;
-    ///Путь до файла содержащего сохраненную игру
-    static const QString savePath;
-    ///Конструктор класса Память
+    int width, height;
+    static const QString recordsPath, aboutPath;
     explicit Memory(QWidget *parent = nullptr);
-    ///Деструктор класса память
     ~Memory();
-    /*!
-     * \brief Сохранение игры
-     *
-     * \return - 0 при удачном сохранении, иначе ошибка
-     */
-    int save_game();
-    /*!
-     * \brief Загрузка текущей игры
-     *
-     * \return - 0 при удачной загрузке, иначе ошибка
-     */
-    int load_game();
-    /*!
-     * \brief Создание игры
-     *
-     * Создание игрового поля заданного размера со всеми входными данными
-     * \param row - Количество строк
-     * \param col - Количество столбцов
-     */
-    void create_game(int row, int col);
 
-public slots:
-    /*!
-     * \brief Обработчик нажатия на ячейку игрового поля
-     *
-     * \param row - индекс нажатой строки
-     * \param column - индекс нажатого столбца
-     */
+private slots:
     void on_gameField_cellClicked(int row, int column);
-    /*!
-     * \brief функция таймера
-     * Таймер, выполняется раз в time, увеличивает счетчик времени
-     */
     void updateTime();
 
 private:
-    ///Ширина игрового поля
-    int width;
-    ///Высота игрового поля
-    int height;
-    ///Счетчик оставшихся неоткрытыми игровых полей
     int amount_dont_opened;
-    ///Указатель на таймер
-    QTimer *tmr;
-    ///Время после ошибочно увиденной карты
-    int last_wrong;
-    ///Игровое время
-    int game_time;
-    ///Игровое поле
-    int** game_field;
-    ///Игровое поле
-    bool** open_cards;
-    ///Координаты первой карты из пары выбранных
-    QPair<int, int> first_coord;
-    ///Координаты второй карты из пары выбранных
-    QPair<int, int> second_coord;
-    ///Проверка номера выбираемой карты(первая или вторая)
-    bool is_first_card;
-    ///Количество очков
-    int points;
+    QTimer *tmr;//Таймер
+    int last_wrong;//время после ошибочно увиденной карты
+    int game_time;//игровое время
+    int** game_field;//игровое поле
+    bool** open_cards;//игровое поле
+    QPair<int, int> first_coord, second_coord;
+    bool is_first_card;//проверка на номер хода игрока
+    int points;//количество очков
     Ui::Memory *ui;
-    /*!
-     * \brief случайное раскладывание карт по игровому полю
-     *
-     * Функция случайно распределяет по полю N пар карт
-     */
-    void shuffle_cards();
-    /*!
-     * \brief переворачивание всех карт рубашкой вверх
-     *
-     * Закрашивание полей фоновым рисунком
-     */
-    void fill_font();
-    /*!
-     * \brief Открывание карты
-     *
-     * Закрашивание карты соответствующим ей изображением
-     * \param row - Индекс строки
-     * \param column - Индекс столбца
-     */
-    void fill_font_card(int row, int column);
-    /*!
-     * \brief Проверка рекорда текущей игры
-     *
-     * Просмотр сущствующих рекордов и сравнение с текущим счетом, получение новой таблицы рекордов
-     */
+    void shuffle_cards();//случайное распределение карточек
+    void fill_font();//переворачивание всех карт рубашкой вверх
+    void create_game(int row, int col);//создание игрового поля данного размера
+    void fill_font_card(int row, int column);//Закрашивание определенной карты
+
     void check_records();
-    /*!
-     * \brief Лексиграфическое сравнение 2-х строчек
-     *
-     * \param a - Первая строка
-     * \param b - Вторая строка
-     * \return - Логическая переменная a>b
-     */
     static bool comp(QPair <QString, int > a, QPair <QString, int > b);
-    /*!
-     * \brief Установка параметров игрового окна
-     */
+
     void set_widget();
 };
 
 #endif // MEMORY_H
-
