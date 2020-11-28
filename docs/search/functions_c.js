@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['write_5fto_5ffile_90',['write_to_file',['../namespaceutils.html#a294e1a2d90c5a43de57b36921c27b05e',1,'utils']]],
-  ['writeimage_91',['writeImage',['../class_mosaic.html#a4990b424cf142ed5cdc0c2663aa1e4bb',1,'Mosaic']]]
+  ['updatetime_102',['updateTime',['../class_memory.html#affab5de6020f25c66f3eba99ed6d7808',1,'Memory']]]
 ];

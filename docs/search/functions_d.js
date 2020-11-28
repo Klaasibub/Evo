@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_7ehangman_92',['~Hangman',['../class_hangman.html#a353657d470c500f75c6628cdd119e272',1,'Hangman']]],
-  ['_7emainmenu_93',['~MainMenu',['../class_main_menu.html#a0a19ddba3ac52bf39c09b579171c98f2',1,'MainMenu']]],
-  ['_7emosaic_94',['~Mosaic',['../class_mosaic.html#a5c8695f8223322c90b4c883c2aee9653',1,'Mosaic']]]
+  ['write_5fto_5ffile_103',['write_to_file',['../namespaceutils.html#a294e1a2d90c5a43de57b36921c27b05e',1,'utils']]],
+  ['writeimage_104',['writeImage',['../class_mosaic.html#a4990b424cf142ed5cdc0c2663aa1e4bb',1,'Mosaic']]]
 ];
