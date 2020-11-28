@@ -6,5 +6,6 @@ var searchData=
   ['checkupdate_8',['checkUpdate',['../class_main_menu.html#a8217126771188d8cd28d1abcfa00d832',1,'MainMenu']]],
   ['clearfield_9',['clearField',['../class_mosaic.html#a27cd3fb48857360baf78081e090bbef4',1,'Mosaic']]],
   ['comp_10',['comp',['../class_quiz.html#a4192dd81d6fa7675e83b0378864067b2',1,'Quiz']]],
-  ['comparetables_11',['compareTables',['../class_mosaic.html#a95d30130c54d3027a59e2602fc9a823e',1,'Mosaic']]]
+  ['comparetables_11',['compareTables',['../class_mosaic.html#a95d30130c54d3027a59e2602fc9a823e',1,'Mosaic']]],
+  ['create_5fgame_12',['create_game',['../class_memory.html#a0c0901efbd6b0f5b23491a9ef217faa3',1,'Memory']]]
 ];
