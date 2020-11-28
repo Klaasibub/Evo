@@ -1,9 +1,7 @@
 var searchData=
 [
-  ['on_5ffieldbig_5fcellclicked_25',['on_fieldBig_cellClicked',['../class_mosaic.html#aebef558d131062484f53c5e516093559',1,'Mosaic']]],
-  ['on_5fpausebt_5fclicked_26',['on_pauseBt_clicked',['../class_mosaic.html#a252358c98f089f24882e9e5d6d747ee7',1,'Mosaic']]],
-  ['on_5fplaybt_5fclicked_27',['on_playBt_clicked',['../class_main_menu.html#a9c53f5a53ae15f8721f26b2243b692a7',1,'MainMenu']]],
-  ['on_5frestartbt_5fclicked_28',['on_restartBt_clicked',['../class_mosaic.html#a58ffb9a1e9c8a8b74e690819e8e3445a',1,'Mosaic']]],
-  ['on_5fstartbt_5fclicked_29',['on_startBt_clicked',['../class_mosaic.html#aedcb007642477fe9d446b47a078c7f3e',1,'Mosaic']]],
-  ['oncolorbtclicked_30',['onColorBtClicked',['../class_mosaic.html#ab08eadae3c3e0cdad79817678489a55c',1,'Mosaic']]]
+  ['loadgamepage_22',['loadGamePage',['../class_main_menu.html#a00268de962d92f6d2cb4b0214a90d14e',1,'MainMenu']]],
+  ['loadimage_23',['loadImage',['../class_mosaic.html#a6aea031457e6c9e959d4f375112010c5',1,'Mosaic']]],
+  ['loadquestionbynum_24',['loadQuestionByNum',['../class_quiz.html#a338a2316896136064e102189cb2740e6',1,'Quiz']]],
+  ['loadstyle_25',['loadStyle',['../class_main_menu.html#a9e6dc79f324328b49d40ac2f5d5f14b5',1,'MainMenu::loadStyle()'],['../class_mosaic.html#a48dbf08c7d5692bb3d09c7bcf8a4d02d',1,'Mosaic::loadStyle()'],['../class_quiz.html#a12823b88f6b55b476279f611ea00ce8b',1,'Quiz::loadStyle()']]]
 ];

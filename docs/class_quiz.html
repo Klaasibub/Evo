@@ -64,12 +64,18 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_quiz-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Quiz Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>модуль игры Викторина  
+ <a href="class_quiz.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="quiz_8h_source.html">quiz.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Quiz:</div>
 <div class="dyncontent">
@@ -80,21 +86,145 @@ Inheritance diagram for Quiz:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a38db83f6e27dc75169e80f989cbeab5e"><td class="memItemLeft" align="right" valign="top"><a id="a38db83f6e27dc75169e80f989cbeab5e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Quiz</b> (QWidget *parent=nullptr)</td></tr>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a38db83f6e27dc75169e80f989cbeab5e">Quiz</a> (QWidget *parent=nullptr)</td></tr>
+<tr class="memdesc:a38db83f6e27dc75169e80f989cbeab5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Конструктор класса Викторина. <br /></td></tr>
 <tr class="separator:a38db83f6e27dc75169e80f989cbeab5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcdf98dce1ad90cb17580127c0367673"><td class="memItemLeft" align="right" valign="top"><a id="adcdf98dce1ad90cb17580127c0367673"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#adcdf98dce1ad90cb17580127c0367673">~Quiz</a> ()</td></tr>
+<tr class="memdesc:adcdf98dce1ad90cb17580127c0367673"><td class="mdescLeft">&#160;</td><td class="mdescRight">Деструктор класса Викторина. <br /></td></tr>
+<tr class="separator:adcdf98dce1ad90cb17580127c0367673"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e32ef62813e80c638d9b9396d54ff9d"><td class="memItemLeft" align="right" valign="top"><a id="a3e32ef62813e80c638d9b9396d54ff9d"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a3e32ef62813e80c638d9b9396d54ff9d">fillNumberQuestions</a> ()</td></tr>
+<tr class="memdesc:a3e32ef62813e80c638d9b9396d54ff9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Заполнение списка вопросов из файла <br /></td></tr>
+<tr class="separator:a3e32ef62813e80c638d9b9396d54ff9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a338a2316896136064e102189cb2740e6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a338a2316896136064e102189cb2740e6">loadQuestionByNum</a> (int num_question)</td></tr>
+<tr class="memdesc:a338a2316896136064e102189cb2740e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка вопросов на игровое поле  <a href="class_quiz.html#a338a2316896136064e102189cb2740e6">More...</a><br /></td></tr>
+<tr class="separator:a338a2316896136064e102189cb2740e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c6fbe68fb1ee0c5f4b0399e073b437f"><td class="memItemLeft" align="right" valign="top"><a id="a7c6fbe68fb1ee0c5f4b0399e073b437f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a7c6fbe68fb1ee0c5f4b0399e073b437f">initNewGame</a> ()</td></tr>
+<tr class="memdesc:a7c6fbe68fb1ee0c5f4b0399e073b437f"><td class="mdescLeft">&#160;</td><td class="mdescRight">инициализация Новой игры с обновлением всех параметров <br /></td></tr>
+<tr class="separator:a7c6fbe68fb1ee0c5f4b0399e073b437f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12823b88f6b55b476279f611ea00ce8b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a12823b88f6b55b476279f611ea00ce8b">loadStyle</a> ()</td></tr>
+<tr class="memdesc:a12823b88f6b55b476279f611ea00ce8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Загрузка стилей.  <a href="class_quiz.html#a12823b88f6b55b476279f611ea00ce8b">More...</a><br /></td></tr>
+<tr class="separator:a12823b88f6b55b476279f611ea00ce8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a4192dd81d6fa7675e83b0378864067b2"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a4192dd81d6fa7675e83b0378864067b2">comp</a> (QPair&lt; QString, int &gt; a, QPair&lt; QString, int &gt; b)</td></tr>
+<tr class="memdesc:a4192dd81d6fa7675e83b0378864067b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Функция сравнения двух элементов.  <a href="class_quiz.html#a4192dd81d6fa7675e83b0378864067b2">More...</a><br /></td></tr>
+<tr class="separator:a4192dd81d6fa7675e83b0378864067b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:a17b81be242b12f4313d7dafa25fec683"><td class="memItemLeft" align="right" valign="top"><a id="a17b81be242b12f4313d7dafa25fec683"></a>
-static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>recordsPath</b> = &quot;static/records_quiz.csv&quot;</td></tr>
+static const QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#a17b81be242b12f4313d7dafa25fec683">recordsPath</a> = &quot;static/records_quiz.csv&quot;</td></tr>
+<tr class="memdesc:a17b81be242b12f4313d7dafa25fec683"><td class="mdescLeft">&#160;</td><td class="mdescRight">путь до файла с рекордами и до файла содержащего информацию об игре <br /></td></tr>
 <tr class="separator:a17b81be242b12f4313d7dafa25fec683"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a411a14c1d716b92554349c0a9ef785fd"><td class="memItemLeft" align="right" valign="top"><a id="a411a14c1d716b92554349c0a9ef785fd"></a>
 static const QString&#160;</td><td class="memItemRight" valign="bottom"><b>aboutPath</b> = &quot;static/records_quiz.txt&quot;</td></tr>
 <tr class="separator:a411a14c1d716b92554349c0a9ef785fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8d886d84da9c77179acb48840836bbd"><td class="memItemLeft" align="right" valign="top"><a id="ab8d886d84da9c77179acb48840836bbd"></a>
-static const int&#160;</td><td class="memItemRight" valign="bottom"><b>maxQuestions</b> = 27</td></tr>
+static const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_quiz.html#ab8d886d84da9c77179acb48840836bbd">maxQuestions</a> = 27</td></tr>
+<tr class="memdesc:ab8d886d84da9c77179acb48840836bbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">переменная содержащая максимальное количество вопросов в файле <br /></td></tr>
 <tr class="separator:ab8d886d84da9c77179acb48840836bbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>модуль игры Викторина </p>
+<p>Этот модуль содержит основную логику игры "Викторина". </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4192dd81d6fa7675e83b0378864067b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4192dd81d6fa7675e83b0378864067b2">&#9670;&nbsp;</a></span>comp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Quiz::comp </td>
+          <td>(</td>
+          <td class="paramtype">QPair&lt; QString, int &gt;&#160;</td>
+          <td class="paramname"><em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QPair&lt; QString, int &gt;&#160;</td>
+          <td class="paramname"><em>b</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Функция сравнения двух элементов. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>- первый элемент стравнения. </td></tr>
+    <tr><td class="paramname">b</td><td>- второй элемент стравнения. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>результат сравнения двух элементов. </dd></dl>
+
+</div>
+</div>
+<a id="a338a2316896136064e102189cb2740e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a338a2316896136064e102189cb2740e6">&#9670;&nbsp;</a></span>loadQuestionByNum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Quiz::loadQuestionByNum </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>num_question</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загрузка вопросов на игровое поле </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">num_question</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a12823b88f6b55b476279f611ea00ce8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12823b88f6b55b476279f611ea00ce8b">&#9670;&nbsp;</a></span>loadStyle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Quiz::loadStyle </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Загрузка стилей. </p>
+<p>Считывание QSS-стилей и применение их к форме. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/Quiz/<a class="el" href="quiz_8h_source.html">quiz.h</a></li>
 <li>src/Quiz/quiz.cpp</li>

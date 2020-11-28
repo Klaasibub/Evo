@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['recordspath_99',['recordsPath',['../class_hangman.html#ae34eb83b158f8e9d9c3fcefa2bb44355',1,'Hangman::recordsPath()'],['../class_mosaic.html#ad21fcc59677b775c3576701dd95a149a',1,'Mosaic::recordsPath()']]]
+  ['quiz_5fquestions_111',['quiz_questions',['../namespacejson__schema.html#a41c915bd7355ea6174e44c7dca2e1c0c',1,'json_schema']]]
 ];

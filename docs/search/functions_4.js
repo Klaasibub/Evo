@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hangman_67',['Hangman',['../class_hangman.html#aa612948aeefe72f1fd3a8a3fff74c8cc',1,'Hangman']]]
+  ['gamenotonpause_73',['gameNotOnPause',['../class_mosaic.html#aa734d24458be000dc201770ac38febb5',1,'Mosaic']]],
+  ['getcurrentcolor_74',['getCurrentColor',['../class_mosaic.html#a28f183eb9bdd7b077f734d2c630dbb8e',1,'Mosaic']]]
 ];

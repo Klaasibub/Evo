@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['setstartdata_84',['setStartData',['../class_hangman.html#ae0ec97729d8f4b39e65e316c9cd3e5a0',1,'Hangman']]],
-  ['setstyle_85',['setStyle',['../class_hangman.html#a12efc0d0f75f17faa24cf2e00fa6898c',1,'Hangman']]],
-  ['showletter_86',['showLetter',['../class_hangman.html#aee4d661c592cfa650ae29abf4e99466c',1,'Hangman']]],
-  ['showpic_87',['showPic',['../class_hangman.html#ac01c784eef38307b8d68979744a0eba8',1,'Hangman']]],
-  ['startpol_88',['startPol',['../class_hangman.html#a23e8a98374a9699e2d4e8694470c59f6',1,'Hangman']]]
+  ['on_5ffieldbig_5fcellclicked_86',['on_fieldBig_cellClicked',['../class_mosaic.html#aebef558d131062484f53c5e516093559',1,'Mosaic']]],
+  ['on_5fpausebt_5fclicked_87',['on_pauseBt_clicked',['../class_mosaic.html#a252358c98f089f24882e9e5d6d747ee7',1,'Mosaic']]],
+  ['on_5fplaybt_5fclicked_88',['on_playBt_clicked',['../class_main_menu.html#a9c53f5a53ae15f8721f26b2243b692a7',1,'MainMenu']]],
+  ['on_5frestartbt_5fclicked_89',['on_restartBt_clicked',['../class_mosaic.html#a58ffb9a1e9c8a8b74e690819e8e3445a',1,'Mosaic']]],
+  ['on_5fstartbt_5fclicked_90',['on_startBt_clicked',['../class_mosaic.html#aedcb007642477fe9d446b47a078c7f3e',1,'Mosaic']]],
+  ['oncolorbtclicked_91',['onColorBtClicked',['../class_mosaic.html#ab08eadae3c3e0cdad79817678489a55c',1,'Mosaic']]]
 ];

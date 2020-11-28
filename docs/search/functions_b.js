@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['table_89',['table',['../class_main_menu.html#ae07fc4bcdc65f6eb6cde8f4a5a271887',1,'MainMenu']]]
+  ['quiz_92',['Quiz',['../class_quiz.html#a38db83f6e27dc75169e80f989cbeab5e',1,'Quiz']]]
 ];
