@@ -112,7 +112,6 @@ void MainMenu::about()
     utils::read_from_file(aboutPath, about, false);
 
     ui->aboutGameText->setHtml(about);
-
 }
 
 void MainMenu::fillTable(QTableWidget *table, QString filename)
