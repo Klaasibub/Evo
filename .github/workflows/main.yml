@@ -34,7 +34,7 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DENABLE_UNIT_TESTS=ON
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DENABLE_UNIT_TESTS=ON
 
     - name: Tests
       working-directory: ${{runner.workspace}}/build
@@ -80,7 +80,28 @@ jobs:
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --config $BUILD_TYPE
+      run: |
+        cmake --build . --target all 
+        export BIN_DIR=/Users/runner/work/Evo/build/bin
+        mkdir $BIN_DIR/macOS-10-15
+
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Multimedia.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Core.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Gui.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Network.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Svg.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Widgets.pc $BIN_DIR/macOS-10-15
+        
+        cp -r $Qt5_Dir/plugins/bearer/ $BIN_DIR/macOS-10-15
+        cp -r $Qt5_Dir/plugins/imageformats/ $BIN_DIR/macOS-10-15
+        cp -r $Qt5_Dir/plugins/platforms/ $BIN_DIR/macOS-10-15
+
+        mv $BIN_DIR/Evo $BIN_DIR/macOS-10-15/Evo
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: macOS-10-15-release
+        path: /Users/runner/work/Evo/build/bin/macOS-10-15/
 
   build-windows:
     runs-on: windows-latest
@@ -162,5 +183,25 @@ jobs:
     - name: Build
       working-directory: ${{runner.workspace}}/build
       shell: bash
-      run: cmake --build . --config $BUILD_TYPE
+      run: |
+        cmake --build . --target all
+        export BIN_DIR=/home/runner/work/Evo/build/bin
+        mkdir $BIN_DIR/ubuntu-18-04
 
+        cp $Qt5_Dir/lib/libQt5Multimedia.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Core.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Gui.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Network.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Svg.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Widgets.so $BIN_DIR/ubuntu-18-04
+        
+        cp -r $Qt5_Dir/plugins/bearer/ $BIN_DIR/ubuntu-18-04
+        cp -r $Qt5_Dir/plugins/imageformats/ $BIN_DIR/ubuntu-18-04
+        cp -r $Qt5_Dir/plugins/platforms/ $BIN_DIR/ubuntu-18-04
+        
+        mv $BIN_DIR/Evo $BIN_DIR/ubuntu-18-04/Evo
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ubuntu-18-04-release
+        path: /home/runner/work/Evo/build/bin/ubuntu-18-04/
