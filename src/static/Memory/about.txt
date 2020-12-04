@@ -1,0 +1,9 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN" "http://www.w3.org/TR/REC-html40/strict.dtd">
+<html><head><meta name="qrichtext" content="1" /><style type="text/css">
+p, li { white-space: pre-wrap; }
+</style></head><body style=" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;">
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:16pt;">Добро пожаловать в увлекательную игру Mosaics! для прохождения этой игры вам потребуется хорошая память, это тяжелое испытание пройдет немногие.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:16pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:16pt;">По центру расположено игровое поле, для победы вам необходимо открыть все карты. 2 карты считаются открытыми, если они одинаковы и были открыты за 1 ход. за ход игрок может переворачивать различных, ранее не открытых карты.</span></p>
+<p style="-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:16pt;"><br /></p>
+<p style=" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;"><span style=" font-size:16pt;">Игра обладает способностью сохранения игрового прогресса, так что если даже она внезапно прервется, вы всегда сможете начать с того момента, где остановились. И помните - холодный расчет и незамутненный разум помогут вам выиграть. Удачи!</span></p></body></html>
