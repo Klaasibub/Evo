@@ -98,7 +98,7 @@ private slots:
     /*!
      * \brief Загрузить предыдущую игру.
      */
-    void Hangman::loadGame();
+    void loadGame();
 
 private:
     Ui::Hangman *ui;

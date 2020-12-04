@@ -34,7 +34,7 @@ jobs:
     - name: Configure CMake
       shell: bash
       working-directory: ${{runner.workspace}}/build
-      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DENABLE_UNIT_TESTS=ON
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=Debug -DENABLE_UNIT_TESTS=ON
 
     - name: Tests
       working-directory: ${{runner.workspace}}/build
@@ -48,7 +48,62 @@ jobs:
       shell: bash
       run: $Qt5_Dir/bin/UnitTests.exe
 
-  build:
+  build-macOS:
+    runs-on: macos-10.15
+
+    steps:
+    - name: Cache Qt
+      id: cache-qt
+      uses: actions/cache@v1
+      with:
+        path: ../Qt
+        key: ${{ runner.os }}-QtCache
+
+    - uses: actions/checkout@v2
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2.10.0
+      with:
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
+        host: 'mac'
+        tools: 'tools_ifw,4.0,qt.tools.ifw.40 tools_qtcreator,4.13.2-0,qt.tools.qtcreator'
+        extra: '--external 7z'
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DENABLE_UNIT_TESTS=OFF
+
+    - name: Build
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: |
+        cmake --build . --target all 
+        export BIN_DIR=/Users/runner/work/Evo/build/bin
+        mkdir $BIN_DIR/macOS-10-15
+
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Multimedia.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Core.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Gui.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Network.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Svg.pc $BIN_DIR/macOS-10-15
+        cp $Qt5_Dir/lib/pkgconfig/Qt5Widgets.pc $BIN_DIR/macOS-10-15
+        
+        cp -r $Qt5_Dir/plugins/bearer/ $BIN_DIR/macOS-10-15
+        cp -r $Qt5_Dir/plugins/imageformats/ $BIN_DIR/macOS-10-15
+        cp -r $Qt5_Dir/plugins/platforms/ $BIN_DIR/macOS-10-15
+
+        mv $BIN_DIR/Evo $BIN_DIR/macOS-10-15/Evo
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: macOS-10-15-release
+        path: /Users/runner/work/Evo/build/bin/macOS-10-15/
+
+  build-windows:
     runs-on: windows-latest
 
     steps:
@@ -95,3 +150,58 @@ jobs:
       with:
         name: setup.exe
         path: D:/a/Evo/installer
+
+  build-ubuntu:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Cache Qt
+      id: cache-qt
+      uses: actions/cache@v1
+      with:
+        path: ../Qt
+        key: ${{ runner.os }}-QtCache
+
+    - uses: actions/checkout@v2
+
+    - name: Install Qt
+      uses: jurplel/install-qt-action@v2.10.0
+      with:
+        cached: ${{ steps.cache-qt.outputs.cache-hit }}
+        host: 'linux'
+        tools: 'tools_ifw,4.0,qt.tools.ifw.40 tools_qtcreator,4.13.2-0,qt.tools.qtcreator'
+        extra: '--external 7z'
+
+    - name: Create Build Environment
+      run: cmake -E make_directory ${{runner.workspace}}/build
+
+    - name: Configure CMake
+      shell: bash
+      working-directory: ${{runner.workspace}}/build
+      run: cmake $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE=$BUILD_TYPE -DENABLE_UNIT_TESTS=OFF
+
+    - name: Build
+      working-directory: ${{runner.workspace}}/build
+      shell: bash
+      run: |
+        cmake --build . --target all
+        export BIN_DIR=/home/runner/work/Evo/build/bin
+        mkdir $BIN_DIR/ubuntu-18-04
+
+        cp $Qt5_Dir/lib/libQt5Multimedia.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Core.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Gui.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Network.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Svg.so $BIN_DIR/ubuntu-18-04
+        cp $Qt5_Dir/lib/libQt5Widgets.so $BIN_DIR/ubuntu-18-04
+        
+        cp -r $Qt5_Dir/plugins/bearer/ $BIN_DIR/ubuntu-18-04
+        cp -r $Qt5_Dir/plugins/imageformats/ $BIN_DIR/ubuntu-18-04
+        cp -r $Qt5_Dir/plugins/platforms/ $BIN_DIR/ubuntu-18-04
+        
+        mv $BIN_DIR/Evo $BIN_DIR/ubuntu-18-04/Evo
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ubuntu-18-04-release
+        path: /home/runner/work/Evo/build/bin/ubuntu-18-04/
