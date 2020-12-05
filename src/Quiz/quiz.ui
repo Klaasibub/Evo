@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Викторина</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog
@@ -49,7 +49,7 @@
           </size>
          </property>
          <property name="styleSheet">
-          <string notr="true">border-image: url(:/Quiz/sova.bmp);</string>
+          <string notr="true">border-image: url(:/Quiz/sova.png);</string>
          </property>
          <property name="text">
           <string/>
@@ -162,6 +162,9 @@
            <height>16777215</height>
           </size>
          </property>
+         <property name="styleSheet">
+          <string notr="true">background-image: url(:/empty_background.png); </string>
+         </property>
          <property name="selectionMode">
           <enum>QAbstractItemView::NoSelection</enum>
          </property>
@@ -175,6 +178,9 @@
         <font>
          <pointsize>20</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-image: url(:/empty_background.png);</string>
        </property>
        <property name="readOnly">
         <bool>true</bool>

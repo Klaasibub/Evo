@@ -92,11 +92,11 @@ void MainMenu::table()
 
 void MainMenu::about()
 {
-    QString aboutPath; // ToDo: replace to Game.aboutPath();
+    QString aboutPath, about;
     switch(currentGame)
     {
     case Game::Quiz:
-        aboutPath = "Quiz::aboutPath";
+        aboutPath = Quiz::aboutPath;
         break;
     case Game::Memory:
         aboutPath = Memory::aboutPath;
@@ -108,9 +108,8 @@ void MainMenu::about()
         aboutPath = Mosaic::aboutPath;
         break;
     }
-    QString about;
-    utils::read_from_file(aboutPath, about, false);
 
+    utils::read_from_file(aboutPath, about, false);
     ui->aboutGameText->setHtml(about);
 }
 

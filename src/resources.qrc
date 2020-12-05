@@ -3,6 +3,7 @@
         <file alias="style.css">static/style.css</file>
         <file alias="default_hover_button.mp3">static/default_hover_button.mp3</file>
         <file alias="end_of_game.mp3">static/end_of_game.mp3</file>
+        <file alias="empty_background.png">static/empty_background.png</file>
     </qresource>
     <qresource prefix="/Mosaic">
         <file alias="images.txt">static/Mosaic/images.txt</file>
@@ -28,7 +29,7 @@
         <file alias="questions.json">static/Quiz/quiz_questions.json</file>
         <file alias="about.txt">static/Quiz/about.txt</file>
         <file alias="fon.jpg">static/Quiz/fon.jpg</file>
-        <file alias="sova.bmp">static/Quiz/sova.bmp</file>
+        <file alias="sova.png">static/Quiz/sova.png</file>
     </qresource>
     <qresource prefix="/Memory">
         <file alias="about.txt">static/Memory/about.txt</file>

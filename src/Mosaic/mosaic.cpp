@@ -13,6 +13,7 @@
 
 const QString Mosaic::recordsPath = "/static/records_mosaic.csv";
 const QString Mosaic::aboutPath = ":/Mosaic/about.txt";
+
 Mosaic::Mosaic(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Mosaic)
@@ -105,6 +106,7 @@ void Mosaic::on_fieldBig_cellClicked(int row, int column)
         return;
     ui->fieldBig->item(row, column)->setBackground(QBrush(currentColor));
 }
+
 bool Mosaic::compareTables(QTableWidget *field1, QTableWidget *field2)
 {
     if (field1->rowCount() != field2->rowCount() || field1->columnCount() != field2->columnCount()){
@@ -119,6 +121,7 @@ bool Mosaic::compareTables(QTableWidget *field1, QTableWidget *field2)
     }
     return true;
 }
+
 void Mosaic::checkResults()
 {
     if (compareTables(ui->fieldSmall,ui->fieldBig) == true){
