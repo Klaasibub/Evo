@@ -11,7 +11,7 @@
 #include <QLineEdit>
 
 const QString Quiz::recordsPath = "static/records_quiz.csv";
-const QString Quiz::aboutPath = "static/records_quiz.txt";
+const QString Quiz::aboutPath = ":/Quiz/about.txt";
 
 Quiz::Quiz(QWidget *parent) :
     QDialog(parent),
@@ -91,6 +91,7 @@ bool Quiz::loadQuestionByNum(int num_question){
         item->setChecked(false);
         item->setCheckable(true);
         item->setVisible(true);
+        item->setStyleSheet("color: white");
     }
     return true;
 }
